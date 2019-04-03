@@ -1,0 +1,75 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim
+vALU
+Z1 !s110 1554169479
+!i10b 1
+!s100 US]AoO^XFg=YD1@0jLOV30
+IOVWloKcAPSC?h7;]0S;Wj1
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1554169478
+Z4 8Processor.vo
+Z5 FProcessor.vo
+L0 32
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1554169479.000000
+Z8 !s107 Processor.vo|
+Z9 !s90 -work|work|Processor.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+n@a@l@u
+vALU_vlg_vec_tst
+R1
+!i10b 1
+!s100 l6Fjh?l^5E^MSQGT:IznJ2
+I2lmUM:>9nakQ^@ehz;CM?2
+R2
+R0
+w1554169477
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 30
+R6
+r1
+!s85 0
+31
+R7
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R10
+R11
+n@a@l@u_vlg_vec_tst
+vhard_block
+R1
+!i10b 1
+!s100 EU7dg3dho><ckN7Pb3ALX2
+I];]djN]<LJV6=EN?KM7ch3
+R2
+R0
+R3
+R4
+R5
+L0 12958
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11

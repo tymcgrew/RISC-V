@@ -1,0 +1,68 @@
+module ALU (
+	clk,
+	rst,
+	
+	in1,
+	in2,
+	op,
+		
+	wren,
+	status,
+	out	
+);
+
+
+//------------------------------------------------------------------
+//                 -- Input/Output Declarations --                  
+//------------------------------------------------------------------
+input [31:0]in1;
+input [31:0]in2;
+input [5:0]op;
+input clk, rst, wren;
+
+output [1:0]status;
+output [31:0]out;
+reg [1:0]status;
+reg [31:0]out;
+
+
+//------------------------------------------------------------------
+//                 -- Begin Declarations & Coding --                  
+//------------------------------------------------------------------
+
+parameter add = 6'b000000,
+			 sub = 6'b000001;
+
+
+always @(posedge clk or negedge rst)
+begin
+	if (rst == 1'b0)
+	begin
+		out <= 32'h00000000;
+		status <= 2'b00;
+	end
+	else if (wren == 1'b1)
+	begin
+		case (op)
+			add: out <= in1 + in2;
+			sub: out <= in1 - in2;
+			default: out <= in1 + in2;
+		endcase
+		
+		if (in1 == in2)
+			status[1] <= 1'b1;
+		else
+			status[1] <= 1'b0;
+			
+		if (	(in1[31] == 1'b1 && in2[31] == 1'b0) || (in1[31] == in2[31] && in1 < in2) )
+			status[0] <= 1'b1;
+		else
+			status[0] <= 1'b0;
+			
+	end
+	
+end
+
+
+
+endmodule
