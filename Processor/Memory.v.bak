@@ -1,0 +1,8 @@
+module Memory(clk, address, in, wren, width, out);
+
+input clk;
+input [9:0]address;
+input [31:0]in;
+input wren;
+input [1:0]width;
+output [31:0]out;

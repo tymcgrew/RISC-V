@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Processor
-Mon Apr 01 23:44:44 2019
+Tue Apr 02 22:45:31 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Mon Apr 01 23:44:44 2019           ;
+; Analysis & Synthesis Status        ; Failed - Tue Apr 02 22:45:31 2019           ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; Processor                                   ;
 ; Top-level Entity Name              ; Processor                                   ;
@@ -145,8 +145,8 @@ agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -162,31 +162,54 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Mon Apr 01 23:44:30 2019
+    Info: Processing started: Tue Apr 02 22:45:23 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Processor -c Processor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file processor.v
-    Info (12023): Found entity 1: Processor File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 1
+    Info (12023): Found entity 1: Processor File: M:/ECE 289/RISC-V-master/Processor/Processor.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
-    Info (12023): Found entity 1: ALU File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/ALU.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file memory.v
-    Info (12023): Found entity 1: Memory File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 40
+    Info (12023): Found entity 1: ALU File: M:/ECE 289/RISC-V-master/Processor/ALU.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file register.v
-    Info (12023): Found entity 1: Register File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Register.v Line: 40
+    Info (12023): Found entity 1: Register File: M:/ECE 289/RISC-V-master/Processor/Register.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file instructionregister.v
-    Info (12023): Found entity 1: InstructionRegister File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/InstructionRegister.v Line: 1
+    Info (12023): Found entity 1: InstructionRegister File: M:/ECE 289/RISC-V-master/Processor/InstructionRegister.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file programcounter.v
-    Info (12023): Found entity 1: ProgramCounter File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/ProgramCounter.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file control.v
-    Info (12023): Found entity 1: Control File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Control.v Line: 1
-Info (12127): Elaborating entity "Processor" for the top level hierarchy
-Warning (12158): Entity "Processor" contains only dangling pins
-Error (12061): Can't synthesize current design -- Top partition does not contain any logic
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 2 warnings
-    Error: Peak virtual memory: 4723 megabytes
-    Error: Processing ended: Mon Apr 01 23:44:44 2019
-    Error: Elapsed time: 00:00:14
-    Error: Total CPU time (on all processors): 00:00:34
+    Info (12023): Found entity 1: ProgramCounter File: M:/ECE 289/RISC-V-master/Processor/ProgramCounter.v Line: 1
+Error (10170): Verilog HDL syntax error at Control.v(116) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 116
+Error (10170): Verilog HDL syntax error at Control.v(129) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 129
+Error (10170): Verilog HDL syntax error at Control.v(134) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 134
+Error (10170): Verilog HDL syntax error at Control.v(139) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 139
+Error (10170): Verilog HDL syntax error at Control.v(144) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 144
+Error (10170): Verilog HDL syntax error at Control.v(149) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 149
+Error (10170): Verilog HDL syntax error at Control.v(154) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 154
+Error (10170): Verilog HDL syntax error at Control.v(159) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 159
+Error (10170): Verilog HDL syntax error at Control.v(164) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 164
+Error (10170): Verilog HDL syntax error at Control.v(169) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 169
+Error (10170): Verilog HDL syntax error at Control.v(174) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 174
+Error (10170): Verilog HDL syntax error at Control.v(179) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 179
+Error (10170): Verilog HDL syntax error at Control.v(184) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 184
+Error (10170): Verilog HDL syntax error at Control.v(189) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 189
+Error (10170): Verilog HDL syntax error at Control.v(194) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 194
+Error (10170): Verilog HDL syntax error at Control.v(199) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 199
+Error (10170): Verilog HDL syntax error at Control.v(204) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 204
+Error (10170): Verilog HDL syntax error at Control.v(209) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 209
+Error (10170): Verilog HDL syntax error at Control.v(214) near text: "#";  expecting "(". Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: M:/ECE 289/RISC-V-master/Processor/Control.v Line: 214
+Info (12021): Found 0 design units, including 0 entities, in source file control.v
+Info (12021): Found 1 design units, including 1 entities, in source file memorymodule0.v
+    Info (12023): Found entity 1: MemoryModule0 File: M:/ECE 289/RISC-V-master/Processor/MemoryModule0.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file memorymodule1.v
+    Info (12023): Found entity 1: MemoryModule1 File: M:/ECE 289/RISC-V-master/Processor/MemoryModule1.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file memorymodule2.v
+    Info (12023): Found entity 1: MemoryModule2 File: M:/ECE 289/RISC-V-master/Processor/MemoryModule2.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file memorymodule3.v
+    Info (12023): Found entity 1: MemoryModule3 File: M:/ECE 289/RISC-V-master/Processor/MemoryModule3.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file memory.v
+    Info (12023): Found entity 1: Memory File: M:/ECE 289/RISC-V-master/Processor/Memory.v Line: 1
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 19 errors, 1 warning
+    Error: Peak virtual memory: 4726 megabytes
+    Error: Processing ended: Tue Apr 02 22:45:32 2019
+    Error: Elapsed time: 00:00:09
+    Error: Total CPU time (on all processors): 00:00:18
 
 

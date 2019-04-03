@@ -52,14 +52,22 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name VERILOG_FILE Processor.v
 set_global_assignment -name VERILOG_FILE ALU.v
-set_global_assignment -name MIF_FILE Memory.mif
-set_global_assignment -name QIP_FILE Memory.qip
 set_global_assignment -name MIF_FILE Register.mif
 set_global_assignment -name QIP_FILE Register.qip
 set_global_assignment -name VERILOG_FILE InstructionRegister.v
 set_global_assignment -name VERILOG_FILE ProgramCounter.v
+set_global_assignment -name VERILOG_FILE Control.v
+set_global_assignment -name MIF_FILE MemoryModule0.mif
+set_global_assignment -name MIF_FILE MemoryModule1.mif
+set_global_assignment -name MIF_FILE MemoryModule2.mif
+set_global_assignment -name MIF_FILE MemoryModule3.mif
+set_global_assignment -name QIP_FILE MemoryModule0.qip
+set_global_assignment -name QIP_FILE MemoryModule1.qip
+set_global_assignment -name QIP_FILE MemoryModule2.qip
+set_global_assignment -name QIP_FILE MemoryModule3.qip
+set_global_assignment -name VERILOG_FILE Memory.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VERILOG_FILE Control.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

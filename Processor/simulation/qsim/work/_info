@@ -15,10 +15,10 @@ Z1 !s110 1554169479
 IOVWloKcAPSC?h7;]0S;Wj1
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 R0
-Z3 w1554169478
-Z4 8Processor.vo
-Z5 FProcessor.vo
-L0 32
+w1554169478
+Z3 8Processor.vo
+Z4 FProcessor.vo
+Z5 L0 32
 Z6 OV;L;10.5b;63
 r1
 !s85 0
@@ -38,38 +38,82 @@ I2lmUM:>9nakQ^@ehz;CM?2
 R2
 R0
 w1554169477
-8Waveform.vwf.vt
-FWaveform.vwf.vt
-L0 30
+Z12 8Waveform.vwf.vt
+Z13 FWaveform.vwf.vt
+Z14 L0 30
 R6
 r1
 !s85 0
 31
 R7
 !s107 Waveform.vwf.vt|
-!s90 -work|work|Waveform.vwf.vt|
+Z15 !s90 -work|work|Waveform.vwf.vt|
 !i113 1
 R10
 R11
 n@a@l@u_vlg_vec_tst
 vhard_block
-R1
+Z16 !s110 1554256421
 !i10b 1
-!s100 EU7dg3dho><ckN7Pb3ALX2
-I];]djN]<LJV6=EN?KM7ch3
+!s100 `aQCTMgjIK_NgRb]WmbVL2
+Ii2ad[D]F>T5F]627DX16F1
 R2
-R0
+Z17 dM:/ECE 289/RISC-V-master/Processor/simulation/qsim
+Z18 w1554256419
 R3
 R4
-R5
-L0 12958
+L0 5539
 R6
 r1
 !s85 0
 31
-R7
+Z19 !s108 1554256421.000000
 R8
 R9
 !i113 1
 R10
 R11
+vMemory
+R16
+!i10b 1
+!s100 oK[nJg@[4oUQL=>CnD9g;0
+IJ]T[eTU]@h1akKM7H@@3X3
+R2
+R17
+R18
+R3
+R4
+R5
+R6
+r1
+!s85 0
+31
+R19
+R8
+R9
+!i113 1
+R10
+R11
+n@memory
+vMemory_vlg_vec_tst
+R16
+!i10b 1
+!s100 m[HM`gb=J;c_iQP@1:gPg3
+I_gM5K3ahL0@bB:HmnBbbJ0
+R2
+R17
+w1554256418
+R12
+R13
+R14
+R6
+r1
+!s85 0
+31
+R19
+!s107 Waveform.vwf.vt|
+R15
+!i113 1
+R10
+R11
+n@memory_vlg_vec_tst
