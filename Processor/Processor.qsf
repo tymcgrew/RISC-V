@@ -39,7 +39,7 @@
 
 set_global_assignment -name FAMILY "Cyclone IV E"
 set_global_assignment -name DEVICE EP4CE115F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY Processor
+set_global_assignment -name TOP_LEVEL_ENTITY RegisterUnit
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.0
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:03:37  MARCH 20, 2019"
 set_global_assignment -name LAST_QUARTUS_VERSION "16.1.0 Lite Edition"
@@ -52,10 +52,6 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name VERILOG_FILE Processor.v
 set_global_assignment -name VERILOG_FILE ALU.v
-set_global_assignment -name MIF_FILE Register.mif
-set_global_assignment -name QIP_FILE Register.qip
-set_global_assignment -name VERILOG_FILE InstructionRegister.v
-set_global_assignment -name VERILOG_FILE ProgramCounter.v
 set_global_assignment -name VERILOG_FILE Control.v
 set_global_assignment -name MIF_FILE MemoryModule0.mif
 set_global_assignment -name MIF_FILE MemoryModule1.mif
@@ -67,6 +63,10 @@ set_global_assignment -name QIP_FILE MemoryModule2.qip
 set_global_assignment -name QIP_FILE MemoryModule3.qip
 set_global_assignment -name VERILOG_FILE Memory.v
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform1.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform2.vwf
+set_global_assignment -name VERILOG_FILE GenericRegister.v
+set_global_assignment -name VERILOG_FILE RegisterUnit.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top

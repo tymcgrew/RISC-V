@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Processor
-Tue Apr 02 21:53:40 2019
+Fri Apr 05 14:31:01 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -37,9 +37,9 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Apr 02 21:53:40 2019 ;
+; EDA Netlist Writer Status ; Successful - Fri Apr 05 14:31:01 2019 ;
 ; Revision Name             ; Processor                             ;
-; Top-level Entity Name     ; Memory                                ;
+; Top-level Entity Name     ; RegisterUnit                          ;
 ; Family                    ; Cyclone IV E                          ;
 ; Simulation Files Creation ; Successful                            ;
 +---------------------------+---------------------------------------+
@@ -67,20 +67,20 @@ agreement for further details.
 +---------------------------------------------------------------------------------------------------+---------------------------+
 
 
-+----------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                             ;
-+----------------------------------------------------------------------------------------+
-; Generated Files                                                                        ;
-+----------------------------------------------------------------------------------------+
-; M:/ECE 289/RISC-V-master/Processor/simulation/qsim//Processor_7_1200mv_85c_slow.vo     ;
-; M:/ECE 289/RISC-V-master/Processor/simulation/qsim//Processor_7_1200mv_0c_slow.vo      ;
-; M:/ECE 289/RISC-V-master/Processor/simulation/qsim//Processor_min_1200mv_0c_fast.vo    ;
-; M:/ECE 289/RISC-V-master/Processor/simulation/qsim//Processor.vo                       ;
-; M:/ECE 289/RISC-V-master/Processor/simulation/qsim//Processor_7_1200mv_85c_v_slow.sdo  ;
-; M:/ECE 289/RISC-V-master/Processor/simulation/qsim//Processor_7_1200mv_0c_v_slow.sdo   ;
-; M:/ECE 289/RISC-V-master/Processor/simulation/qsim//Processor_min_1200mv_0c_v_fast.sdo ;
-; M:/ECE 289/RISC-V-master/Processor/simulation/qsim//Processor_v.sdo                    ;
-+----------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                            ;
++-------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                       ;
++-------------------------------------------------------------------------------------------------------+
+; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//Processor_7_1200mv_85c_slow.vo     ;
+; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//Processor_7_1200mv_0c_slow.vo      ;
+; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//Processor_min_1200mv_0c_fast.vo    ;
+; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//Processor.vo                       ;
+; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//Processor_7_1200mv_85c_v_slow.sdo  ;
+; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//Processor_7_1200mv_0c_v_slow.sdo   ;
+; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//Processor_min_1200mv_0c_v_fast.sdo ;
+; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//Processor_v.sdo                    ;
++-------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -103,21 +103,21 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: devices manufactured by Intel and sold by Intel or its 
     Info: authorized distributors.  Please refer to the applicable 
     Info: agreement for further details.
-    Info: Processing started: Tue Apr 02 21:53:38 2019
-Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="M:/ECE 289/RISC-V-master/Processor/simulation/qsim/" Processor -c Processor
+    Info: Processing started: Fri Apr 05 14:30:57 2019
+Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim/" Processor -c Processor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file Processor_7_1200mv_85c_slow.vo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_7_1200mv_0c_slow.vo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_min_1200mv_0c_fast.vo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor.vo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_7_1200mv_85c_v_slow.sdo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_7_1200mv_0c_v_slow.sdo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_min_1200mv_0c_v_fast.sdo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_v.sdo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_7_1200mv_85c_slow.vo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_7_1200mv_0c_slow.vo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_min_1200mv_0c_fast.vo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor.vo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_7_1200mv_85c_v_slow.sdo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_7_1200mv_0c_v_slow.sdo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_min_1200mv_0c_v_fast.sdo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_v.sdo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4674 megabytes
-    Info: Processing ended: Tue Apr 02 21:53:40 2019
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 4685 megabytes
+    Info: Processing ended: Fri Apr 05 14:31:01 2019
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
 
 

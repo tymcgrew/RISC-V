@@ -19,90 +19,92 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "04/02/2019 21:53:37"
+// Generated on "04/05/2019 14:23:52"
                                                                                 
-// Verilog Test Bench (with test vectors) for design :                          Memory
+// Verilog Test Bench (with test vectors) for design :                          RegisterUnit
 // 
 // Simulation tool : 3rd Party
 // 
 
 `timescale 1 ps/ 1 ps
-module Memory_vlg_vec_tst();
+module RegisterUnit_vlg_vec_tst();
 // constants                                           
 // general purpose registers
-reg [9:0] address;
+reg [4:0] address_a;
+reg [4:0] address_b;
 reg clk;
-reg [31:0] in;
-reg sign;
-reg [1:0] width;
-reg wren;
+reg [31:0] in_a;
+reg rst;
+reg wren_a;
 // wires                                               
-wire [31:0] out;
+wire [31:0] out_a;
+wire [31:0] out_b;
 
 // assign statements (if any)                          
-Memory i1 (
+RegisterUnit i1 (
 // port map - connection between master ports and signals/registers   
-	.address(address),
+	.address_a(address_a),
+	.address_b(address_b),
 	.clk(clk),
-	.in(in),
-	.out(out),
-	.sign(sign),
-	.width(width),
-	.wren(wren)
+	.in_a(in_a),
+	.out_a(out_a),
+	.out_b(out_b),
+	.rst(rst),
+	.wren_a(wren_a)
 );
 initial 
 begin 
 #1000000 $finish;
 end 
-// address[ 9 ]
+// address_a[ 4 ]
 initial
 begin
-	address[9] = 1'b0;
+	address_a[4] = 1'b1;
 end 
-// address[ 8 ]
+// address_a[ 3 ]
 initial
 begin
-	address[8] = 1'b0;
+	address_a[3] = 1'b1;
 end 
-// address[ 7 ]
+// address_a[ 2 ]
 initial
 begin
-	address[7] = 1'b0;
+	address_a[2] = 1'b1;
 end 
-// address[ 6 ]
+// address_a[ 1 ]
 initial
 begin
-	address[6] = 1'b0;
+	address_a[1] = 1'b1;
 end 
-// address[ 5 ]
+// address_a[ 0 ]
 initial
 begin
-	address[5] = 1'b0;
+	address_a[0] = 1'b1;
 end 
-// address[ 4 ]
+// address_b[ 4 ]
 initial
 begin
-	address[4] = 1'b0;
+	address_b[4] = 1'b1;
 end 
-// address[ 3 ]
+// address_b[ 3 ]
 initial
 begin
-	address[3] = 1'b0;
+	address_b[3] = 1'b1;
 end 
-// address[ 2 ]
+// address_b[ 2 ]
 initial
 begin
-	address[2] = 1'b0;
+	address_b[2] = 1'b1;
 end 
-// address[ 1 ]
+// address_b[ 1 ]
 initial
 begin
-	address[1] = 1'b1;
+	address_b[1] = 1'b1;
 end 
-// address[ 0 ]
+// address_b[ 0 ]
 initial
 begin
-	address[0] = 1'b1;
+	address_b[0] = 1'b1;
 end 
 
 // clk
@@ -112,187 +114,179 @@ begin
 	clk = #10000 1'b1;
 	#10000;
 end 
-// in[ 31 ]
+// in_a[ 31 ]
 initial
 begin
-	in[31] = 1'b0;
+	in_a[31] = 1'b1;
 end 
-// in[ 30 ]
+// in_a[ 30 ]
 initial
 begin
-	in[30] = 1'b0;
+	in_a[30] = 1'b1;
 end 
-// in[ 29 ]
+// in_a[ 29 ]
 initial
 begin
-	in[29] = 1'b0;
+	in_a[29] = 1'b1;
 end 
-// in[ 28 ]
+// in_a[ 28 ]
 initial
 begin
-	in[28] = 1'b0;
+	in_a[28] = 1'b1;
 end 
-// in[ 27 ]
+// in_a[ 27 ]
 initial
 begin
-	in[27] = 1'b0;
+	in_a[27] = 1'b1;
 end 
-// in[ 26 ]
+// in_a[ 26 ]
 initial
 begin
-	in[26] = 1'b0;
+	in_a[26] = 1'b1;
 end 
-// in[ 25 ]
+// in_a[ 25 ]
 initial
 begin
-	in[25] = 1'b0;
+	in_a[25] = 1'b1;
 end 
-// in[ 24 ]
+// in_a[ 24 ]
 initial
 begin
-	in[24] = 1'b0;
+	in_a[24] = 1'b1;
 end 
-// in[ 23 ]
+// in_a[ 23 ]
 initial
 begin
-	in[23] = 1'b0;
+	in_a[23] = 1'b1;
 end 
-// in[ 22 ]
+// in_a[ 22 ]
 initial
 begin
-	in[22] = 1'b0;
+	in_a[22] = 1'b1;
 end 
-// in[ 21 ]
+// in_a[ 21 ]
 initial
 begin
-	in[21] = 1'b0;
+	in_a[21] = 1'b1;
 end 
-// in[ 20 ]
+// in_a[ 20 ]
 initial
 begin
-	in[20] = 1'b0;
+	in_a[20] = 1'b1;
 end 
-// in[ 19 ]
+// in_a[ 19 ]
 initial
 begin
-	in[19] = 1'b0;
+	in_a[19] = 1'b1;
 end 
-// in[ 18 ]
+// in_a[ 18 ]
 initial
 begin
-	in[18] = 1'b0;
+	in_a[18] = 1'b1;
 end 
-// in[ 17 ]
+// in_a[ 17 ]
 initial
 begin
-	in[17] = 1'b0;
+	in_a[17] = 1'b1;
 end 
-// in[ 16 ]
+// in_a[ 16 ]
 initial
 begin
-	in[16] = 1'b0;
+	in_a[16] = 1'b1;
 end 
-// in[ 15 ]
+// in_a[ 15 ]
 initial
 begin
-	in[15] = 1'b0;
+	in_a[15] = 1'b1;
 end 
-// in[ 14 ]
+// in_a[ 14 ]
 initial
 begin
-	in[14] = 1'b0;
+	in_a[14] = 1'b1;
 end 
-// in[ 13 ]
+// in_a[ 13 ]
 initial
 begin
-	in[13] = 1'b0;
+	in_a[13] = 1'b1;
 end 
-// in[ 12 ]
+// in_a[ 12 ]
 initial
 begin
-	in[12] = 1'b0;
+	in_a[12] = 1'b1;
 end 
-// in[ 11 ]
+// in_a[ 11 ]
 initial
 begin
-	in[11] = 1'b0;
+	in_a[11] = 1'b1;
 end 
-// in[ 10 ]
+// in_a[ 10 ]
 initial
 begin
-	in[10] = 1'b0;
+	in_a[10] = 1'b1;
 end 
-// in[ 9 ]
+// in_a[ 9 ]
 initial
 begin
-	in[9] = 1'b0;
+	in_a[9] = 1'b1;
 end 
-// in[ 8 ]
+// in_a[ 8 ]
 initial
 begin
-	in[8] = 1'b0;
+	in_a[8] = 1'b1;
 end 
-// in[ 7 ]
+// in_a[ 7 ]
 initial
 begin
-	in[7] = 1'b0;
+	in_a[7] = 1'b1;
 end 
-// in[ 6 ]
+// in_a[ 6 ]
 initial
 begin
-	in[6] = 1'b0;
+	in_a[6] = 1'b1;
 end 
-// in[ 5 ]
+// in_a[ 5 ]
 initial
 begin
-	in[5] = 1'b0;
+	in_a[5] = 1'b1;
 end 
-// in[ 4 ]
+// in_a[ 4 ]
 initial
 begin
-	in[4] = 1'b0;
+	in_a[4] = 1'b1;
 end 
-// in[ 3 ]
+// in_a[ 3 ]
 initial
 begin
-	in[3] = 1'b0;
+	in_a[3] = 1'b1;
 end 
-// in[ 2 ]
+// in_a[ 2 ]
 initial
 begin
-	in[2] = 1'b0;
+	in_a[2] = 1'b1;
 end 
-// in[ 1 ]
+// in_a[ 1 ]
 initial
 begin
-	in[1] = 1'b0;
+	in_a[1] = 1'b1;
 end 
-// in[ 0 ]
+// in_a[ 0 ]
 initial
 begin
-	in[0] = 1'b0;
-end 
-
-// sign
-initial
-begin
-	sign = 1'b0;
-end 
-// width[ 1 ]
-initial
-begin
-	width[1] = 1'b1;
-end 
-// width[ 0 ]
-initial
-begin
-	width[0] = 1'b1;
+	in_a[0] = 1'b1;
 end 
 
-// wren
+// rst
 initial
 begin
-	wren = 1'b0;
+	rst = 1'b1;
+end 
+
+// wren_a
+initial
+begin
+	wren_a = 1'b0;
+	wren_a = #80000 1'b1;
+	wren_a = #30000 1'b0;
 end 
 endmodule
 

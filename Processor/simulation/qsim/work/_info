@@ -46,40 +46,128 @@ r1
 !s85 0
 31
 R7
-!s107 Waveform.vwf.vt|
-Z15 !s90 -work|work|Waveform.vwf.vt|
+Z15 !s107 Waveform.vwf.vt|
+Z16 !s90 -work|work|Waveform.vwf.vt|
 !i113 1
 R10
 R11
 n@a@l@u_vlg_vec_tst
 vhard_block
-Z16 !s110 1554256421
+Z17 !s110 1554489062
 !i10b 1
-!s100 `aQCTMgjIK_NgRb]WmbVL2
-Ii2ad[D]F>T5F]627DX16F1
+!s100 M6TKg_njO0T^_UFo4QoAc3
+IfU:?V97BjJNFDcA>1L?H50
 R2
-Z17 dM:/ECE 289/RISC-V-master/Processor/simulation/qsim
-Z18 w1554256419
+R0
+Z18 w1554489059
 R3
 R4
-L0 5539
+L0 52192
 R6
 r1
 !s85 0
 31
-Z19 !s108 1554256421.000000
+Z19 !s108 1554489061.000000
 R8
 R9
 !i113 1
 R10
 R11
 vMemory
-R16
+Z20 !s110 1554256421
 !i10b 1
 !s100 oK[nJg@[4oUQL=>CnD9g;0
 IJ]T[eTU]@h1akKM7H@@3X3
 R2
+Z21 dM:/ECE 289/RISC-V-master/Processor/simulation/qsim
+w1554256419
+R3
+R4
+R5
+R6
+r1
+!s85 0
+31
+Z22 !s108 1554256421.000000
+R8
+R9
+!i113 1
+R10
+R11
+n@memory
+vMemory_vlg_vec_tst
+R20
+!i10b 1
+!s100 m[HM`gb=J;c_iQP@1:gPg3
+I_gM5K3ahL0@bB:HmnBbbJ0
+R2
+R21
+w1554256418
+R12
+R13
+R14
+R6
+r1
+!s85 0
+31
+R22
+R15
+R16
+!i113 1
+R10
+R11
+n@memory_vlg_vec_tst
+vRegister
+Z23 !s110 1554425488
+!i10b 1
+!s100 6h<d`5W^oiLXd1hWzKjX13
+I>m>FC58bjhl4YYgeKWk7n0
+R2
+R0
+w1554425487
+R3
+R4
+R5
+R6
+r1
+!s85 0
+31
+Z24 !s108 1554425488.000000
+R8
+R9
+!i113 1
+R10
+R11
+n@register
+vRegister_vlg_vec_tst
+R23
+!i10b 1
+!s100 oY1if7dUf<mLXPB[NhEPH0
+Ilj>B@4;Veb[M?m9hML4n93
+R2
+R0
+w1554425485
+8Waveform2.vwf.vt
+FWaveform2.vwf.vt
+R14
+R6
+r1
+!s85 0
+31
+R24
+!s107 Waveform2.vwf.vt|
+!s90 -work|work|Waveform2.vwf.vt|
+!i113 1
+R10
+R11
+n@register_vlg_vec_tst
+vRegisterUnit
 R17
+!i10b 1
+!s100 ;beUP:_JgeG^JJjL[5bJE3
+I[Wg`lFK3P^BSMlEjXRUf>2
+R2
+R0
 R18
 R3
 R4
@@ -94,26 +182,26 @@ R9
 !i113 1
 R10
 R11
-n@memory
-vMemory_vlg_vec_tst
-R16
-!i10b 1
-!s100 m[HM`gb=J;c_iQP@1:gPg3
-I_gM5K3ahL0@bB:HmnBbbJ0
-R2
+n@register@unit
+vRegisterUnit_vlg_vec_tst
 R17
-w1554256418
-R12
-R13
+!i10b 1
+!s100 :WD5>MFNSNMe;^D>UH2Sb0
+I=]`3LBj<z7Y]YPgMPV^k_1
+R2
+R0
+w1554489056
+8Waveform1.vwf.vt
+FWaveform1.vwf.vt
 R14
 R6
 r1
 !s85 0
 31
-R19
-!s107 Waveform.vwf.vt|
-R15
+!s108 1554489062.000000
+!s107 Waveform1.vwf.vt|
+!s90 -work|work|Waveform1.vwf.vt|
 !i113 1
 R10
 R11
-n@memory_vlg_vec_tst
+n@register@unit_vlg_vec_tst

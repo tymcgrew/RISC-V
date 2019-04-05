@@ -1,75 +1,117 @@
-module Processor(clk, rst);
-
+module Processor(SW, clk, rst);
+	
+	input [15:0]SW;
 	input clk, rst;
 	
-	wire [4:0]register_address_a, register_address_b;
-	wire register_wren_a;
 	
+	// Control wires
+	wire [2:0]alu_status;
+	wire [31:0]instruction;
+	
+	wire [4:0]register_address_a;
+	wire [4:0]register_address_b;
+	wire register_wren;
+	wire [1:0]register_mux;
+	wire [31:0]register_immediate;
+	wire result_wren;
+	
+	wire alu_a_mux;
+	wire alu_b_mux;
+	wire [31:0]alu_immediate;
 	wire [2:0]alu_op;
 	
 	wire memory_wren;
 	wire [1:0]memory_width;
 	wire memory_sign;
+	wire memory_mux;
 	
 	wire programcounter_wren;
-	wire programcounter_add_or_set;
-	wire [9:0]programcounter_value;
+	wire [1:0]programcounter_mux;
+	wire [31:0]programcounter_immediate;
 	
 	wire instructionregister_wren;
 	
+	// Non-control wires
+	reg [31:0]register_in_a;
+	wire [31:0]register_out_a;
+	wire [31:0]register_out_b;
+	wire [31:0]alu_in_a;
+	wire [31:0]alu_in_b;
+	wire [31:0]alu_out;
+	wire [9:0]memory_address;
+	wire [31:0]memory_out;
+	reg [31:0]programcounter_in;
+	wire [31:0]programcounter_out;
+	wire [31:0]result_reg_out;
 
 	Control control(
+						 clk,
 						 rst,
+						 
+						 SW,
+						 alu_status,
+						 instruction,
+						 
 						 
 						 // register
 						 register_address_a,
 						 register_address_b,
-						 register_wren_a,						 
+						 register_wren,
+						 register_mux,
+						 register_immediate,
+						 result_wren,
 						 
 						 
 						 // alu
+						 alu_a_mux,
+						 alu_b_mux,
+						 alu_immediate,
 						 alu_op,
 						 
 						 
 						 // memory
 						 memory_wren,
 						 memory_width,
-						 memory_sign,						 
+						 memory_sign,
+						 memory_mux,
 						 
 						 
 						 // programcounter
 						 programcounter_wren,
-						 programcounter_add_or_set,
-						 programcounter_value,						 
+						 programcounter_mux,
+						 programcounter_immediate,						 
 						 
 						 
 						 // instructionregister
 						 instructionregister_wren						 
 						 );
+						 
 	
+	GenericRegister result_reg(clk, rst, alu_out, result_reg_out, result_wren);
 	
-	Register register(
+	always@(*)
+	begin
+		case(register_mux)
+			2'b11: register_in_a = register_immediate;
+			2'b10: register_in_a = result_reg_out;
+			2'b01: register_in_a = alu_out;
+			2'b00: register_in_a = memory_out;
+		endcase
+	end
+	RegisterUnit register(
 							register_address_a, 
 							register_address_b,
 							clk,
+							rst,
 							register_in_a,
-							32'd0,                 //register_in_b
-							register_wren_a,
-							1'b0,                  //register_wren_b
-							out_a,
-							out_b
+							register_wren,
+							register_out_a,
+							register_out_b
 							);	
-	//	input	[4:0]  address_a;
-	//	input	[4:0]  address_b;
-	//	input	  clock;
-	//	input	[31:0]  data_a;
-	//	input	[31:0]  data_b;
-	//	input	  wren_a;
-	//	input	  wren_b;
-	//	output	[31:0]  q_a;
-	//	output	[31:0]  q_b;
 
-	
+
+	assign alu_in_a = (alu_a_mux == 1'b1)? register_out_a : alu_immediate;
+	assign alu_in_b = (alu_b_mux == 1'b1)? programcounter_out : register_out_b;
 	ALU alu(
 			  alu_in_a,
 			  alu_in_b,
@@ -77,59 +119,47 @@ module Processor(clk, rst);
 			  alu_status,
 			  alu_out
 			  );			  
-	// input [31:0]in_a;
-	// input [31:0]in_b;
-	// input [2:0]op;
-	// output [2:0]status;
-	// output [31:0]out;
-	// reg [2:0]status;
-	// reg [31:0]out;	
+
 	
 	
+	assign memory_address = (memory_mux)? alu_out[9:0] : programcounter_out[9:0];
 	Memory memory(
 					  clk,
 					  memory_address,
-					  memory_in,
+					  register_out_a,          // memory_in
 					  memory_wren,
 					  memory_width,
 					  memory_sign,
 					  memory_out
 					  );
-	//	input clk;
-	//	input [9:0]address;
-	//	input [31:0]in;
-	//	input wren, sign;
-	//	input [1:0]width;
-	//	output [31:0]out;
-	//	reg [31:0]out;
+
 	
-	
-	assign programcounter_in = (programcounter_add_or_set == 1'b1)? programcounter_out + programcounter_value : programcounter_value;
-	ProgramCounter programcounter(
+	always@(*)
+	begin
+		case(programcounter_mux)
+		2'b11: programcounter_in = programcounter_out + programcounter_immediate;
+		2'b10: programcounter_in = 32'd0;
+		2'b01: programcounter_in = programcounter_immediate;
+		2'b00: programcounter_in = {alu_out[31:1], 1'b0} + programcounter_out;
+		endcase
+	end
+	GenericRegister programcounter(
 											clk,
 											rst,
 											programcounter_in,
 											programcounter_out,
 											programcounter_wren
 										   );
-	// input rst, clk;
-	// input wren;
-	// input [31:0]in;
-	// output [31:0]out;
-	// reg [31:0]out;
+
 	
 	
-	InstructionRegister instructionregister(
+	GenericRegister instructionregister(
 														 clk,
 														 rst,
-														 instructionregister_in,
-														 instructionregister_out,
+														 memory_out,                     // instruction_register_in
+														 instruction,                    // instruction_register_out
 														 instructionregister_wren
 														 );
-	// input rst, clk;
-	// input wren;
-	// input [31:0]in;
-	// output [31:0]out;
-	// reg [31:0]out;
+
 
 endmodule

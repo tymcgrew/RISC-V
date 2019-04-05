@@ -47,9 +47,11 @@ begin
 		AND: out = in_a & in_b;
 		OR:  out = in_a | in_b;
 		XOR: out = in_a ^ in_b;
-		SLL: out = in_a << in_b;
-		SRL: out = in_a >> in_b;
-		SRA: out = $signed(in_a) >>> $signed(in_b);
+		
+		// Note: Shift amount from in_a, value in in_B
+		SLL: out = in_b << in_a[4:0];
+		SRL: out = in_b >> in_a[4:0];
+		SRA: out = $signed(in_b) >>> $signed(in_a[4:0]);
 	endcase
 		
 		

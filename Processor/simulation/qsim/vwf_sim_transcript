@@ -7,7 +7,7 @@ Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-A
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="M:/ECE 289/RISC-V-master/Processor/Waveform.vwf" --testbench_file="M:/ECE 289/RISC-V-master/Processor/simulation/qsim/Waveform.vwf.vt"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Waveform1.vwf" --testbench_file="C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim/Waveform1.vwf.vt"
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
@@ -26,11 +26,11 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: devices manufactured by Intel and sold by Intel or its 
     Info: authorized distributors.  Please refer to the applicable 
     Info: agreement for further details.
-    Info: Processing started: Tue Apr 02 21:53:37 2019
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="M:/ECE 289/RISC-V-master/Processor/Waveform.vwf" --testbench_file="M:/ECE 289/RISC-V-master/Processor/simulation/qsim/Waveform.vwf.vt"
+    Info: Processing started: Fri Apr 05 14:30:55 2019
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Waveform1.vwf" --testbench_file="C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim/Waveform1.vwf.vt"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 
-01005): Ignoring output pin "out[8]" in vector source file when writing test bench files
+le when writing test bench files
 
 Completed successfully. 
 
@@ -38,7 +38,7 @@ Completed successfully.
 
 **** Generating the timing simulation netlist ****
 
-quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="M:/ECE 289/RISC-V-master/Processor/simulation/qsim/" Processor -c Processor
+quartus_eda --write_settings_files=off --simulation --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim/" Processor -c Processor
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
@@ -57,28 +57,28 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: devices manufactured by Intel and sold by Intel or its 
     Info: authorized distributors.  Please refer to the applicable 
     Info: agreement for further details.
-    Info: Processing started: Tue Apr 02 21:53:38 2019
-Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="M:/ECE 289/RISC-V-master/Processor/simulation/qsim/" Processor -c Processor
+    Info: Processing started: Fri Apr 05 14:30:57 2019
+Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim/" Processor -c Processor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file Processor_7_1200mv_85c_slow.vo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_7_1200mv_0c_slow.vo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_min_1200mv_0c_fast.vo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor.vo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_7_1200mv_85c_v_slow.sdo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_7_1200mv_0c_v_slow.sdo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_min_1200mv_0c_v_fast.sdo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
-Info (204019): Generated file Processor_v.sdo in folder "M:/ECE 289/RISC-V-master/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_7_1200mv_85c_slow.vo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_7_1200mv_0c_slow.vo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_min_1200mv_0c_fast.vo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor.vo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_7_1200mv_85c_v_slow.sdo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_7_1200mv_0c_v_slow.sdo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_min_1200mv_0c_v_fast.sdo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
+Info (204019): Generated file Processor_v.sdo in folder "C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4674 megabytes
-    Info: Processing ended: Tue Apr 02 21:53:40 2019
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 4685 megabytes
+    Info: Processing ended: Fri Apr 05 14:31:01 2019
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:03
 
 Completed successfully. 
 
 **** Generating the ModelSim .do script ****
 
-M:/ECE 289/RISC-V-master/Processor/simulation/qsim/Processor.do generated.
+C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim/Processor.do generated.
 
 Completed successfully. 
 
@@ -93,69 +93,67 @@ Reading C:/intelFPGA_lite/16.1/modelsim_ase/tcl/vsim/pref.tcl
 
 # do Processor.do
 # ** Warning: (vlib-34) Library already exists at "work".
-
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:53:41 on Apr 02,2019
+# Start time: 14:31:01 on Apr 05,2019
 # vlog -work work Processor.vo 
-# -- Compiling module Memory
+
+# -- Compiling module RegisterUnit
 
 # -- Compiling module hard_block
 # 
 # Top level modules:
-# 	Memory
-
-# End time: 21:53:41 on Apr 02,2019, Elapsed time: 0:00:00
+# 	RegisterUnit
+# End time: 14:31:02 on Apr 05,2019, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 21:53:41 on Apr 02,2019
-# vlog -work work Waveform.vwf.vt 
-
-# -- Compiling module Memory_vlg_vec_tst
+# Start time: 14:31:02 on Apr 05,2019
+# vlog -work work Waveform1.vwf.vt 
+# -- Compiling module RegisterUnit_vlg_vec_tst
 # 
 # Top level modules:
-# 	Memory_vlg_vec_tst
+# 	RegisterUnit_vlg_vec_tst
 
-# End time: 21:53:41 on Apr 02,2019, Elapsed time: 0:00:00
+# End time: 14:31:02 on Apr 05,2019, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
-# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.Memory_vlg_vec_tst 
-# Start time: 21:53:41 on Apr 02,2019
-# Loading work.Memory_vlg_vec_tst
-# Loading work.Memory
+# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.RegisterUnit_vlg_vec_tst 
+# Start time: 14:31:02 on Apr 05,2019
+# Loading work.RegisterUnit_vlg_vec_tst
+# Loading work.RegisterUnit
 # Loading work.hard_block
 # Loading cycloneive_ver.cycloneive_io_obuf
 # Loading cycloneive_ver.cycloneive_io_ibuf
-# Loading cycloneive_ver.cycloneive_lcell_comb
 # Loading cycloneive_ver.cycloneive_clkctrl
 # Loading cycloneive_ver.cycloneive_mux41
 # Loading cycloneive_ver.cycloneive_ena_reg
-# Loading cycloneive_ver.cycloneive_ram_block
-# Loading cycloneive_ver.cycloneive_ram_register
-# Loading cycloneive_ver.cycloneive_ram_pulse_generator
+# Loading cycloneive_ver.cycloneive_lcell_comb
+# Loading altera_ver.dffeas
 # SDF 10.5b Compiler 2016.10 Oct  5 2016
 # 
 # Loading instances from Processor_v.sdo
+# Loading altera_ver.PRIM_GDFF_LOW
 # Loading timing data from Processor_v.sdo
 # ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
-#    Time: 0 ps  Iteration: 0  Instance: /Memory_vlg_vec_tst File: Waveform.vwf.vt
+#    Time: 0 ps  Iteration: 0  Instance: /RegisterUnit_vlg_vec_tst File: Waveform1.vwf.vt
 # after#26
-# ** Note: $finish    : Waveform.vwf.vt(55)
-#    Time: 1 us  Iteration: 0  Instance: /Memory_vlg_vec_tst
-# End time: 21:53:42 on Apr 02,2019, Elapsed time: 0:00:01
+# ** Note: $finish    : Waveform1.vwf.vt(57)
+#    Time: 1 us  Iteration: 0  Instance: /RegisterUnit_vlg_vec_tst
+
+# End time: 14:31:03 on Apr 05,2019, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading M:/ECE 289/RISC-V-master/Processor/Waveform.vwf...
+Reading C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Waveform1.vwf...
 
-Reading M:/ECE 289/RISC-V-master/Processor/simulation/qsim/Processor.msim.vcd...
+Reading C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim/Processor.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to M:/ECE 289/RISC-V-master/Processor/simulation/qsim/Processor_20190402215342.sim.vwf
+Writing the resulting VWF to C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/simulation/qsim/Processor_20190405143103.sim.vwf
 
 Finished VCD to VWF conversion.
 
