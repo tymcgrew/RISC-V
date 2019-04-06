@@ -19,7 +19,7 @@ parameter BYTE = 2'b00,
 			 WORD = 2'b11;
 
 parameter SIGNED = 1'b1,
-			 UNSIGNED = 1'b0;
+		  UNSIGNED = 1'b0;
 
 always@(*)
 begin

@@ -1,7 +1,15 @@
-module Processor(SW, clk, rst);
+module Processor(SW, KEY, clk, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7);
 	
-	input [15:0]SW;
-	input clk, rst;
+	input [17:0]SW;
+	input [3:0]KEY;
+	wire KEY0;
+	assign KEY0 = KEY[0];
+	wire rst;
+	assign rst = SW[17];
+	input clk;
+	
+	output signed [0:6]HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7;
+	reg signed [0:6]HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7;
 	
 	
 	// Control wires
@@ -31,6 +39,8 @@ module Processor(SW, clk, rst);
 	
 	wire instructionregister_wren;
 	
+	wire out_update;
+	
 	// Non-control wires
 	reg [31:0]register_in_a;
 	wire [31:0]register_out_a;
@@ -48,7 +58,9 @@ module Processor(SW, clk, rst);
 						 clk,
 						 rst,
 						 
-						 SW,
+						 {{16{SW[15]}},SW},
+						 KEY0,
+						 register_out_b,
 						 alu_status,
 						 instruction,
 						 
@@ -83,7 +95,9 @@ module Processor(SW, clk, rst);
 						 
 						 
 						 // instructionregister
-						 instructionregister_wren						 
+						 instructionregister_wren,
+
+						 out_update
 						 );
 						 
 	
@@ -161,5 +175,144 @@ module Processor(SW, clk, rst);
 														 instructionregister_wren
 														 );
 
+														 
+	reg signed [31:0] num;
+	reg signed [3:0]ones, tens, hundreds, thousands, tenthousands, hundredthousands, millions;
+	reg signed sign;
+	always@(posedge clk)
+	begin
+		if (register_out_a[31] == 1'b1)
+		begin
+			num <= (32'sb11111111111111111111111111111111 * register_out_a);
+			sign <= 1'b1;
+		end
+		else
+		begin
+			num <= (32'sb00000000000000000000000000000001 * register_out_a);
+			sign <= 1'b0;
+		end
+		ones <= num % 32'sd10;
+		tens <= (num%32'sd100)/32'sd10;
+		hundreds <= (num%32'sd1000)/32'sd100;
+		thousands <= (num%32'sd10000)/32'sd1000;
+		tenthousands <= (num%32'sd100000)/32'sd10000;
+		hundredthousands <= (num%32'sd1000000)/32'sd100000;
+		millions <= (num%32'sd10000000)/32'sd1000000;
+	end
+
+	always@(posedge clk or negedge rst)
+	begin
+		if (rst == 1'b0)
+		begin
+			HEX0 <= 7'b0000001;
+			HEX1 <= 7'b0000001;
+			HEX2 <= 7'b0000001;
+			HEX3 <= 7'b0000001;
+			HEX4 <= 7'b0000001;
+			HEX5 <= 7'b0000001;
+			HEX6 <= 7'b0000001;
+			HEX7 <= 7'b1111111;
+		end
+		
+		else if (out_update == 1'b1)
+		begin
+			case (ones)
+				4'd0: HEX0 <= 7'b0000001;
+				4'd1: HEX0 <= 7'b1001111;
+				4'd2: HEX0 <= 7'b0010010;
+				4'd3: HEX0 <= 7'b0000110;
+				4'd4: HEX0 <= 7'b1001100;
+				4'd5: HEX0 <= 7'b0100100;
+				4'd6: HEX0 <= 7'b0100000;
+				4'd7: HEX0 <= 7'b0001111;
+				4'd8: HEX0 <= 7'b0000000;
+				4'd9: HEX0 <= 7'b0001100;
+				default: HEX0 <= 7'b0110000;
+			endcase
+			case (tens)
+				4'd0: HEX1 <= 7'b0000001;
+				4'd1: HEX1 <= 7'b1001111;
+				4'd2: HEX1 <= 7'b0010010;
+				4'd3: HEX1 <= 7'b0000110;
+				4'd4: HEX1 <= 7'b1001100;
+				4'd5: HEX1 <= 7'b0100100;
+				4'd6: HEX1 <= 7'b0100000;
+				4'd7: HEX1 <= 7'b0001111;
+				4'd8: HEX1 <= 7'b0000000;
+				4'd9: HEX1 <= 7'b0001100;
+				default: HEX1 <= 7'b0110000;
+			endcase
+			case (hundreds)
+				4'd0: HEX2 <= 7'b0000001;
+				4'd1: HEX2 <= 7'b1001111;
+				4'd2: HEX2 <= 7'b0010010;
+				4'd3: HEX2 <= 7'b0000110;
+				4'd4: HEX2 <= 7'b1001100;
+				4'd5: HEX2 <= 7'b0100100;
+				4'd6: HEX2 <= 7'b0100000;
+				4'd7: HEX2 <= 7'b0001111;
+				4'd8: HEX2 <= 7'b0000000;
+				4'd9: HEX2 <= 7'b0001100;
+				default: HEX2 <= 7'b0110000;
+			endcase
+			case (thousands)
+				4'd0: HEX3 <= 7'b0000001;
+				4'd1: HEX3 <= 7'b1001111;
+				4'd2: HEX3 <= 7'b0010010;
+				4'd3: HEX3 <= 7'b0000110;
+				4'd4: HEX3 <= 7'b1001100;
+				4'd5: HEX3 <= 7'b0100100;
+				4'd6: HEX3 <= 7'b0100000;
+				4'd7: HEX3 <= 7'b0001111;
+				4'd8: HEX3 <= 7'b0000000;
+				4'd9: HEX3 <= 7'b0001100;
+				default: HEX3 <= 7'b0110000;
+			endcase
+			case (tenthousands)
+				4'd0: HEX4 <= 7'b0000001;
+				4'd1: HEX4 <= 7'b1001111;
+				4'd2: HEX4 <= 7'b0010010;
+				4'd3: HEX4 <= 7'b0000110;
+				4'd4: HEX4 <= 7'b1001100;
+				4'd5: HEX4 <= 7'b0100100;
+				4'd6: HEX4 <= 7'b0100000;
+				4'd7: HEX4 <= 7'b0001111;
+				4'd8: HEX4 <= 7'b0000000;
+				4'd9: HEX4 <= 7'b0001100;
+				default: HEX4 <= 7'b0110000;
+			endcase
+			case (hundredthousands)
+				4'd0: HEX5 <= 7'b0000001;
+				4'd1: HEX5 <= 7'b1001111;
+				4'd2: HEX5 <= 7'b0010010;
+				4'd3: HEX5 <= 7'b0000110;
+				4'd4: HEX5 <= 7'b1001100;
+				4'd5: HEX5 <= 7'b0100100;
+				4'd6: HEX5 <= 7'b0100000;
+				4'd7: HEX5 <= 7'b0001111;
+				4'd8: HEX5 <= 7'b0000000;
+				4'd9: HEX5 <= 7'b0001100;
+				default: HEX5 <= 7'b0110000;
+			endcase
+			case (millions)
+				4'd0: HEX6 <= 7'b0000001;
+				4'd1: HEX6 <= 7'b1001111;
+				4'd2: HEX6 <= 7'b0010010;
+				4'd3: HEX6 <= 7'b0000110;
+				4'd4: HEX6 <= 7'b1001100;
+				4'd5: HEX6 <= 7'b0100100;
+				4'd6: HEX6 <= 7'b0100000;
+				4'd7: HEX6 <= 7'b0001111;
+				4'd8: HEX6 <= 7'b0000000;
+				4'd9: HEX6 <= 7'b0001100;
+				default: HEX6 <= 7'b0110000;
+			endcase
+			case (sign)
+				1'sb1: HEX7 <= 7'b1111110;
+				1'sb0: HEX7 <= 7'b1111111;
+			endcase
+		end
+end														 
+														 
 
 endmodule

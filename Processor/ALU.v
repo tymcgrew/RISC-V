@@ -25,17 +25,16 @@ reg [31:0]out;
 //                 -- Begin Declarations & Coding --                  
 //------------------------------------------------------------------
 
-parameter ADD = 3'd0,
-			 SUB = 3'd1,
-			 AND = 3'd2,
-			 OR =  3'd3,
-			 XOR = 3'd4,
-			 SLL = 3'd5,
-			 SRL = 3'd6,
-			 SRA = 3'd7;
+parameter   ADD = 3'd0,
+		    SUB = 3'd1,
+		    AND = 3'd2,
+			OR =  3'd3,
+			XOR = 3'd4,
+			SLL = 3'd5,
+			SRL = 3'd6,
+			SRA = 3'd7;
 
-
-
+			
 always @(*)
 begin
 
