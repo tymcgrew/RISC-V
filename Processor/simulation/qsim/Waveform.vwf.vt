@@ -19,92 +19,62 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "04/05/2019 14:23:52"
+// Generated on "04/09/2019 00:19:42"
                                                                                 
-// Verilog Test Bench (with test vectors) for design :                          RegisterUnit
+// Verilog Test Bench (with test vectors) for design :                          Processor
 // 
 // Simulation tool : 3rd Party
 // 
 
 `timescale 1 ps/ 1 ps
-module RegisterUnit_vlg_vec_tst();
+module Processor_vlg_vec_tst();
 // constants                                           
 // general purpose registers
-reg [4:0] address_a;
-reg [4:0] address_b;
+reg [3:0] KEY;
+reg [17:0] SW;
 reg clk;
-reg [31:0] in_a;
-reg rst;
-reg wren_a;
 // wires                                               
-wire [31:0] out_a;
-wire [31:0] out_b;
+wire [0:6] HEX0;
+wire [0:6] HEX1;
+wire [0:6] HEX2;
+wire [0:6] HEX3;
+wire [0:6] HEX4;
+wire [0:6] HEX5;
+wire [0:6] HEX6;
+wire [0:6] HEX7;
+wire [8:0] LEDG;
+wire [5:0] STATE;
+wire [31:0] instruction;
+wire [31:0] register_out_a;
 
 // assign statements (if any)                          
-RegisterUnit i1 (
+Processor i1 (
 // port map - connection between master ports and signals/registers   
-	.address_a(address_a),
-	.address_b(address_b),
+	.HEX0(HEX0),
+	.HEX1(HEX1),
+	.HEX2(HEX2),
+	.HEX3(HEX3),
+	.HEX4(HEX4),
+	.HEX5(HEX5),
+	.HEX6(HEX6),
+	.HEX7(HEX7),
+	.KEY(KEY),
+	.LEDG(LEDG),
+	.STATE(STATE),
+	.SW(SW),
 	.clk(clk),
-	.in_a(in_a),
-	.out_a(out_a),
-	.out_b(out_b),
-	.rst(rst),
-	.wren_a(wren_a)
+	.instruction(instruction),
+	.register_out_a(register_out_a)
 );
 initial 
 begin 
-#1000000 $finish;
+#2000000 $finish;
 end 
-// address_a[ 4 ]
+
+// SW[17]
 initial
 begin
-	address_a[4] = 1'b1;
-end 
-// address_a[ 3 ]
-initial
-begin
-	address_a[3] = 1'b1;
-end 
-// address_a[ 2 ]
-initial
-begin
-	address_a[2] = 1'b1;
-end 
-// address_a[ 1 ]
-initial
-begin
-	address_a[1] = 1'b1;
-end 
-// address_a[ 0 ]
-initial
-begin
-	address_a[0] = 1'b1;
-end 
-// address_b[ 4 ]
-initial
-begin
-	address_b[4] = 1'b1;
-end 
-// address_b[ 3 ]
-initial
-begin
-	address_b[3] = 1'b1;
-end 
-// address_b[ 2 ]
-initial
-begin
-	address_b[2] = 1'b1;
-end 
-// address_b[ 1 ]
-initial
-begin
-	address_b[1] = 1'b1;
-end 
-// address_b[ 0 ]
-initial
-begin
-	address_b[0] = 1'b1;
+	SW[17] = 1'b1;
 end 
 
 // clk
@@ -113,180 +83,6 @@ begin
 	clk = 1'b0;
 	clk = #10000 1'b1;
 	#10000;
-end 
-// in_a[ 31 ]
-initial
-begin
-	in_a[31] = 1'b1;
-end 
-// in_a[ 30 ]
-initial
-begin
-	in_a[30] = 1'b1;
-end 
-// in_a[ 29 ]
-initial
-begin
-	in_a[29] = 1'b1;
-end 
-// in_a[ 28 ]
-initial
-begin
-	in_a[28] = 1'b1;
-end 
-// in_a[ 27 ]
-initial
-begin
-	in_a[27] = 1'b1;
-end 
-// in_a[ 26 ]
-initial
-begin
-	in_a[26] = 1'b1;
-end 
-// in_a[ 25 ]
-initial
-begin
-	in_a[25] = 1'b1;
-end 
-// in_a[ 24 ]
-initial
-begin
-	in_a[24] = 1'b1;
-end 
-// in_a[ 23 ]
-initial
-begin
-	in_a[23] = 1'b1;
-end 
-// in_a[ 22 ]
-initial
-begin
-	in_a[22] = 1'b1;
-end 
-// in_a[ 21 ]
-initial
-begin
-	in_a[21] = 1'b1;
-end 
-// in_a[ 20 ]
-initial
-begin
-	in_a[20] = 1'b1;
-end 
-// in_a[ 19 ]
-initial
-begin
-	in_a[19] = 1'b1;
-end 
-// in_a[ 18 ]
-initial
-begin
-	in_a[18] = 1'b1;
-end 
-// in_a[ 17 ]
-initial
-begin
-	in_a[17] = 1'b1;
-end 
-// in_a[ 16 ]
-initial
-begin
-	in_a[16] = 1'b1;
-end 
-// in_a[ 15 ]
-initial
-begin
-	in_a[15] = 1'b1;
-end 
-// in_a[ 14 ]
-initial
-begin
-	in_a[14] = 1'b1;
-end 
-// in_a[ 13 ]
-initial
-begin
-	in_a[13] = 1'b1;
-end 
-// in_a[ 12 ]
-initial
-begin
-	in_a[12] = 1'b1;
-end 
-// in_a[ 11 ]
-initial
-begin
-	in_a[11] = 1'b1;
-end 
-// in_a[ 10 ]
-initial
-begin
-	in_a[10] = 1'b1;
-end 
-// in_a[ 9 ]
-initial
-begin
-	in_a[9] = 1'b1;
-end 
-// in_a[ 8 ]
-initial
-begin
-	in_a[8] = 1'b1;
-end 
-// in_a[ 7 ]
-initial
-begin
-	in_a[7] = 1'b1;
-end 
-// in_a[ 6 ]
-initial
-begin
-	in_a[6] = 1'b1;
-end 
-// in_a[ 5 ]
-initial
-begin
-	in_a[5] = 1'b1;
-end 
-// in_a[ 4 ]
-initial
-begin
-	in_a[4] = 1'b1;
-end 
-// in_a[ 3 ]
-initial
-begin
-	in_a[3] = 1'b1;
-end 
-// in_a[ 2 ]
-initial
-begin
-	in_a[2] = 1'b1;
-end 
-// in_a[ 1 ]
-initial
-begin
-	in_a[1] = 1'b1;
-end 
-// in_a[ 0 ]
-initial
-begin
-	in_a[0] = 1'b1;
-end 
-
-// rst
-initial
-begin
-	rst = 1'b1;
-end 
-
-// wren_a
-initial
-begin
-	wren_a = 1'b0;
-	wren_a = #80000 1'b1;
-	wren_a = #30000 1'b0;
 end 
 endmodule
 

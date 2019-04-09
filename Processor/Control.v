@@ -3,6 +3,7 @@ module Control(
 					rst,
 					
 					SW,
+					LEDG0,
 					KEY0,
 					register_out_b,
 					alu_status,
@@ -40,7 +41,9 @@ module Control(
 					// instructionregister
 					instructionregister_wren,
 					
-					out_update
+					out_update,
+					
+					STATE
 					);
 
 
@@ -50,6 +53,14 @@ module Control(
 
 input clk, rst;
 input [31:0]SW;
+
+
+output LEDG0;
+reg LEDG0;
+
+
+output [5:0]STATE;
+
 input KEY0;
 input [31:0]register_out_b;
 input [2:0]alu_status;
@@ -184,7 +195,7 @@ begin
 
 	FETCH:
 	begin
-		NEXT_STATE = (counter < 27'd3)? FETCH : DECODE;
+		NEXT_STATE = (counter < 27'd2)? FETCH : DECODE;
 	end
 
 	DECODE:
@@ -326,16 +337,21 @@ begin
 
 	ECALL:
 	begin
-		case (register_out_b)
-			32'd1: NEXT_STATE = PRINT;
-			32'd5: NEXT_STATE = READ1;
-			default: NEXT_STATE = EXIT;
-		endcase
+		if (counter < 27'd2)
+			NEXT_STATE = ECALL;
+		else
+		begin
+			case (register_out_b)
+				32'd1: NEXT_STATE = PRINT;
+				32'd5: NEXT_STATE = READ1;
+				default: NEXT_STATE = EXIT;
+			endcase
+		end
 	end
 
 	PRINT:
 	begin
-		NEXT_STATE = RESETA;
+		NEXT_STATE = (counter < 27'd6)? PRINT : RESETA;
 	end
 
 	READ1:
@@ -429,7 +445,7 @@ begin
 		alu_immediate <= 32'd0;
 		alu_op <= 3'd0;
 						 	 
-		memory_wren <= 1'd0;
+		memory_wren <= 1'b0;
 		memory_width <= 2'd0;
 		memory_sign <= 1'd0;
 		memory_mux <= 1'd0;
@@ -441,6 +457,8 @@ begin
 		instructionregister_wren <= 1'd0;
 					
 		out_update <= 1'd0;
+		
+		LEDG0 <= 1'b0;
 	end
 
 	else
@@ -461,7 +479,7 @@ begin
 			alu_immediate <= 32'd0;
 			alu_op <= 3'd0;
 								 
-			memory_wren <= 1'd0;
+			memory_wren <= 1'b0;
 			memory_width <= 2'd0;
 			memory_sign <= 1'd0;
 			memory_mux <= 1'd0;
@@ -473,6 +491,8 @@ begin
 			instructionregister_wren <= 1'd0;
 						
 			out_update <= 1'd0;
+					
+			LEDG0 <= 1'b0;
 		end
 
 		WAIT1:
@@ -488,7 +508,7 @@ begin
 		FETCH:
 		begin
 			memory_width <= 2'b11;             // word
-			memory_mux <= 1'b1;
+			memory_mux <= 1'b0;
 			instructionregister_wren <= 1'b1;
 			counter <= counter + 27'd1;
 		end
@@ -746,13 +766,15 @@ begin
 
 		ECALL:
 		begin
+			counter<= counter + 27'd1;
 			register_address_b <= 5'd10;              //a0
 		end
 
 		PRINT:
 		begin
-			register_address_a <= register_out_b[4:0];
+			register_address_a <= 5'd11;
 			out_update <= 1'd1;
+			counter <= counter + 27'd1;
 		end
 
 		READ1:
@@ -761,6 +783,7 @@ begin
 			alu_immediate <= SW;
 			register_mux <= 2'b11;
 			register_wren <= 1'd1;
+			counter <= 27'd0;
 		end
 
 		READ2:
@@ -771,6 +794,7 @@ begin
 
 		EXIT:
 		begin
+			LEDG0 <= 1'b1;
 		end
 
 		EBREAK:

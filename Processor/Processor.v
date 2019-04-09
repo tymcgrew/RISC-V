@@ -1,12 +1,19 @@
-module Processor(SW, KEY, clk, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7);
+module Processor(SW, KEY, clk, LEDG, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7, STATE, instruction, register_out_a);
 	
 	input [17:0]SW;
+	output [8:0]LEDG;
+	wire LEDG0;
+	assign LEDG[0] = LEDG0;
 	input [3:0]KEY;
 	wire KEY0;
 	assign KEY0 = KEY[0];
 	wire rst;
 	assign rst = SW[17];
 	input clk;
+	
+	output [5:0]STATE;
+	output [31:0]instruction;
+	output [31:0]register_out_a;
 	
 	output signed [0:6]HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7;
 	reg signed [0:6]HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7;
@@ -59,6 +66,7 @@ module Processor(SW, KEY, clk, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7);
 						 rst,
 						 
 						 {{16{SW[15]}},SW},
+						 LEDG0,
 						 KEY0,
 						 register_out_b,
 						 alu_status,
@@ -97,7 +105,9 @@ module Processor(SW, KEY, clk, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7);
 						 // instructionregister
 						 instructionregister_wren,
 
-						 out_update
+						 out_update,
+						 
+						 STATE
 						 );
 						 
 	

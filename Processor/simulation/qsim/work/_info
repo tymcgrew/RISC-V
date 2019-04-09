@@ -52,34 +52,78 @@ Z16 !s90 -work|work|Waveform.vwf.vt|
 R10
 R11
 n@a@l@u_vlg_vec_tst
-vhard_block
-Z17 !s110 1554489062
+vControl
+Z17 !s110 1554773377
 !i10b 1
-!s100 M6TKg_njO0T^_UFo4QoAc3
-IfU:?V97BjJNFDcA>1L?H50
+!s100 Ffm<?PALJeA?GFJdRlEh90
+IR;ZlCo4IM8F`4Z2NkJ3DQ1
 R2
-R0
-Z18 w1554489059
+Z18 dM:/ECE 289/Processor/simulation/qsim
+w1554773374
 R3
 R4
-L0 52192
+R5
 R6
 r1
 !s85 0
 31
-Z19 !s108 1554489061.000000
+Z19 !s108 1554773377.000000
+R8
+R9
+!i113 1
+R10
+R11
+n@control
+vControl_vlg_vec_tst
+R17
+!i10b 1
+!s100 cLk]77z4Ga]N7GTS;QZEH2
+Ig9_an`K:`G_7I`Rz7U;oQ3
+R2
+R18
+w1554773371
+Z20 8Waveform1.vwf.vt
+Z21 FWaveform1.vwf.vt
+R14
+R6
+r1
+!s85 0
+31
+R19
+Z22 !s107 Waveform1.vwf.vt|
+Z23 !s90 -work|work|Waveform1.vwf.vt|
+!i113 1
+R10
+R11
+n@control_vlg_vec_tst
+vhard_block
+Z24 !s110 1554783616
+!i10b 1
+!s100 O`oVQGe;d1ciW1I8BgFF13
+IhOHb_X[b[?7G9iUg2_RV>3
+R2
+R18
+Z25 w1554783601
+R3
+R4
+L0 212781
+R6
+r1
+!s85 0
+31
+Z26 !s108 1554783615.000000
 R8
 R9
 !i113 1
 R10
 R11
 vMemory
-Z20 !s110 1554256421
+Z27 !s110 1554256421
 !i10b 1
 !s100 oK[nJg@[4oUQL=>CnD9g;0
 IJ]T[eTU]@h1akKM7H@@3X3
 R2
-Z21 dM:/ECE 289/RISC-V-master/Processor/simulation/qsim
+Z28 dM:/ECE 289/RISC-V-master/Processor/simulation/qsim
 w1554256419
 R3
 R4
@@ -88,7 +132,7 @@ R6
 r1
 !s85 0
 31
-Z22 !s108 1554256421.000000
+Z29 !s108 1554256421.000000
 R8
 R9
 !i113 1
@@ -96,12 +140,12 @@ R10
 R11
 n@memory
 vMemory_vlg_vec_tst
-R20
+R27
 !i10b 1
 !s100 m[HM`gb=J;c_iQP@1:gPg3
 I_gM5K3ahL0@bB:HmnBbbJ0
 R2
-R21
+R28
 w1554256418
 R12
 R13
@@ -110,15 +154,59 @@ R6
 r1
 !s85 0
 31
-R22
+R29
 R15
 R16
 !i113 1
 R10
 R11
 n@memory_vlg_vec_tst
+vProcessor
+R24
+!i10b 1
+!s100 H>g42Pja2z2Ybk6J^L`Xg2
+ImJEc8i^dK^f5E@gi>[?OW3
+R2
+R18
+R25
+R3
+R4
+R5
+R6
+r1
+!s85 0
+31
+R26
+R8
+R9
+!i113 1
+R10
+R11
+n@processor
+vProcessor_vlg_vec_tst
+!s110 1554783620
+!i10b 1
+!s100 :5CY`f<gJ54Y<TfP>[8nH0
+IaHR6`b4n59d[Da4CzRSPn2
+R2
+R18
+w1554783583
+R12
+R13
+R14
+R6
+r1
+!s85 0
+31
+!s108 1554783618.000000
+R15
+R16
+!i113 1
+R10
+R11
+n@processor_vlg_vec_tst
 vRegister
-Z23 !s110 1554425488
+Z30 !s110 1554425488
 !i10b 1
 !s100 6h<d`5W^oiLXd1hWzKjX13
 I>m>FC58bjhl4YYgeKWk7n0
@@ -132,7 +220,7 @@ R6
 r1
 !s85 0
 31
-Z24 !s108 1554425488.000000
+Z31 !s108 1554425488.000000
 R8
 R9
 !i113 1
@@ -140,7 +228,7 @@ R10
 R11
 n@register
 vRegister_vlg_vec_tst
-R23
+R30
 !i10b 1
 !s100 oY1if7dUf<mLXPB[NhEPH0
 Ilj>B@4;Veb[M?m9hML4n93
@@ -154,7 +242,7 @@ R6
 r1
 !s85 0
 31
-R24
+R31
 !s107 Waveform2.vwf.vt|
 !s90 -work|work|Waveform2.vwf.vt|
 !i113 1
@@ -162,13 +250,13 @@ R10
 R11
 n@register_vlg_vec_tst
 vRegisterUnit
-R17
+Z32 !s110 1554489062
 !i10b 1
 !s100 ;beUP:_JgeG^JJjL[5bJE3
 I[Wg`lFK3P^BSMlEjXRUf>2
 R2
 R0
-R18
+w1554489059
 R3
 R4
 R5
@@ -176,7 +264,7 @@ R6
 r1
 !s85 0
 31
-R19
+!s108 1554489061.000000
 R8
 R9
 !i113 1
@@ -184,23 +272,23 @@ R10
 R11
 n@register@unit
 vRegisterUnit_vlg_vec_tst
-R17
+R32
 !i10b 1
 !s100 :WD5>MFNSNMe;^D>UH2Sb0
 I=]`3LBj<z7Y]YPgMPV^k_1
 R2
 R0
 w1554489056
-8Waveform1.vwf.vt
-FWaveform1.vwf.vt
+R20
+R21
 R14
 R6
 r1
 !s85 0
 31
 !s108 1554489062.000000
-!s107 Waveform1.vwf.vt|
-!s90 -work|work|Waveform1.vwf.vt|
+R22
+R23
 !i113 1
 R10
 R11

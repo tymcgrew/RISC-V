@@ -8,18 +8,19 @@ input [1:0]width;
 output [31:0]out;
 reg [31:0]out;
 
-reg [5:0]address0, address1, address2, address3;
+reg [5:0]mem3address, mem2address, mem1address, mem0address;
 
-wire [7:0]mem0out, mem1out, mem2out, mem3out;
+wire [7:0]mem3out, mem2out, mem1out, mem0out;
 
-reg mem0wren, mem1wren, mem2wren, mem3wren;
+reg mem3wren, mem2wren, mem1wren, mem0wren;
+reg [7:0]mem3in, mem2in, mem1in, mem0in;
 
 parameter BYTE = 2'b00,
 			 HALF = 2'b01,
 			 WORD = 2'b11;
 
 parameter SIGNED = 1'b1,
-		  UNSIGNED = 1'b0;
+		    UNSIGNED = 1'b0;
 
 always@(*)
 begin
@@ -28,77 +29,105 @@ begin
 	begin
 		case(width)
 		
+		
 			BYTE:
 			begin
 				if (wren == 1'b1)
-					mem0wren = 1'b1;
+					mem3wren = 1'b1;
 				else
-					mem0wren = 1'b0;
-				mem1wren = 1'b0;
+					mem3wren = 1'b0;
 				mem2wren = 1'b0;
-				mem3wren = 1'b0;
+				mem1wren = 1'b0;
+				mem0wren = 1'b0;
 				
-				address0 = address / 10'd4;
-				address1 = 6'd0;
-				address2 = 6'd0;
-				address3 = 6'd0;
-						
+				
+				mem3address = address >> 2;
+				mem2address = 6'd0;
+				mem1address = 6'd0;
+				mem0address = 6'd0;
+				
+				
+				mem3in = in[7:0];
+				mem2in = 8'd0;
+				mem1in = 8'd0;
+				mem0in = 8'd0;
+				
+				
 				if (sign == SIGNED)
-					out = {{24{mem0out[7]}}, mem0out};
+					out = {{24{mem3out[7]}}, mem3out};
 				else
-					out = {24'd0, mem0out};
+					out = {24'd0, mem3out};
 			end
+			
 			
 			HALF:
 			begin
 				if (wren == 1'b1)
 				begin
-					mem0wren = 1'b1;
-					mem1wren = 1'b1;
+					mem3wren = 1'b1;
+					mem2wren = 1'b1;
 				end
 				else
 				begin
-					mem0wren = 1'b0;
-					mem1wren = 1'b0;
+					mem3wren = 1'b0;
+					mem2wren = 1'b0;
 				end
-				mem2wren = 1'b0;
-				mem3wren = 1'b0;
+				mem1wren = 1'b0;
+				mem0wren = 1'b0;
 				
-				address0 = address / 10'd4;
-				address1 = address / 10'd4;
-				address2 = 6'd0;
-				address3 = 6'd0;
+				
+				mem3address = address >> 2;
+				mem2address = address >> 2;
+				mem1address = 6'd0;
+				mem0address = 6'd0;
+				
+				
+				mem3in = in[15:8];
+				mem2in = in[7:0];
+				mem1in = 8'd0;
+				mem0in = 8'd0;
+				
 				
 				if (sign == SIGNED)
-					out = {{16{mem0out[7]}}, mem0out, mem1out};
+					out = {{16{mem3out[7]}}, mem3out, mem2out};
 				else
-					out = {16'd0, mem0out, mem1out};
+					out = {16'd0, mem3out, mem2out};
 			end
 			
-			default:
+			
+			default:   // word
 			begin
 				if (wren == 1'b1)
 				begin
-					mem0wren = 1'b1;
-					mem1wren = 1'b1;
-					mem2wren = 1'b1;
 					mem3wren = 1'b1;
+					mem2wren = 1'b1;
+					mem1wren = 1'b1;
+					mem0wren = 1'b1;
 				end
 				else
 				begin
-					mem0wren = 1'b0;
-					mem1wren = 1'b0;
-					mem2wren = 1'b0;
 					mem3wren = 1'b0;
+					mem2wren = 1'b0;
+					mem1wren = 1'b0;
+					mem0wren = 1'b0;
 				end
 				
-				address0 = address / 10'd4;
-				address1 = address / 10'd4;
-				address2 = address / 10'd4;
-				address3 = address / 10'd4;
 				
-				out = {mem0out, mem1out, mem2out, mem3out};
+				mem3address = address >> 2;
+				mem2address = address >> 2;
+				mem1address = address >> 2;
+				mem0address = address >> 2;
+				
+				
+				mem3in = in[31:24];
+				mem2in = in[23:16];
+				mem1in = in[15:8];
+				mem0in = in[7:0];
+				
+				
+				out = {mem3out, mem2out, mem1out, mem0out};
 			end	
+			
 			
 		endcase		
 	end
@@ -107,77 +136,105 @@ begin
 	begin
 		case(width)
 		
+		
 			BYTE:
 			begin
-				if (wren == 1'b1)
-					mem1wren = 1'b1;
-				else
-					mem1wren = 1'b0;
-				mem0wren = 1'b0;
-				mem2wren = 1'b0;
 				mem3wren = 1'b0;
-				
-				address0 = 6'd0;
-				address1 = (address - 10'd1) / 10'd4;
-				address2 = 6'd0;
-				address3 = 6'd0;
-			
-				if (sign == SIGNED)
-					out = {{24{mem1out[7]}}, mem1out};
+				if (wren == 1'b1)
+					mem2wren = 1'b1;
 				else
-					out = {24'd0, mem1out};
+					mem2wren = 1'b0;
+				mem1wren = 1'b0;
+				mem0wren = 1'b0;
+				
+				
+				mem3address = 6'd0;
+				mem2address = address >> 2;
+				mem1address = 6'd0;
+				mem0address = 6'd0;
+				
+				
+				mem3in = 8'd0;
+				mem2in = in[7:0];
+				mem1in = 8'd0;
+				mem0in = 8'd0;
+				
+				
+				if (sign == SIGNED)
+					out = {{24{mem2out[7]}}, mem2out};
+				else
+					out = {24'd0, mem2out};
 			end
-			
+	
+	
 			HALF:
 			begin
+				mem3wren = 1'b0;
 				if (wren == 1'b1)
 				begin
-					mem1wren = 1'b1;
 					mem2wren = 1'b1;
+					mem1wren = 1'b1;
 				end
 				else
 				begin
-					mem1wren = 1'b0;
 					mem2wren = 1'b0;
+					mem1wren = 1'b0;
 				end
 				mem0wren = 1'b0;
-				mem3wren = 1'b0;
 				
-				address0 = 6'd0;
-				address1 = (address - 10'd1) / 10'd4;
-				address2 = (address - 10'd1) / 10'd4;
-				address3 = 6'd0;
+				
+				mem3address = 6'd0;
+				mem2address = address >> 2;
+				mem1address = address >> 2;
+				mem0address = 6'd0;
+				
+				
+				mem3in = 8'd0;
+				mem2in = in[15:8];
+				mem1in = in[7:0];
+				mem0in = 8'd0;
+				
 				
 				if (sign == SIGNED)
-					out = {{16{mem1out[7]}}, mem1out, mem2out};
+					out = {{16{mem2out[7]}}, mem2out, mem1out};
 				else
-					out = {16'd0, mem1out, mem2out};
+					out = {16'd0, mem2out, mem1out};
 			end
-			
-			default:
+
+
+			default:   // word
 			begin
 				if (wren == 1'b1)
 				begin
-					mem0wren = 1'b1;
-					mem1wren = 1'b1;
 					mem2wren = 1'b1;
+					mem1wren = 1'b1;
+					mem0wren = 1'b1;
 					mem3wren = 1'b1;
 				end
 				else
 				begin
-					mem0wren = 1'b0;
-					mem1wren = 1'b0;
 					mem2wren = 1'b0;
+					mem1wren = 1'b0;
+					mem0wren = 1'b0;
 					mem3wren = 1'b0;
 				end
 				
-				address1 = (address - 10'd1) / 10'd4;
-				address2 = (address - 10'd1) / 10'd4;
-				address3 = (address - 10'd1) / 10'd4;
-				address0 = (address - 10'd1) / 10'd4 + 10'd1;
 				
-				out = {mem1out, mem2out, mem3out, mem0out};
+				mem2address = address >> 2;
+				mem1address = address >> 2;
+				mem0address = address >> 2;
+				mem3address = (address + 6'd3) >> 2;
+				
+				
+				mem2in = in[31:24];
+				mem1in = in[23:16];
+				mem0in = in[15:8];
+				mem3in = in[7:0];
+				
+				
+				out = {mem2out, mem1out, mem0out, mem3out};
 			end	
+			
 			
 		endcase		
 	end
@@ -186,77 +243,105 @@ begin
 	begin
 		case(width)
 		
+		
 			BYTE:
 			begin
-				if (wren == 1'b1)
-					mem2wren = 1'b1;
-				else
-					mem2wren = 1'b0;
-				mem0wren = 1'b0;
-				mem1wren = 1'b0;
 				mem3wren = 1'b0;
-				
-				address0 = 6'd0;
-				address1 = 6'd0;
-				address2 = (address - 10'd2) / 10'd4;
-				address3 = 6'd0;
-			
-				if (sign == SIGNED)
-					out = {{24{mem2out[7]}}, mem2out};
+				mem2wren = 1'b0;
+				if (wren == 1'b1)
+					mem1wren = 1'b1;
 				else
-					out = {24'd0, mem2out};
-			end
+					mem1wren = 1'b0;
+				mem0wren = 1'b0;
+				
+				
+				mem3address = 6'd0;
+				mem2address = 6'd0;
+				mem1address = address >> 2;
+				mem0address = 6'd0;
+				
+				
+				mem3in = 8'd0;
+				mem2in = 8'd0;
+				mem1in = in[7:0];
+				mem0in = 8'd0;
+				
+				
+				if (sign == SIGNED)
+					out = {{24{mem1out[7]}}, mem1out};
+				else
+					out = {24'd0, mem1out};
+			end	
+			
 			
 			HALF:
 			begin
+				mem3wren = 1'b0;
+				mem2wren = 1'b0;
 				if (wren == 1'b1)
 				begin
-					mem2wren = 1'b1;
-					mem3wren = 1'b1;
+					mem1wren = 1'b1;
+					mem0wren = 1'b1;
 				end
 				else
 				begin
-					mem2wren = 1'b0;
-					mem3wren = 1'b0;
+					mem1wren = 1'b0;
+					mem0wren = 1'b0;
 				end
-				mem0wren = 1'b0;
-				mem1wren = 1'b0;
 				
-				address0 = 6'd0;
-				address1 = 6'd0;
-				address2 = (address - 10'd2) / 10'd4;
-				address3 = (address - 10'd2) / 10'd4;
+				
+				mem3address = 6'd0;
+				mem2address = 6'd0;
+				mem1address = address >> 2;
+				mem0address = address >> 2;
+				
+				
+				mem3in = 8'd0;
+				mem2in = 8'd0;
+				mem1in = in[15:8];
+				mem0in = in[7:0];
+				
 				
 				if (sign == SIGNED)
-					out = {{16{mem2out[7]}}, mem2out, mem3out};
+					out = {{16{mem1out[7]}}, mem1out, mem0out};
 				else
-					out = {16'd0, mem2out, mem3out};
+					out = {16'd0, mem1out, mem0out};
 			end
-		
-			default:
+			
+			
+			default:   // word
 			begin
 				if (wren == 1'b1)
 				begin
-					mem0wren = 1'b1;
 					mem1wren = 1'b1;
-					mem2wren = 1'b1;
+					mem0wren = 1'b1;
 					mem3wren = 1'b1;
+					mem2wren = 1'b1;
 				end
 				else
 				begin
-					mem0wren = 1'b0;
 					mem1wren = 1'b0;
-					mem2wren = 1'b0;
+					mem0wren = 1'b0;
 					mem3wren = 1'b0;
+					mem2wren = 1'b0;
 				end
 				
-				address2 = (address - 10'd2) / 10'd4;
-				address3 = (address - 10'd2) / 10'd4;
-				address0 = (address - 10'd2) / 10'd4 + 10'd1;
-				address1 = (address - 10'd2) / 10'd4 + 10'd1;
 				
-				out = {mem2out, mem3out, mem0out, mem1out};
-			end
+				mem1address = address >> 2;
+				mem0address = address >> 2;
+				mem3address = (address + 6'd2) >> 2;
+				mem2address = (address + 6'd2) >> 2;
+				
+				
+				mem1in = in[31:24];
+				mem0in = in[23:16];
+				mem3in = in[15:8];
+				mem2in = in[7:0];
+				
+				
+				out = {mem1out, mem0out, mem3out, mem2out};
+			end	
+			
 			
 		endcase		
 	end
@@ -265,99 +350,115 @@ begin
 	begin
 		case(width)
 		
+		
 			BYTE:
 			begin
-				if (wren == 1'b1)
-					mem3wren = 1'b1;
-				else
-					mem3wren = 1'b0;
-				mem0wren = 1'b0;
-				mem1wren = 1'b0;
+				mem3wren = 1'b0;
 				mem2wren = 1'b0;
-				
-				address0 = 6'd0;
-				address1 = 6'd0;
-				address2 = 6'd0;
-				address3 = (address - 10'd3) / 10'd4;
-			
-				if (sign == SIGNED)
-					out = {{24{mem3out[7]}}, mem3out};
+				mem1wren = 1'b0;
+				if (wren == 1'b1)
+					mem0wren = 1'b1;
 				else
-					out = {24'd0, mem3out};
-			end
-			
+					mem0wren = 1'b0;
+				
+				
+				mem3address = 6'd0;
+				mem2address = 6'd0;
+				mem1address = 6'd0;
+				mem0address = address >> 2;
+				
+				
+				mem3in = 8'd0;
+				mem2in = 8'd0;
+				mem1in = 8'd0;
+				mem0in = in[7:0];
+				
+				
+				if (sign == SIGNED)
+					out = {{24{mem0out[7]}}, mem0out};
+				else
+					out = {24'd0, mem0out};
+			end		
+		
+	
 			HALF:
 			begin
 				if (wren == 1'b1)
 				begin
-					mem3wren = 1'b1;
 					mem0wren = 1'b1;
+					mem3wren = 1'b1;
 				end
 				else
 				begin
-					mem3wren = 1'b0;
 					mem0wren = 1'b0;
+					mem3wren = 1'b0;
 				end
-				mem1wren = 1'b0;
 				mem2wren = 1'b0;
+				mem1wren = 1'b0;
 				
-				address3 = (address - 10'd3) / 10'd4;
-				address0 = (address - 10'd3) / 10'd4 + 10'd1;
-				address1 = 6'd0;
-				address2 = 6'd0;
+				
+				mem3address = (address + 6'd1) >> 2;
+				mem2address = 6'd0;
+				mem1address = 6'd0;
+				mem0address = address >> 2;
+				
+				
+				mem3in = in[7:0];
+				mem2in = 8'd0;
+				mem1in = 8'd0;
+				mem0in = in[15:8];
+				
 				
 				if (sign == SIGNED)
-					out = {{16{mem3out[7]}}, mem3out, mem0out};
+					out = {{16{mem0out[7]}}, mem0out, mem3out};
 				else
-					out = {16'd0, mem3out, mem0out};
-			end
-		
-			default:
+					out = {16'd0, mem0out, mem3out};
+			end	
+			
+			
+			default:   // word
 			begin
 				if (wren == 1'b1)
 				begin
 					mem0wren = 1'b1;
-					mem1wren = 1'b1;
-					mem2wren = 1'b1;
 					mem3wren = 1'b1;
+					mem2wren = 1'b1;
+					mem1wren = 1'b1;
 				end
 				else
 				begin
 					mem0wren = 1'b0;
-					mem1wren = 1'b0;
-					mem2wren = 1'b0;
 					mem3wren = 1'b0;
+					mem2wren = 1'b0;
+					mem1wren = 1'b0;
 				end
 				
-				address3 = (address - 10'd3) / 10'd4;
-				address0 = (address - 10'd3) / 10'd4 + 10'd1;
-				address1 = (address - 10'd3) / 10'd4 + 10'd1;
-				address2 = (address - 10'd3) / 10'd4 + 10'd1;
 				
-				out = {mem3out, mem0out, mem1out, mem2out};
-			end
+				mem0address = address >> 2;
+				mem3address = (address + 6'd1) >> 2;
+				mem2address = (address + 6'd1) >> 2;
+				mem1address = (address + 6'd1) >> 2;
+				
+				
+				mem0in = in[31:24];
+				mem3in = in[23:16];
+				mem2in = in[15:8];
+				mem1in = in[7:0];
+				
+				
+				out = {mem0out, mem3out, mem2out, mem1out};
+			end	
+			
 			
 		endcase		
 	end
 	
 end
 
-MemoryModule0 mem0(address0, clk, in[31:24], mem0wren, mem0out);
-MemoryModule1 mem1(address1, clk, in[23:16], mem1wren, mem1out);
-MemoryModule2 mem2(address2, clk, in[15:8], mem2wren, mem2out);
-MemoryModule3 mem3(address3, clk, in[7:0], mem3wren, mem3out);
+MemoryModule3 mem3(mem3address, clk, mem3in, mem3wren, mem3out);
+MemoryModule2 mem2(mem2address, clk, mem2in, mem2wren, mem2out);
+MemoryModule1 mem1(mem1address, clk, mem1in, mem1wren, mem1out);
+MemoryModule0 mem0(mem0address, clk, mem0in, mem0wren, mem0out);
 
-//module MemoryModule0 (
-//	address,
-//	clock,
-//	data,
-//	wren,
-//	q);
-//
-//	input	[5:0]  address;
-//	input	  clock;
-//	input	[7:0]  data;
-//	input	  wren;
-//	output	[7:0]  q;
 
 endmodule
