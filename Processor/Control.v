@@ -545,6 +545,7 @@ begin
 			alu_op <= 3'd0;                   // add
 			register_address_a <= instruction[11:7];
 			register_wren <= 1'b1;
+			register_mux <= 2'b01;
 		end
 
 		JAL2:
@@ -557,12 +558,13 @@ begin
 
 		JALR1:
 		begin
-			alu_a_mux = 1'b0;
-			alu_b_mux = 1'b1;
-			alu_immediate = 32'd4;
-			alu_op = 3'd0;                   // add
-			register_address_a = instruction[11:7];
-			register_wren = 1'b1;
+			alu_a_mux <= 1'b0;
+			alu_b_mux <= 1'b1;
+			alu_immediate <= 32'd4;
+			alu_op <= 3'd0;                   // add
+			register_address_a <= instruction[11:7];
+			register_wren <= 1'b1;
+			register_mux <= 2'b01;
 		end
 
 		JALR2:
@@ -574,7 +576,7 @@ begin
 		begin
 			alu_a_mux <= 1'd0;
 			alu_b_mux <= 1'd0;
-			register_address_a <= instruction[19:15];
+			register_address_b <= instruction[19:15];
 			alu_immediate <= {{20{instruction[31]}}, instruction[31:20]};
 			alu_op <= 3'd0;                   // add
 			programcounter_mux <= 2'b00;
