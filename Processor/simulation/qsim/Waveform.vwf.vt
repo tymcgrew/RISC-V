@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "04/09/2019 00:19:42"
+// Generated on "04/15/2019 02:29:49"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          Processor
 // 
@@ -44,8 +44,24 @@ wire [0:6] HEX6;
 wire [0:6] HEX7;
 wire [8:0] LEDG;
 wire [5:0] STATE;
+wire [31:0] alu_in_a;
+wire [31:0] alu_in_b;
+wire [31:0] alu_out;
+wire [2:0] alu_status;
 wire [31:0] instruction;
+wire instructionregister_wren;
+wire [9:0] memory_address;
+wire memory_wren;
+wire out_update;
+wire [31:0] programcounter_in;
+wire programcounter_wren;
+wire [4:0] register_address_a;
+wire [4:0] register_address_b;
+wire [31:0] register_in_a;
 wire [31:0] register_out_a;
+wire register_wren;
+wire [31:0] result_reg_out;
+wire result_wren;
 
 // assign statements (if any)                          
 Processor i1 (
@@ -62,9 +78,25 @@ Processor i1 (
 	.LEDG(LEDG),
 	.STATE(STATE),
 	.SW(SW),
+	.alu_in_a(alu_in_a),
+	.alu_in_b(alu_in_b),
+	.alu_out(alu_out),
+	.alu_status(alu_status),
 	.clk(clk),
 	.instruction(instruction),
-	.register_out_a(register_out_a)
+	.instructionregister_wren(instructionregister_wren),
+	.memory_address(memory_address),
+	.memory_wren(memory_wren),
+	.out_update(out_update),
+	.programcounter_in(programcounter_in),
+	.programcounter_wren(programcounter_wren),
+	.register_address_a(register_address_a),
+	.register_address_b(register_address_b),
+	.register_in_a(register_in_a),
+	.register_out_a(register_out_a),
+	.register_wren(register_wren),
+	.result_reg_out(result_reg_out),
+	.result_wren(result_wren)
 );
 initial 
 begin 

@@ -26,51 +26,14 @@ module RegisterUnit (
 	
 		if (rst == 1'b0)
 		begin
-			data <= {32'd8, 992'd0};
+			data <= 1024'd0;
 			out_a <= 32'd0;
 			out_b <= 32'd0;
 		end
 		
 		else
 		begin
-			if (wren_a == 1'b1)
-			begin
-				case (address_a)
-					5'd0: data <= 32'd0;
-					5'd1: data[63:32] <= in_a;
-					5'd2: data[95:64] <= in_a;
-					5'd3: data[127:96] <= in_a;
-					5'd4: data[159:128] <= in_a;
-					5'd5: data[191:160] <= in_a;
-					5'd6: data[223:192] <= in_a;
-					5'd7: data[255:224] <= in_a;
-					5'd8: data[287:256] <= in_a;
-					5'd9: data[319:288] <= in_a;
-					5'd10: data[351:320] <= in_a;
-					5'd11: data[383:352] <= in_a;
-					5'd12: data[415:384] <= in_a;
-					5'd13: data[447:416] <= in_a;
-					5'd14: data[479:448] <= in_a;
-					5'd15: data[511:480] <= in_a;
-					5'd16: data[543:512] <= in_a;
-					5'd17: data[575:544] <= in_a;
-					5'd18: data[607:576] <= in_a;
-					5'd19: data[639:608] <= in_a;
-					5'd20: data[671:640] <= in_a;
-					5'd21: data[703:672] <= in_a;
-					5'd22: data[735:704] <= in_a;
-					5'd23: data[767:736] <= in_a;
-					5'd24: data[799:768] <= in_a;
-					5'd25: data[831:800] <= in_a;
-					5'd26: data[863:832] <= in_a;
-					5'd27: data[895:864] <= in_a;
-					5'd28: data[927:896] <= in_a;
-					5'd29: data[959:928] <= in_a;
-					5'd30: data[991:960] <= in_a;
-					5'd31: data[1023:992] <= in_a;
-				endcase
-			end
-
+		
 			case (address_a)
 				5'd0: out_a <= 32'd0;
 				5'd1: out_a <= data[63:32];
@@ -140,6 +103,43 @@ module RegisterUnit (
 				5'd30: out_b <= data[991:960];
 				5'd31: out_b <= data[1023:992];
 			endcase
+			
+			if (wren_a == 1'b1)
+				case (address_a)
+					5'd0: data[31:0] <= 32'd0;
+					5'd1: data[63:32] <= in_a;
+					5'd2: data[95:64] <= in_a;
+					5'd3: data[127:96] <= in_a;
+					5'd4: data[159:128] <= in_a;
+					5'd5: data[191:160] <= in_a;
+					5'd6: data[223:192] <= in_a;
+					5'd7: data[255:224] <= in_a;
+					5'd8: data[287:256] <= in_a;
+					5'd9: data[319:288] <= in_a;
+					5'd10: data[351:320] <= in_a;
+					5'd11: data[383:352] <= in_a;
+					5'd12: data[415:384] <= in_a;
+					5'd13: data[447:416] <= in_a;
+					5'd14: data[479:448] <= in_a;
+					5'd15: data[511:480] <= in_a;
+					5'd16: data[543:512] <= in_a;
+					5'd17: data[575:544] <= in_a;
+					5'd18: data[607:576] <= in_a;
+					5'd19: data[639:608] <= in_a;
+					5'd20: data[671:640] <= in_a;
+					5'd21: data[703:672] <= in_a;
+					5'd22: data[735:704] <= in_a;
+					5'd23: data[767:736] <= in_a;
+					5'd24: data[799:768] <= in_a;
+					5'd25: data[831:800] <= in_a;
+					5'd26: data[863:832] <= in_a;
+					5'd27: data[895:864] <= in_a;
+					5'd28: data[927:896] <= in_a;
+					5'd29: data[959:928] <= in_a;
+					5'd30: data[991:960] <= in_a;
+					5'd31: data[1023:992] <= in_a;
+				endcase
+			
 		end
 	
 	end	

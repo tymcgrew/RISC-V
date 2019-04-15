@@ -1,4 +1,30 @@
-module Processor(SW, KEY, clk, LEDG, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7, STATE, instruction, register_out_a);
+module Processor(SW, 
+					  KEY, 
+					  clk, 
+					  LEDG, 
+					  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7, 
+					  
+					  // Debugging outputs
+					  STATE, 
+					  instruction, 
+					  alu_in_a,
+					  alu_in_b,
+					  alu_out,
+					  alu_status,
+					  register_wren,
+					  register_in_a,
+					  register_address_a,
+					  register_address_b,
+					  programcounter_wren,
+					  programcounter_in,
+					  result_wren,
+					  result_reg_out,
+					  memory_address,
+					  register_out_a,
+					  memory_wren,
+					  instructionregister_wren,
+					  out_update
+					  );
 	
 	input [17:0]SW;
 	output [8:0]LEDG;
@@ -10,13 +36,30 @@ module Processor(SW, KEY, clk, LEDG, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, H
 	wire rst;
 	assign rst = SW[17];
 	input clk;
-	
-	output [5:0]STATE;
-	output [31:0]instruction;
-	output [31:0]register_out_a;
-	
 	output signed [0:6]HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7;
 	reg signed [0:6]HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, HEX7;
+	
+	
+	// Debugging outputs
+	output [5:0]STATE;
+	output [31:0]instruction;
+	output [31:0]alu_in_a;
+	output [31:0]alu_in_b;
+	output [31:0]alu_out;
+	output [2:0]alu_status;
+	output register_wren;
+	output [31:0]register_in_a;
+	output [4:0]register_address_a;
+	output [4:0]register_address_b;
+	output programcounter_wren;
+	output [31:0]programcounter_in;
+	output result_wren;
+	output [31:0]result_reg_out;
+	output [9:0]memory_address;
+	output [31:0]register_out_a;
+	output memory_wren;
+	output instructionregister_wren;
+	output out_update;
 	
 	
 	// Control wires
@@ -164,7 +207,7 @@ module Processor(SW, KEY, clk, LEDG, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, HEX6, H
 		2'b11: programcounter_in = programcounter_out + programcounter_immediate;
 		2'b10: programcounter_in = 32'd0;
 		2'b01: programcounter_in = programcounter_immediate;
-		2'b00: programcounter_in = {alu_out[31:1], 1'b0} + programcounter_out;
+		2'b00: programcounter_in = alu_out;//{alu_out[31:1], 1'b0};
 		endcase
 	end
 	GenericRegister programcounter(

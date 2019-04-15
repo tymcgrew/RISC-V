@@ -66,8 +66,10 @@ input [31:0]register_out_b;
 input [2:0]alu_status;
 input [31:0]instruction;
 
-output [4:0]register_address_a, register_address_b;
-reg [4:0]register_address_a, register_address_b;
+output [4:0]register_address_a;
+output [4:0]register_address_b;
+reg [4:0]register_address_a;
+reg [4:0]register_address_b;
 output register_wren;
 reg register_wren;
 output [1:0]register_mux;
@@ -130,7 +132,8 @@ parameter START = 6'd0,
           BRANCH2 = 6'd13,
           LOAD = 6'd14,
           STORE = 6'd15,
-          REGI = 6'd16,
+          REGI1 = 6'd16,
+			 REGI2 = 6'd41,
           REGISHIFT = 6'd17,
           SETONI = 6'd18,
           SETON = 6'd19,
@@ -185,7 +188,7 @@ begin
 
 	WAIT1:
 	begin
-		NEXT_STATE = (counter < 27'd10000000)? WAIT1 : WAIT2;
+		NEXT_STATE = WAIT2;//(counter < 27'd10000000)? WAIT1 : WAIT2;
 	end
 
 	WAIT2:
@@ -195,7 +198,7 @@ begin
 
 	FETCH:
 	begin
-		NEXT_STATE = (counter < 27'd2)? FETCH : DECODE;
+		NEXT_STATE = (counter < 27'd3)? FETCH : DECODE;
 	end
 
 	DECODE:
@@ -211,7 +214,7 @@ begin
 			7'b0010011:
 			begin
 				if (instruction[14:12] == 3'b111 || instruction[14:12] == 3'b110 || instruction[14:12] == 3'b100 || instruction[14:12] == 3'b000)
-					NEXT_STATE = REGI;
+					NEXT_STATE = REGI1;
 				else if (instruction[14:12] == 3'b001 || instruction[14:12] == 3'b101 || instruction[14:12] == 3'b111)
 					NEXT_STATE = REGISHIFT;
 				else
@@ -260,14 +263,17 @@ begin
 
 	BRANCH1:
 	begin
-		NEXT_STATE = (
-					  instruction[14:12] == 3'b000 && alu_status[0] == 1'b1 ||        // BEQ
-					  instruction[14:12] == 3'b001 && alu_status[0] == 1'b0 ||        // BNE
-					  instruction[14:12] == 3'b100 && alu_status[1] == 1'b1 ||        // BLT
-					  instruction[14:12] == 3'b101 && alu_status[1] == 1'b0 ||        // BGE
-					  instruction[14:12] == 3'b000 && alu_status[2] == 1'b1 ||        // BLTU
-					  instruction[14:12] == 3'b000 && alu_status[2] == 1'b0           // BGEU
-					  )? BRANCH2 : RESETA;
+		if (counter < 27'd2)
+			NEXT_STATE = BRANCH1;
+		else
+			NEXT_STATE = (
+						  (instruction[14:12] == 3'b000 && alu_status[0] == 1'b1) ||        // BEQ
+						  (instruction[14:12] == 3'b001 && alu_status[0] == 1'b0) ||        // BNE
+						  (instruction[14:12] == 3'b100 && alu_status[1] == 1'b1) ||        // BLT
+						  (instruction[14:12] == 3'b101 && alu_status[1] == 1'b0) ||        // BGE
+						  (instruction[14:12] == 3'b110 && alu_status[2] == 1'b1) ||        // BLTU
+						  (instruction[14:12] == 3'b111 && alu_status[2] == 1'b0)           // BGEU
+						  )? BRANCH2 : RESETA;
 	end
 
 	BRANCH2:
@@ -285,11 +291,16 @@ begin
 		NEXT_STATE = (counter < 27'd4)? STORE : RESETA;
 	end
 
-	REGI:
+	REGI1:
 	begin
-		NEXT_STATE = (counter < 27'd2)? REGI : RESETA;
+		NEXT_STATE = (counter < 27'd2)? REGI1 : REGI2;
 	end
 
+	REGI2:
+	begin
+		NEXT_STATE = RESETA;
+	end
+	
 	REGISHIFT:
 	begin
 		NEXT_STATE = (counter < 27'd2)? REGISHIFT : RESETA;
@@ -552,8 +563,8 @@ begin
 		begin
 			register_wren <= 1'b0;
 			programcounter_wren <= 1'b1;
-			programcounter_immediate <= {{11{instruction[31]}}, instruction[31], instruction[19:12], instruction[20], instruction[30:21], 1'b1};
-			programcounter_mux <= 1'b1;
+			programcounter_immediate <= {{11{instruction[31]}}, instruction[31], instruction[19:12], instruction[20], instruction[30:21], 1'b0};
+			programcounter_mux <= 2'b11;
 		end
 
 		JALR1:
@@ -569,14 +580,14 @@ begin
 
 		JALR2:
 		begin
-			register_wren <= 1'd0;
+			register_wren <= 1'b0;
+			register_address_b <= instruction[19:15];
 		end
 
 		JALR3:
 		begin
-			alu_a_mux <= 1'd0;
-			alu_b_mux <= 1'd0;
-			register_address_b <= instruction[19:15];
+			alu_a_mux <= 1'b0;
+			alu_b_mux <= 1'b0;
 			alu_immediate <= {{20{instruction[31]}}, instruction[31:20]};
 			alu_op <= 3'd0;                   // add
 			programcounter_mux <= 2'b00;
@@ -589,6 +600,7 @@ begin
 			register_address_b <= instruction[24:20];
 			alu_a_mux <= 1'd1;
 			alu_b_mux <= 1'd0;
+			counter <= counter + 27'd1;
 		end
 
 		BRANCH2:
@@ -646,10 +658,10 @@ begin
 			counter <= counter + 27'd1;
 		end
 
-		REGI:   // ANDI, ORI, XORI, ADDI
+		REGI1:   // ANDI, ORI, XORI, ADDI
 		begin
-			alu_a_mux <= 1'd0;
-			alu_b_mux <= 1'd0;
+			alu_a_mux <= 1'b0;
+			alu_b_mux <= 1'b0;
 			register_address_b <= instruction[19:15];
 			alu_immediate <= {{20{instruction[31]}}, instruction[31:20]};
 			
@@ -664,10 +676,18 @@ begin
 				alu_op <= 3'd0;                   // add
 				
 			register_address_a <= instruction[11:7];
-			register_wren <= 1'd1;
-			register_mux <= 2'b01;
-
+			result_wren <= 1'd1;
+			register_mux <= 2'b11;
+			register_immediate <= 32'd0;
+			
 			counter <= counter + 27'd1;
+		end
+		
+		REGI2:
+		begin
+			register_mux <= 2'b10;
+			result_wren <= 1'b0;
+			register_wren <= 1'b1;
 		end
 
 		REGISHIFT: // SLLI, SRLI, SRAI
@@ -843,6 +863,7 @@ begin
 			programcounter_wren <= 1'b1;
 			programcounter_mux <= 2'b11;
 			programcounter_immediate <= 32'd4;
+			memory_mux <= 1'b0;
 		end
 
 		RESETB:

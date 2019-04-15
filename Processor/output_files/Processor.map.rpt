@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Processor
-Tue Apr 09 02:19:39 2019
+Mon Apr 15 02:33:13 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -74,16 +74,16 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Apr 09 02:19:38 2019       ;
+; Analysis & Synthesis Status        ; Successful - Mon Apr 15 02:33:12 2019       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; Processor                                   ;
 ; Top-level Entity Name              ; Processor                                   ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 10,429                                      ;
-;     Total combinational functions  ; 9,596                                       ;
-;     Dedicated logic registers      ; 1,400                                       ;
-; Total registers                    ; 1400                                        ;
-; Total pins                         ; 158                                         ;
+; Total logic elements               ; 10,355                                      ;
+;     Total combinational functions  ; 9,393                                       ;
+;     Dedicated logic registers      ; 1,398                                       ;
+; Total registers                    ; 1398                                        ;
+; Total pins                         ; 379                                         ;
 ; Total virtual pins                 ; 0                                           ;
 ; Total memory bits                  ; 2,048                                       ;
 ; Embedded Multiplier 9-bit elements ; 0                                           ;
@@ -99,7 +99,7 @@ agreement for further details.
 ; Device                                                                     ; EP4CE115F29C7      ;                    ;
 ; Top-level entity name                                                      ; Processor          ; Processor          ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
-; Use smart compilation                                                      ; Off                ; Off                ;
+; Use smart compilation                                                      ; On                 ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
 ; Enable compact report table                                                ; Off                ; Off                ;
 ; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
@@ -182,15 +182,17 @@ agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 2           ;
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 2           ;
+; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.2%      ;
+;     Processor 2            ;   0.1%      ;
+;     Processor 3            ;   0.1%      ;
+;     Processor 4            ;   0.1%      ;
 +----------------------------+-------------+
 
 
@@ -199,20 +201,20 @@ agreement for further details.
 +----------------------------------+-----------------+----------------------------------+------------------------------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                                 ; Library ;
 +----------------------------------+-----------------+----------------------------------+------------------------------------------------------------------------------+---------+
-; Processor.v                      ; yes             ; User Verilog HDL File            ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v                ;         ;
-; ALU.v                            ; yes             ; User Verilog HDL File            ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/ALU.v                      ;         ;
-; Control.v                        ; yes             ; User Verilog HDL File            ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Control.v                  ;         ;
-; MemoryModule0.mif                ; yes             ; User Memory Initialization File  ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule0.mif          ;         ;
-; MemoryModule1.mif                ; yes             ; User Memory Initialization File  ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule1.mif          ;         ;
-; MemoryModule2.mif                ; yes             ; User Memory Initialization File  ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule2.mif          ;         ;
-; MemoryModule3.mif                ; yes             ; User Memory Initialization File  ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule3.mif          ;         ;
-; MemoryModule0.v                  ; yes             ; User Wizard-Generated File       ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule0.v            ;         ;
-; MemoryModule1.v                  ; yes             ; User Wizard-Generated File       ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule1.v            ;         ;
-; MemoryModule2.v                  ; yes             ; User Wizard-Generated File       ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule2.v            ;         ;
-; MemoryModule3.v                  ; yes             ; User Wizard-Generated File       ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule3.v            ;         ;
-; Memory.v                         ; yes             ; User Verilog HDL File            ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v                   ;         ;
-; GenericRegister.v                ; yes             ; User Verilog HDL File            ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/GenericRegister.v          ;         ;
-; RegisterUnit.v                   ; yes             ; User Verilog HDL File            ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/RegisterUnit.v             ;         ;
+; Processor.v                      ; yes             ; User Verilog HDL File            ; M:/ECE 289/Processor/Processor.v                                             ;         ;
+; ALU.v                            ; yes             ; User Verilog HDL File            ; M:/ECE 289/Processor/ALU.v                                                   ;         ;
+; Control.v                        ; yes             ; User Verilog HDL File            ; M:/ECE 289/Processor/Control.v                                               ;         ;
+; MemoryModule0.mif                ; yes             ; User Memory Initialization File  ; M:/ECE 289/Processor/MemoryModule0.mif                                       ;         ;
+; MemoryModule1.mif                ; yes             ; User Memory Initialization File  ; M:/ECE 289/Processor/MemoryModule1.mif                                       ;         ;
+; MemoryModule2.mif                ; yes             ; User Memory Initialization File  ; M:/ECE 289/Processor/MemoryModule2.mif                                       ;         ;
+; MemoryModule3.mif                ; yes             ; User Memory Initialization File  ; M:/ECE 289/Processor/MemoryModule3.mif                                       ;         ;
+; MemoryModule0.v                  ; yes             ; User Wizard-Generated File       ; M:/ECE 289/Processor/MemoryModule0.v                                         ;         ;
+; MemoryModule1.v                  ; yes             ; User Wizard-Generated File       ; M:/ECE 289/Processor/MemoryModule1.v                                         ;         ;
+; MemoryModule2.v                  ; yes             ; User Wizard-Generated File       ; M:/ECE 289/Processor/MemoryModule2.v                                         ;         ;
+; MemoryModule3.v                  ; yes             ; User Wizard-Generated File       ; M:/ECE 289/Processor/MemoryModule3.v                                         ;         ;
+; Memory.v                         ; yes             ; User Verilog HDL File            ; M:/ECE 289/Processor/Memory.v                                                ;         ;
+; GenericRegister.v                ; yes             ; User Verilog HDL File            ; M:/ECE 289/Processor/GenericRegister.v                                       ;         ;
+; RegisterUnit.v                   ; yes             ; User Verilog HDL File            ; M:/ECE 289/Processor/RegisterUnit.v                                          ;         ;
 ; altsyncram.tdf                   ; yes             ; Megafunction                     ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
 ; stratix_ram_block.inc            ; yes             ; Megafunction                     ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
 ; lpm_mux.inc                      ; yes             ; Megafunction                     ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
@@ -222,62 +224,62 @@ agreement for further details.
 ; altrom.inc                       ; yes             ; Megafunction                     ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altrom.inc            ;         ;
 ; altram.inc                       ; yes             ; Megafunction                     ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altram.inc            ;         ;
 ; altdpram.inc                     ; yes             ; Megafunction                     ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altdpram.inc          ;         ;
-; db/altsyncram_d5i1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/altsyncram_d5i1.tdf     ;         ;
-; db/altsyncram_c5i1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/altsyncram_c5i1.tdf     ;         ;
-; db/altsyncram_b5i1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/altsyncram_b5i1.tdf     ;         ;
-; db/altsyncram_a5i1.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/altsyncram_a5i1.tdf     ;         ;
+; db/altsyncram_d5i1.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/altsyncram_d5i1.tdf                                  ;         ;
+; db/altsyncram_c5i1.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/altsyncram_c5i1.tdf                                  ;         ;
+; db/altsyncram_b5i1.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/altsyncram_b5i1.tdf                                  ;         ;
+; db/altsyncram_a5i1.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/altsyncram_a5i1.tdf                                  ;         ;
 ; lpm_divide.tdf                   ; yes             ; Megafunction                     ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/lpm_divide.tdf        ;         ;
 ; abs_divider.inc                  ; yes             ; Megafunction                     ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/abs_divider.inc       ;         ;
 ; sign_div_unsign.inc              ; yes             ; Megafunction                     ; c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/sign_div_unsign.inc   ;         ;
-; db/lpm_divide_soo.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_soo.tdf      ;         ;
-; db/abs_divider_kbg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_kbg.tdf     ;         ;
-; db/alt_u_div_67f.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_67f.tdf       ;         ;
-; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/add_sub_7pc.tdf         ;         ;
-; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/add_sub_8pc.tdf         ;         ;
-; db/lpm_abs_2v9.tdf               ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_2v9.tdf         ;         ;
-; db/lpm_abs_i0a.tdf               ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_i0a.tdf         ;         ;
-; db/lpm_divide_voo.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_voo.tdf      ;         ;
-; db/abs_divider_nbg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_nbg.tdf     ;         ;
-; db/alt_u_div_c7f.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_c7f.tdf       ;         ;
-; db/lpm_abs_5v9.tdf               ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_5v9.tdf         ;         ;
-; db/lpm_divide_cvo.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_cvo.tdf      ;         ;
-; db/abs_divider_7ag.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_7ag.tdf     ;         ;
-; db/alt_u_div_c4f.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_c4f.tdf       ;         ;
-; db/lpm_divide_9qo.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_9qo.tdf      ;         ;
-; db/abs_divider_1dg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_1dg.tdf     ;         ;
-; db/alt_u_div_0af.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_0af.tdf       ;         ;
-; db/lpm_abs_f0a.tdf               ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_f0a.tdf         ;         ;
-; db/lpm_divide_p0p.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_p0p.tdf      ;         ;
-; db/abs_divider_lbg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_lbg.tdf     ;         ;
-; db/alt_u_div_77f.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_77f.tdf       ;         ;
-; db/lpm_divide_dqo.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_dqo.tdf      ;         ;
-; db/abs_divider_5dg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_5dg.tdf     ;         ;
-; db/alt_u_div_8af.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_8af.tdf       ;         ;
-; db/lpm_abs_j0a.tdf               ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_j0a.tdf         ;         ;
-; db/lpm_divide_72p.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_72p.tdf      ;         ;
-; db/abs_divider_2dg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_2dg.tdf     ;         ;
-; db/alt_u_div_2af.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_2af.tdf       ;         ;
-; db/lpm_divide_gqo.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_gqo.tdf      ;         ;
-; db/abs_divider_8dg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_8dg.tdf     ;         ;
-; db/alt_u_div_eaf.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_eaf.tdf       ;         ;
-; db/lpm_abs_m0a.tdf               ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_m0a.tdf         ;         ;
-; db/lpm_divide_e2p.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_e2p.tdf      ;         ;
-; db/abs_divider_9dg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_9dg.tdf     ;         ;
-; db/alt_u_div_gaf.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_gaf.tdf       ;         ;
-; db/lpm_divide_aqo.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_aqo.tdf      ;         ;
-; db/abs_divider_3dg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_3dg.tdf     ;         ;
-; db/alt_u_div_3af.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_3af.tdf       ;         ;
-; db/lpm_abs_g0a.tdf               ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_g0a.tdf         ;         ;
-; db/lpm_divide_b2p.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_b2p.tdf      ;         ;
-; db/abs_divider_6dg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_6dg.tdf     ;         ;
-; db/alt_u_div_aaf.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_aaf.tdf       ;         ;
-; db/lpm_divide_eqo.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_eqo.tdf      ;         ;
-; db/abs_divider_7dg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_7dg.tdf     ;         ;
-; db/alt_u_div_baf.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_baf.tdf       ;         ;
-; db/lpm_abs_k0a.tdf               ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_k0a.tdf         ;         ;
-; db/lpm_divide_92p.tdf            ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_92p.tdf      ;         ;
-; db/abs_divider_4dg.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_4dg.tdf     ;         ;
-; db/alt_u_div_6af.tdf             ; yes             ; Auto-Generated Megafunction      ; C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_6af.tdf       ;         ;
+; db/lpm_divide_soo.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_soo.tdf                                   ;         ;
+; db/abs_divider_kbg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_kbg.tdf                                  ;         ;
+; db/alt_u_div_67f.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_67f.tdf                                    ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/add_sub_7pc.tdf                                      ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/add_sub_8pc.tdf                                      ;         ;
+; db/lpm_abs_2v9.tdf               ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_abs_2v9.tdf                                      ;         ;
+; db/lpm_abs_i0a.tdf               ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_abs_i0a.tdf                                      ;         ;
+; db/lpm_divide_voo.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_voo.tdf                                   ;         ;
+; db/abs_divider_nbg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_nbg.tdf                                  ;         ;
+; db/alt_u_div_c7f.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_c7f.tdf                                    ;         ;
+; db/lpm_abs_5v9.tdf               ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_abs_5v9.tdf                                      ;         ;
+; db/lpm_divide_cvo.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_cvo.tdf                                   ;         ;
+; db/abs_divider_7ag.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_7ag.tdf                                  ;         ;
+; db/alt_u_div_c4f.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_c4f.tdf                                    ;         ;
+; db/lpm_divide_9qo.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_9qo.tdf                                   ;         ;
+; db/abs_divider_1dg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_1dg.tdf                                  ;         ;
+; db/alt_u_div_0af.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_0af.tdf                                    ;         ;
+; db/lpm_abs_f0a.tdf               ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_abs_f0a.tdf                                      ;         ;
+; db/lpm_divide_p0p.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_p0p.tdf                                   ;         ;
+; db/abs_divider_lbg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_lbg.tdf                                  ;         ;
+; db/alt_u_div_77f.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_77f.tdf                                    ;         ;
+; db/lpm_divide_dqo.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_dqo.tdf                                   ;         ;
+; db/abs_divider_5dg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_5dg.tdf                                  ;         ;
+; db/alt_u_div_8af.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_8af.tdf                                    ;         ;
+; db/lpm_abs_j0a.tdf               ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_abs_j0a.tdf                                      ;         ;
+; db/lpm_divide_72p.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_72p.tdf                                   ;         ;
+; db/abs_divider_2dg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_2dg.tdf                                  ;         ;
+; db/alt_u_div_2af.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_2af.tdf                                    ;         ;
+; db/lpm_divide_gqo.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_gqo.tdf                                   ;         ;
+; db/abs_divider_8dg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_8dg.tdf                                  ;         ;
+; db/alt_u_div_eaf.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_eaf.tdf                                    ;         ;
+; db/lpm_abs_m0a.tdf               ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_abs_m0a.tdf                                      ;         ;
+; db/lpm_divide_e2p.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_e2p.tdf                                   ;         ;
+; db/abs_divider_9dg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_9dg.tdf                                  ;         ;
+; db/alt_u_div_gaf.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_gaf.tdf                                    ;         ;
+; db/lpm_divide_aqo.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_aqo.tdf                                   ;         ;
+; db/abs_divider_3dg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_3dg.tdf                                  ;         ;
+; db/alt_u_div_3af.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_3af.tdf                                    ;         ;
+; db/lpm_abs_g0a.tdf               ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_abs_g0a.tdf                                      ;         ;
+; db/lpm_divide_b2p.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_b2p.tdf                                   ;         ;
+; db/abs_divider_6dg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_6dg.tdf                                  ;         ;
+; db/alt_u_div_aaf.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_aaf.tdf                                    ;         ;
+; db/lpm_divide_eqo.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_eqo.tdf                                   ;         ;
+; db/abs_divider_7dg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_7dg.tdf                                  ;         ;
+; db/alt_u_div_baf.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_baf.tdf                                    ;         ;
+; db/lpm_abs_k0a.tdf               ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_abs_k0a.tdf                                      ;         ;
+; db/lpm_divide_92p.tdf            ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/lpm_divide_92p.tdf                                   ;         ;
+; db/abs_divider_4dg.tdf           ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/abs_divider_4dg.tdf                                  ;         ;
+; db/alt_u_div_6af.tdf             ; yes             ; Auto-Generated Megafunction      ; M:/ECE 289/Processor/db/alt_u_div_6af.tdf                                    ;         ;
 +----------------------------------+-----------------+----------------------------------+------------------------------------------------------------------------------+---------+
 
 
@@ -286,31 +288,31 @@ agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 10,429    ;
+; Estimated Total logic elements              ; 10,355    ;
 ;                                             ;           ;
-; Total combinational functions               ; 9596      ;
+; Total combinational functions               ; 9393      ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 4358      ;
-;     -- 3 input functions                    ; 2326      ;
-;     -- <=2 input functions                  ; 2912      ;
+;     -- 4 input functions                    ; 4255      ;
+;     -- 3 input functions                    ; 2286      ;
+;     -- <=2 input functions                  ; 2852      ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 7617      ;
-;     -- arithmetic mode                      ; 1979      ;
+;     -- normal mode                          ; 7445      ;
+;     -- arithmetic mode                      ; 1948      ;
 ;                                             ;           ;
-; Total registers                             ; 1400      ;
-;     -- Dedicated logic registers            ; 1400      ;
+; Total registers                             ; 1398      ;
+;     -- Dedicated logic registers            ; 1398      ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 158       ;
+; I/O pins                                    ; 379       ;
 ; Total memory bits                           ; 2048      ;
 ;                                             ;           ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 1432      ;
-; Total fan-out                               ; 35975     ;
-; Average fan-out                             ; 3.17      ;
+; Maximum fan-out                             ; 1430      ;
+; Total fan-out                               ; 35761     ;
+; Average fan-out                             ; 3.09      ;
 +---------------------------------------------+-----------+
 
 
@@ -319,13 +321,13 @@ agreement for further details.
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                        ; Entity Name     ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |Processor                                   ; 9596 (335)          ; 1400 (111)                ; 2048        ; 0            ; 0       ; 0         ; 158  ; 0            ; |Processor                                                                                                 ; Processor       ; work         ;
-;    |ALU:alu|                                 ; 587 (587)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|ALU:alu                                                                                         ; ALU             ; work         ;
-;    |Control:control|                         ; 432 (432)           ; 137 (137)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|Control:control                                                                                 ; Control         ; work         ;
+; |Processor                                   ; 9393 (283)          ; 1398 (111)                ; 2048        ; 0            ; 0       ; 0         ; 379  ; 0            ; |Processor                                                                                                 ; Processor       ; work         ;
+;    |ALU:alu|                                 ; 603 (603)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|ALU:alu                                                                                         ; ALU             ; work         ;
+;    |Control:control|                         ; 434 (434)           ; 135 (135)                 ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|Control:control                                                                                 ; Control         ; work         ;
 ;    |GenericRegister:instructionregister|     ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|GenericRegister:instructionregister                                                             ; GenericRegister ; work         ;
 ;    |GenericRegister:programcounter|          ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|GenericRegister:programcounter                                                                  ; GenericRegister ; work         ;
 ;    |GenericRegister:result_reg|              ; 0 (0)               ; 32 (32)                   ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|GenericRegister:result_reg                                                                      ; GenericRegister ; work         ;
-;    |Memory:memory|                           ; 297 (297)           ; 0 (0)                     ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|Memory:memory                                                                                   ; Memory          ; work         ;
+;    |Memory:memory|                           ; 298 (298)           ; 0 (0)                     ; 2048        ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|Memory:memory                                                                                   ; Memory          ; work         ;
 ;       |MemoryModule0:mem0|                   ; 0 (0)               ; 0 (0)                     ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|Memory:memory|MemoryModule0:mem0                                                                ; MemoryModule0   ; work         ;
 ;          |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|Memory:memory|MemoryModule0:mem0|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
 ;             |altsyncram_a5i1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|Memory:memory|MemoryModule0:mem0|altsyncram:altsyncram_component|altsyncram_a5i1:auto_generated ; altsyncram_a5i1 ; work         ;
@@ -338,12 +340,12 @@ agreement for further details.
 ;       |MemoryModule3:mem3|                   ; 0 (0)               ; 0 (0)                     ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|Memory:memory|MemoryModule3:mem3                                                                ; MemoryModule3   ; work         ;
 ;          |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|Memory:memory|MemoryModule3:mem3|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
 ;             |altsyncram_d5i1:auto_generated| ; 0 (0)               ; 0 (0)                     ; 512         ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|Memory:memory|MemoryModule3:mem3|altsyncram:altsyncram_component|altsyncram_d5i1:auto_generated ; altsyncram_d5i1 ; work         ;
-;    |RegisterUnit:register|                   ; 1568 (1568)         ; 1056 (1056)               ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|RegisterUnit:register                                                                           ; RegisterUnit    ; work         ;
-;    |lpm_divide:Div0|                         ; 83 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div0                                                                                 ; lpm_divide      ; work         ;
-;       |lpm_divide_cvo:auto_generated|        ; 83 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div0|lpm_divide_cvo:auto_generated                                                   ; lpm_divide_cvo  ; work         ;
-;          |abs_divider_7ag:divider|           ; 83 (8)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div0|lpm_divide_cvo:auto_generated|abs_divider_7ag:divider                           ; abs_divider_7ag ; work         ;
+;    |RegisterUnit:register|                   ; 1389 (1389)         ; 1056 (1056)               ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|RegisterUnit:register                                                                           ; RegisterUnit    ; work         ;
+;    |lpm_divide:Div0|                         ; 84 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div0                                                                                 ; lpm_divide      ; work         ;
+;       |lpm_divide_cvo:auto_generated|        ; 84 (0)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div0|lpm_divide_cvo:auto_generated                                                   ; lpm_divide_cvo  ; work         ;
+;          |abs_divider_7ag:divider|           ; 84 (8)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div0|lpm_divide_cvo:auto_generated|abs_divider_7ag:divider                           ; abs_divider_7ag ; work         ;
 ;             |alt_u_div_c4f:divider|          ; 65 (65)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div0|lpm_divide_cvo:auto_generated|abs_divider_7ag:divider|alt_u_div_c4f:divider     ; alt_u_div_c4f   ; work         ;
-;             |lpm_abs_5v9:my_abs_num|         ; 10 (10)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div0|lpm_divide_cvo:auto_generated|abs_divider_7ag:divider|lpm_abs_5v9:my_abs_num    ; lpm_abs_5v9     ; work         ;
+;             |lpm_abs_5v9:my_abs_num|         ; 11 (11)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div0|lpm_divide_cvo:auto_generated|abs_divider_7ag:divider|lpm_abs_5v9:my_abs_num    ; lpm_abs_5v9     ; work         ;
 ;    |lpm_divide:Div1|                         ; 121 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div1                                                                                 ; lpm_divide      ; work         ;
 ;       |lpm_divide_p0p:auto_generated|        ; 121 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div1|lpm_divide_p0p:auto_generated                                                   ; lpm_divide_p0p  ; work         ;
 ;          |abs_divider_lbg:divider|           ; 121 (8)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div1|lpm_divide_p0p:auto_generated|abs_divider_lbg:divider                           ; abs_divider_lbg ; work         ;
@@ -369,30 +371,30 @@ agreement for further details.
 ;          |abs_divider_4dg:divider|           ; 327 (8)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div5|lpm_divide_92p:auto_generated|abs_divider_4dg:divider                           ; abs_divider_4dg ; work         ;
 ;             |alt_u_div_6af:divider|          ; 287 (287)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div5|lpm_divide_92p:auto_generated|abs_divider_4dg:divider|alt_u_div_6af:divider     ; alt_u_div_6af   ; work         ;
 ;             |lpm_abs_k0a:my_abs_num|         ; 32 (32)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Div5|lpm_divide_92p:auto_generated|abs_divider_4dg:divider|lpm_abs_k0a:my_abs_num    ; lpm_abs_k0a     ; work         ;
-;    |lpm_divide:Mod0|                         ; 486 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod0                                                                                 ; lpm_divide      ; work         ;
-;       |lpm_divide_soo:auto_generated|        ; 486 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod0|lpm_divide_soo:auto_generated                                                   ; lpm_divide_soo  ; work         ;
-;          |abs_divider_kbg:divider|           ; 486 (9)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod0|lpm_divide_soo:auto_generated|abs_divider_kbg:divider                           ; abs_divider_kbg ; work         ;
+;    |lpm_divide:Mod0|                         ; 492 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod0                                                                                 ; lpm_divide      ; work         ;
+;       |lpm_divide_soo:auto_generated|        ; 492 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod0|lpm_divide_soo:auto_generated                                                   ; lpm_divide_soo  ; work         ;
+;          |abs_divider_kbg:divider|           ; 492 (9)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod0|lpm_divide_soo:auto_generated|abs_divider_kbg:divider                           ; abs_divider_kbg ; work         ;
 ;             |alt_u_div_67f:divider|          ; 457 (457)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod0|lpm_divide_soo:auto_generated|abs_divider_kbg:divider|alt_u_div_67f:divider     ; alt_u_div_67f   ; work         ;
-;             |lpm_abs_i0a:my_abs_num|         ; 20 (20)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod0|lpm_divide_soo:auto_generated|abs_divider_kbg:divider|lpm_abs_i0a:my_abs_num    ; lpm_abs_i0a     ; work         ;
-;    |lpm_divide:Mod1|                         ; 664 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod1                                                                                 ; lpm_divide      ; work         ;
-;       |lpm_divide_voo:auto_generated|        ; 664 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod1|lpm_divide_voo:auto_generated                                                   ; lpm_divide_voo  ; work         ;
-;          |abs_divider_nbg:divider|           ; 664 (15)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod1|lpm_divide_voo:auto_generated|abs_divider_nbg:divider                           ; abs_divider_nbg ; work         ;
+;             |lpm_abs_i0a:my_abs_num|         ; 26 (26)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod0|lpm_divide_soo:auto_generated|abs_divider_kbg:divider|lpm_abs_i0a:my_abs_num    ; lpm_abs_i0a     ; work         ;
+;    |lpm_divide:Mod1|                         ; 666 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod1                                                                                 ; lpm_divide      ; work         ;
+;       |lpm_divide_voo:auto_generated|        ; 666 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod1|lpm_divide_voo:auto_generated                                                   ; lpm_divide_voo  ; work         ;
+;          |abs_divider_nbg:divider|           ; 666 (16)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod1|lpm_divide_voo:auto_generated|abs_divider_nbg:divider                           ; abs_divider_nbg ; work         ;
 ;             |alt_u_div_c7f:divider|          ; 644 (644)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod1|lpm_divide_voo:auto_generated|abs_divider_nbg:divider|alt_u_div_c7f:divider     ; alt_u_div_c7f   ; work         ;
-;             |lpm_abs_i0a:my_abs_num|         ; 5 (5)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod1|lpm_divide_voo:auto_generated|abs_divider_nbg:divider|lpm_abs_i0a:my_abs_num    ; lpm_abs_i0a     ; work         ;
+;             |lpm_abs_i0a:my_abs_num|         ; 6 (6)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod1|lpm_divide_voo:auto_generated|abs_divider_nbg:divider|lpm_abs_i0a:my_abs_num    ; lpm_abs_i0a     ; work         ;
 ;    |lpm_divide:Mod2|                         ; 796 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod2                                                                                 ; lpm_divide      ; work         ;
 ;       |lpm_divide_9qo:auto_generated|        ; 796 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod2|lpm_divide_9qo:auto_generated                                                   ; lpm_divide_9qo  ; work         ;
 ;          |abs_divider_1dg:divider|           ; 796 (20)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod2|lpm_divide_9qo:auto_generated|abs_divider_1dg:divider                           ; abs_divider_1dg ; work         ;
 ;             |alt_u_div_0af:divider|          ; 775 (775)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod2|lpm_divide_9qo:auto_generated|abs_divider_1dg:divider|alt_u_div_0af:divider     ; alt_u_div_0af   ; work         ;
 ;             |lpm_abs_i0a:my_abs_num|         ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod2|lpm_divide_9qo:auto_generated|abs_divider_1dg:divider|lpm_abs_i0a:my_abs_num    ; lpm_abs_i0a     ; work         ;
-;    |lpm_divide:Mod3|                         ; 832 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod3                                                                                 ; lpm_divide      ; work         ;
-;       |lpm_divide_dqo:auto_generated|        ; 832 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod3|lpm_divide_dqo:auto_generated                                                   ; lpm_divide_dqo  ; work         ;
-;          |abs_divider_5dg:divider|           ; 832 (28)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod3|lpm_divide_dqo:auto_generated|abs_divider_5dg:divider                           ; abs_divider_5dg ; work         ;
-;             |alt_u_div_8af:divider|          ; 793 (793)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod3|lpm_divide_dqo:auto_generated|abs_divider_5dg:divider|alt_u_div_8af:divider     ; alt_u_div_8af   ; work         ;
+;    |lpm_divide:Mod3|                         ; 830 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod3                                                                                 ; lpm_divide      ; work         ;
+;       |lpm_divide_dqo:auto_generated|        ; 830 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod3|lpm_divide_dqo:auto_generated                                                   ; lpm_divide_dqo  ; work         ;
+;          |abs_divider_5dg:divider|           ; 830 (28)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod3|lpm_divide_dqo:auto_generated|abs_divider_5dg:divider                           ; abs_divider_5dg ; work         ;
+;             |alt_u_div_8af:divider|          ; 791 (791)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod3|lpm_divide_dqo:auto_generated|abs_divider_5dg:divider|alt_u_div_8af:divider     ; alt_u_div_8af   ; work         ;
 ;             |lpm_abs_i0a:my_abs_num|         ; 11 (11)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod3|lpm_divide_dqo:auto_generated|abs_divider_5dg:divider|lpm_abs_i0a:my_abs_num    ; lpm_abs_i0a     ; work         ;
-;    |lpm_divide:Mod4|                         ; 877 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod4                                                                                 ; lpm_divide      ; work         ;
-;       |lpm_divide_gqo:auto_generated|        ; 877 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod4|lpm_divide_gqo:auto_generated                                                   ; lpm_divide_gqo  ; work         ;
-;          |abs_divider_8dg:divider|           ; 877 (32)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod4|lpm_divide_gqo:auto_generated|abs_divider_8dg:divider                           ; abs_divider_8dg ; work         ;
-;             |alt_u_div_eaf:divider|          ; 833 (833)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod4|lpm_divide_gqo:auto_generated|abs_divider_8dg:divider|alt_u_div_eaf:divider     ; alt_u_div_eaf   ; work         ;
+;    |lpm_divide:Mod4|                         ; 879 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod4                                                                                 ; lpm_divide      ; work         ;
+;       |lpm_divide_gqo:auto_generated|        ; 879 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod4|lpm_divide_gqo:auto_generated                                                   ; lpm_divide_gqo  ; work         ;
+;          |abs_divider_8dg:divider|           ; 879 (32)            ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod4|lpm_divide_gqo:auto_generated|abs_divider_8dg:divider                           ; abs_divider_8dg ; work         ;
+;             |alt_u_div_eaf:divider|          ; 835 (835)           ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod4|lpm_divide_gqo:auto_generated|abs_divider_8dg:divider|alt_u_div_eaf:divider     ; alt_u_div_eaf   ; work         ;
 ;             |lpm_abs_i0a:my_abs_num|         ; 12 (12)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod4|lpm_divide_gqo:auto_generated|abs_divider_8dg:divider|lpm_abs_i0a:my_abs_num    ; lpm_abs_i0a     ; work         ;
 ;    |lpm_divide:Mod5|                         ; 860 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod5                                                                                 ; lpm_divide      ; work         ;
 ;       |lpm_divide_aqo:auto_generated|        ; 860 (0)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Processor|lpm_divide:Mod5|lpm_divide_aqo:auto_generated                                                   ; lpm_divide_aqo  ; work         ;
@@ -444,8 +446,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HEX7[4]~reg0                                     ; Stuck at VCC due to stuck port data_in                   ;
 ; HEX7[5]~reg0                                     ; Stuck at VCC due to stuck port data_in                   ;
 ; Control:control|register_immediate[1..11]        ; Stuck at GND due to stuck port data_in                   ;
+; Control:control|programcounter_immediate[0]      ; Stuck at GND due to stuck port data_in                   ;
+; Control:control|programcounter_mux[1]            ; Merged with Control:control|programcounter_mux[0]        ;
 ; Control:control|programcounter_immediate[21..31] ; Merged with Control:control|programcounter_immediate[20] ;
-; Total Number of Removed Registers = 28           ;                                                          ;
+; Total Number of Removed Registers = 30           ;                                                          ;
 +--------------------------------------------------+----------------------------------------------------------+
 
 
@@ -454,10 +458,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1400  ;
-; Number of registers using Synchronous Clear  ; 47    ;
+; Total registers                              ; 1398  ;
+; Number of registers using Synchronous Clear  ; 49    ;
 ; Number of registers using Synchronous Load   ; 53    ;
-; Number of registers using Asynchronous Clear ; 1312  ;
+; Number of registers using Asynchronous Clear ; 1310  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 1257  ;
 ; Number of registers using Preset             ; 0     ;
@@ -477,84 +481,50 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; HEX5[6]~reg0                           ; 1       ;
 ; HEX6[6]~reg0                           ; 1       ;
 ; HEX7[6]~reg0                           ; 1       ;
-; RegisterUnit:register|data[995]        ; 4       ;
-; Total number of inverted registers = 9 ;         ;
+; Total number of inverted registers = 8 ;         ;
 +----------------------------------------+---------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                              ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
-; 4:1                ; 31 bits   ; 62 LEs        ; 62 LEs               ; 0 LEs                  ; Yes        ; |Processor|GenericRegister:programcounter|out[12]       ;
-; 17:1               ; 32 bits   ; 352 LEs       ; 32 LEs               ; 320 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[38]               ;
-; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; Yes        ; |Processor|RegisterUnit:register|out_b[27]              ;
-; 64:1               ; 2 bits    ; 84 LEs        ; 12 LEs               ; 72 LEs                 ; Yes        ; |Processor|Control:control|register_mux[1]              ;
-; 64:1               ; 2 bits    ; 84 LEs        ; 12 LEs               ; 72 LEs                 ; Yes        ; |Processor|Control:control|alu_a_mux                    ;
-; 64:1               ; 2 bits    ; 84 LEs        ; 6 LEs                ; 78 LEs                 ; Yes        ; |Processor|Control:control|programcounter_mux[1]        ;
-; 64:1               ; 27 bits   ; 1134 LEs      ; 27 LEs               ; 1107 LEs               ; Yes        ; |Processor|Control:control|counter[9]                   ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[104]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[186]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[245]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[309]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[352]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[424]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[509]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[559]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[634]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[695]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[756]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[825]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[875]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[929]              ;
-; 18:1               ; 31 bits   ; 372 LEs       ; 31 LEs               ; 341 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[1023]             ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[67]               ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[130]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[201]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[277]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[346]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[411]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[466]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[523]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[596]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[668]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[720]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[798]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[862]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[925]              ;
-; 18:1               ; 32 bits   ; 384 LEs       ; 32 LEs               ; 352 LEs                ; Yes        ; |Processor|RegisterUnit:register|data[989]              ;
-; 11:1               ; 20 bits   ; 140 LEs       ; 20 LEs               ; 120 LEs                ; Yes        ; |Processor|Control:control|register_immediate[23]       ;
-; 16:1               ; 7 bits    ; 70 LEs        ; 7 LEs                ; 63 LEs                 ; Yes        ; |Processor|Control:control|programcounter_immediate[9]  ;
-; 20:1               ; 13 bits   ; 169 LEs       ; 26 LEs               ; 143 LEs                ; Yes        ; |Processor|Control:control|programcounter_immediate[19] ;
-; 15:1               ; 3 bits    ; 30 LEs        ; 6 LEs                ; 24 LEs                 ; Yes        ; |Processor|Control:control|register_address_b[0]        ;
-; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; Yes        ; |Processor|RegisterUnit:register|out_a[12]              ;
-; 15:1               ; 7 bits    ; 70 LEs        ; 14 LEs               ; 56 LEs                 ; Yes        ; |Processor|Control:control|alu_immediate[7]             ;
-; 17:1               ; 2 bits    ; 22 LEs        ; 4 LEs                ; 18 LEs                 ; Yes        ; |Processor|Control:control|register_address_b[1]        ;
-; 17:1               ; 4 bits    ; 44 LEs        ; 8 LEs                ; 36 LEs                 ; Yes        ; |Processor|Control:control|alu_immediate[3]             ;
-; 18:1               ; 7 bits    ; 84 LEs        ; 14 LEs               ; 70 LEs                 ; Yes        ; |Processor|Control:control|alu_immediate[25]            ;
-; 15:1               ; 2 bits    ; 20 LEs        ; 4 LEs                ; 16 LEs                 ; Yes        ; |Processor|Control:control|register_address_a[4]        ;
-; 19:1               ; 12 bits   ; 144 LEs       ; 24 LEs               ; 120 LEs                ; Yes        ; |Processor|Control:control|alu_immediate[15]            ;
-; 17:1               ; 2 bits    ; 22 LEs        ; 6 LEs                ; 16 LEs                 ; Yes        ; |Processor|Control:control|register_address_a[3]        ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem0in[0]                      ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem1in[0]                      ;
-; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |Processor|Mux30                                        ;
-; 4:1                ; 21 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |Processor|Mux7                                         ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|Selector3                      ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem2address[5]                 ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem2in[7]                      ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem3in[2]                      ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem3address[3]                 ;
-; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|out[22]                        ;
-; 11:1               ; 8 bits    ; 56 LEs        ; 48 LEs               ; 8 LEs                  ; No         ; |Processor|ALU:alu|Mux22                                ;
-; 12:1               ; 7 bits    ; 56 LEs        ; 42 LEs               ; 14 LEs                 ; No         ; |Processor|ALU:alu|Mux13                                ;
-; 12:1               ; 4 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; No         ; |Processor|ALU:alu|Mux24                                ;
-; 13:1               ; 4 bits    ; 32 LEs        ; 28 LEs               ; 4 LEs                  ; No         ; |Processor|ALU:alu|Mux7                                 ;
-; 13:1               ; 2 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|ALU:alu|Mux28                                ;
-; 14:1               ; 2 bits    ; 18 LEs        ; 16 LEs               ; 2 LEs                  ; No         ; |Processor|ALU:alu|Mux2                                 ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; No         ; |Processor|Memory:memory|out[1]                         ;
-; 12:1               ; 8 bits    ; 64 LEs        ; 40 LEs               ; 24 LEs                 ; No         ; |Processor|Memory:memory|out[15]                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; Yes        ; |Processor|RegisterUnit:register|out_a[2]              ;
+; 32:1               ; 32 bits   ; 672 LEs       ; 672 LEs              ; 0 LEs                  ; Yes        ; |Processor|RegisterUnit:register|out_b[4]              ;
+; 64:1               ; 2 bits    ; 84 LEs        ; 12 LEs               ; 72 LEs                 ; Yes        ; |Processor|Control:control|register_mux[0]             ;
+; 64:1               ; 2 bits    ; 84 LEs        ; 12 LEs               ; 72 LEs                 ; Yes        ; |Processor|Control:control|alu_b_mux                   ;
+; 64:1               ; 27 bits   ; 1134 LEs      ; 27 LEs               ; 1107 LEs               ; Yes        ; |Processor|Control:control|counter[0]                  ;
+; 12:1               ; 20 bits   ; 160 LEs       ; 20 LEs               ; 140 LEs                ; Yes        ; |Processor|Control:control|register_immediate[13]      ;
+; 16:1               ; 7 bits    ; 70 LEs        ; 7 LEs                ; 63 LEs                 ; Yes        ; |Processor|Control:control|programcounter_immediate[9] ;
+; 20:1               ; 13 bits   ; 169 LEs       ; 26 LEs               ; 143 LEs                ; Yes        ; |Processor|Control:control|programcounter_immediate[2] ;
+; 15:1               ; 7 bits    ; 70 LEs        ; 14 LEs               ; 56 LEs                 ; Yes        ; |Processor|Control:control|alu_immediate[8]            ;
+; 15:1               ; 3 bits    ; 30 LEs        ; 6 LEs                ; 24 LEs                 ; Yes        ; |Processor|Control:control|register_address_b[0]       ;
+; 17:1               ; 4 bits    ; 44 LEs        ; 8 LEs                ; 36 LEs                 ; Yes        ; |Processor|Control:control|alu_immediate[3]            ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 4 LEs                ; 18 LEs                 ; Yes        ; |Processor|Control:control|register_address_b[1]       ;
+; 18:1               ; 7 bits    ; 84 LEs        ; 14 LEs               ; 70 LEs                 ; Yes        ; |Processor|Control:control|alu_immediate[30]           ;
+; 19:1               ; 12 bits   ; 144 LEs       ; 24 LEs               ; 120 LEs                ; Yes        ; |Processor|Control:control|alu_immediate[21]           ;
+; 15:1               ; 2 bits    ; 20 LEs        ; 4 LEs                ; 16 LEs                 ; Yes        ; |Processor|Control:control|register_address_a[4]       ;
+; 17:1               ; 2 bits    ; 22 LEs        ; 6 LEs                ; 16 LEs                 ; Yes        ; |Processor|Control:control|register_address_a[3]       ;
+; 4:1                ; 11 bits   ; 22 LEs        ; 22 LEs               ; 0 LEs                  ; No         ; |Processor|Mux27                                       ;
+; 4:1                ; 21 bits   ; 42 LEs        ; 42 LEs               ; 0 LEs                  ; No         ; |Processor|Mux3                                        ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem0in[2]                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem1in[6]                     ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|Selector6                     ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem2address[3]                ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem2in[4]                     ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem3in[0]                     ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|mem3address[5]                ;
+; 7:1                ; 16 bits   ; 64 LEs        ; 64 LEs               ; 0 LEs                  ; No         ; |Processor|Memory:memory|out[20]                       ;
+; 12:1               ; 7 bits    ; 56 LEs        ; 42 LEs               ; 14 LEs                 ; No         ; |Processor|ALU:alu|Mux10                               ;
+; 11:1               ; 8 bits    ; 56 LEs        ; 48 LEs               ; 8 LEs                  ; No         ; |Processor|ALU:alu|Mux17                               ;
+; 13:1               ; 4 bits    ; 32 LEs        ; 28 LEs               ; 4 LEs                  ; No         ; |Processor|ALU:alu|Mux7                                ;
+; 12:1               ; 4 bits    ; 32 LEs        ; 24 LEs               ; 8 LEs                  ; No         ; |Processor|ALU:alu|Mux27                               ;
+; 14:1               ; 2 bits    ; 18 LEs        ; 16 LEs               ; 2 LEs                  ; No         ; |Processor|ALU:alu|Mux2                                ;
+; 13:1               ; 2 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Processor|ALU:alu|Mux29                               ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 16 LEs               ; 48 LEs                 ; No         ; |Processor|Memory:memory|out[5]                        ;
+; 12:1               ; 8 bits    ; 64 LEs        ; 40 LEs               ; 24 LEs                 ; No         ; |Processor|Memory:memory|out[13]                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------+
@@ -614,7 +584,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; BRANCH2        ; 001101 ; Unsigned Binary                    ;
 ; LOAD           ; 001110 ; Unsigned Binary                    ;
 ; STORE          ; 001111 ; Unsigned Binary                    ;
-; REGI           ; 010000 ; Unsigned Binary                    ;
+; REGI1          ; 010000 ; Unsigned Binary                    ;
+; REGI2          ; 101001 ; Unsigned Binary                    ;
 ; REGISHIFT      ; 010001 ; Unsigned Binary                    ;
 ; SETONI         ; 010010 ; Unsigned Binary                    ;
 ; SETON          ; 010011 ; Unsigned Binary                    ;
@@ -1284,31 +1255,31 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 158                         ;
-; cycloneiii_ff         ; 1400                        ;
-;     CLR               ; 81                          ;
-;     CLR SLD           ; 1                           ;
-;     ENA CLR           ; 1197                        ;
-;     ENA CLR SCLR      ; 13                          ;
+; boundary_port         ; 379                         ;
+; cycloneiii_ff         ; 1398                        ;
+;     CLR               ; 78                          ;
+;     CLR SLD           ; 2                           ;
+;     ENA CLR           ; 1196                        ;
+;     ENA CLR SCLR      ; 15                          ;
 ;     ENA CLR SCLR SLD  ; 7                           ;
-;     ENA CLR SLD       ; 13                          ;
+;     ENA CLR SLD       ; 12                          ;
 ;     ENA SCLR          ; 27                          ;
 ;     SLD               ; 32                          ;
 ;     plain             ; 29                          ;
-; cycloneiii_lcell_comb ; 9605                        ;
-;     arith             ; 1979                        ;
+; cycloneiii_lcell_comb ; 9402                        ;
+;     arith             ; 1948                        ;
 ;         2 data inputs ; 208                         ;
-;         3 data inputs ; 1771                        ;
-;     normal            ; 7626                        ;
+;         3 data inputs ; 1740                        ;
+;     normal            ; 7454                        ;
 ;         0 data inputs ; 169                         ;
 ;         1 data inputs ; 19                          ;
-;         2 data inputs ; 2525                        ;
-;         3 data inputs ; 555                         ;
-;         4 data inputs ; 4358                        ;
+;         2 data inputs ; 2465                        ;
+;         3 data inputs ; 546                         ;
+;         4 data inputs ; 4255                        ;
 ; cycloneiii_ram_block  ; 32                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 99.90                       ;
-; Average LUT depth     ; 58.98                       ;
+; Max LUT depth         ; 98.90                       ;
+; Average LUT depth     ; 59.05                       ;
 +-----------------------+-----------------------------+
 
 
@@ -1317,7 +1288,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:22     ;
+; Top            ; 00:00:19     ;
 +----------------+--------------+
 
 
@@ -1327,78 +1298,78 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Tue Apr 09 02:19:00 2019
+    Info: Processing started: Mon Apr 15 02:32:36 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Processor -c Processor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file processor.v
-    Info (12023): Found entity 1: Processor File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 1
+    Info (12023): Found entity 1: Processor File: M:/ECE 289/Processor/Processor.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
-    Info (12023): Found entity 1: ALU File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/ALU.v Line: 1
+    Info (12023): Found entity 1: ALU File: M:/ECE 289/Processor/ALU.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file control.v
-    Info (12023): Found entity 1: Control File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Control.v Line: 1
+    Info (12023): Found entity 1: Control File: M:/ECE 289/Processor/Control.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file memorymodule0.v
-    Info (12023): Found entity 1: MemoryModule0 File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule0.v Line: 40
+    Info (12023): Found entity 1: MemoryModule0 File: M:/ECE 289/Processor/MemoryModule0.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file memorymodule1.v
-    Info (12023): Found entity 1: MemoryModule1 File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule1.v Line: 40
+    Info (12023): Found entity 1: MemoryModule1 File: M:/ECE 289/Processor/MemoryModule1.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file memorymodule2.v
-    Info (12023): Found entity 1: MemoryModule2 File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule2.v Line: 40
+    Info (12023): Found entity 1: MemoryModule2 File: M:/ECE 289/Processor/MemoryModule2.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file memorymodule3.v
-    Info (12023): Found entity 1: MemoryModule3 File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule3.v Line: 40
+    Info (12023): Found entity 1: MemoryModule3 File: M:/ECE 289/Processor/MemoryModule3.v Line: 40
 Info (12021): Found 1 design units, including 1 entities, in source file memory.v
-    Info (12023): Found entity 1: Memory File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 1
+    Info (12023): Found entity 1: Memory File: M:/ECE 289/Processor/Memory.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file genericregister.v
-    Info (12023): Found entity 1: GenericRegister File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/GenericRegister.v Line: 1
+    Info (12023): Found entity 1: GenericRegister File: M:/ECE 289/Processor/GenericRegister.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file registerunit.v
-    Info (12023): Found entity 1: RegisterUnit File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/RegisterUnit.v Line: 1
+    Info (12023): Found entity 1: RegisterUnit File: M:/ECE 289/Processor/RegisterUnit.v Line: 1
 Info (12127): Elaborating entity "Processor" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at Processor.v(204): truncated value with size 32 to match size of target (4) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 204
-Warning (10230): Verilog HDL assignment warning at Processor.v(205): truncated value with size 32 to match size of target (4) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 205
-Warning (10230): Verilog HDL assignment warning at Processor.v(206): truncated value with size 32 to match size of target (4) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 206
-Warning (10230): Verilog HDL assignment warning at Processor.v(207): truncated value with size 32 to match size of target (4) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 207
-Warning (10230): Verilog HDL assignment warning at Processor.v(208): truncated value with size 32 to match size of target (4) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 208
-Warning (10230): Verilog HDL assignment warning at Processor.v(209): truncated value with size 32 to match size of target (4) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 209
-Warning (10230): Verilog HDL assignment warning at Processor.v(210): truncated value with size 32 to match size of target (4) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 210
-Warning (10034): Output port "LEDG[8..1]" at Processor.v(4) has no driver File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 4
-Info (12128): Elaborating entity "Control" for hierarchy "Control:control" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 111
-Warning (10762): Verilog HDL Case Statement warning at Control.v(344): can't check case statement for completeness because the case expression has too many possible states File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Control.v Line: 344
-Info (12128): Elaborating entity "GenericRegister" for hierarchy "GenericRegister:result_reg" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 114
-Info (12128): Elaborating entity "RegisterUnit" for hierarchy "RegisterUnit:register" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 134
-Info (12128): Elaborating entity "ALU" for hierarchy "ALU:alu" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 145
-Warning (10764): Verilog HDL warning at ALU.v(53): converting signed shift amount to unsigned File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/ALU.v Line: 53
-Info (12128): Elaborating entity "Memory" for hierarchy "Memory:memory" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 158
-Warning (10230): Verilog HDL assignment warning at Memory.v(44): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 44
-Warning (10230): Verilog HDL assignment warning at Memory.v(79): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 79
-Warning (10230): Verilog HDL assignment warning at Memory.v(80): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 80
-Warning (10230): Verilog HDL assignment warning at Memory.v(116): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 116
-Warning (10230): Verilog HDL assignment warning at Memory.v(117): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 117
-Warning (10230): Verilog HDL assignment warning at Memory.v(118): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 118
-Warning (10230): Verilog HDL assignment warning at Memory.v(119): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 119
-Warning (10230): Verilog HDL assignment warning at Memory.v(152): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 152
-Warning (10230): Verilog HDL assignment warning at Memory.v(187): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 187
-Warning (10230): Verilog HDL assignment warning at Memory.v(188): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 188
-Warning (10230): Verilog HDL assignment warning at Memory.v(223): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 223
-Warning (10230): Verilog HDL assignment warning at Memory.v(224): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 224
-Warning (10230): Verilog HDL assignment warning at Memory.v(225): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 225
-Warning (10230): Verilog HDL assignment warning at Memory.v(226): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 226
-Warning (10230): Verilog HDL assignment warning at Memory.v(260): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 260
-Warning (10230): Verilog HDL assignment warning at Memory.v(295): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 295
-Warning (10230): Verilog HDL assignment warning at Memory.v(296): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 296
-Warning (10230): Verilog HDL assignment warning at Memory.v(330): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 330
-Warning (10230): Verilog HDL assignment warning at Memory.v(331): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 331
-Warning (10230): Verilog HDL assignment warning at Memory.v(332): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 332
-Warning (10230): Verilog HDL assignment warning at Memory.v(333): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 333
-Warning (10230): Verilog HDL assignment warning at Memory.v(368): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 368
-Warning (10230): Verilog HDL assignment warning at Memory.v(400): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 400
-Warning (10230): Verilog HDL assignment warning at Memory.v(403): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 403
-Warning (10230): Verilog HDL assignment warning at Memory.v(437): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 437
-Warning (10230): Verilog HDL assignment warning at Memory.v(438): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 438
-Warning (10230): Verilog HDL assignment warning at Memory.v(439): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 439
-Warning (10230): Verilog HDL assignment warning at Memory.v(440): truncated value with size 10 to match size of target (6) File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 440
-Info (12128): Elaborating entity "MemoryModule3" for hierarchy "Memory:memory|MemoryModule3:mem3" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 458
-Info (12128): Elaborating entity "altsyncram" for hierarchy "Memory:memory|MemoryModule3:mem3|altsyncram:altsyncram_component" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule3.v Line: 86
-Info (12130): Elaborated megafunction instantiation "Memory:memory|MemoryModule3:mem3|altsyncram:altsyncram_component" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule3.v Line: 86
-Info (12133): Instantiated megafunction "Memory:memory|MemoryModule3:mem3|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule3.v Line: 86
+Warning (10230): Verilog HDL assignment warning at Processor.v(247): truncated value with size 32 to match size of target (4) File: M:/ECE 289/Processor/Processor.v Line: 247
+Warning (10230): Verilog HDL assignment warning at Processor.v(248): truncated value with size 32 to match size of target (4) File: M:/ECE 289/Processor/Processor.v Line: 248
+Warning (10230): Verilog HDL assignment warning at Processor.v(249): truncated value with size 32 to match size of target (4) File: M:/ECE 289/Processor/Processor.v Line: 249
+Warning (10230): Verilog HDL assignment warning at Processor.v(250): truncated value with size 32 to match size of target (4) File: M:/ECE 289/Processor/Processor.v Line: 250
+Warning (10230): Verilog HDL assignment warning at Processor.v(251): truncated value with size 32 to match size of target (4) File: M:/ECE 289/Processor/Processor.v Line: 251
+Warning (10230): Verilog HDL assignment warning at Processor.v(252): truncated value with size 32 to match size of target (4) File: M:/ECE 289/Processor/Processor.v Line: 252
+Warning (10230): Verilog HDL assignment warning at Processor.v(253): truncated value with size 32 to match size of target (4) File: M:/ECE 289/Processor/Processor.v Line: 253
+Warning (10034): Output port "LEDG[8..1]" at Processor.v(30) has no driver File: M:/ECE 289/Processor/Processor.v Line: 30
+Info (12128): Elaborating entity "Control" for hierarchy "Control:control" File: M:/ECE 289/Processor/Processor.v Line: 154
+Warning (10762): Verilog HDL Case Statement warning at Control.v(355): can't check case statement for completeness because the case expression has too many possible states File: M:/ECE 289/Processor/Control.v Line: 355
+Info (12128): Elaborating entity "GenericRegister" for hierarchy "GenericRegister:result_reg" File: M:/ECE 289/Processor/Processor.v Line: 157
+Info (12128): Elaborating entity "RegisterUnit" for hierarchy "RegisterUnit:register" File: M:/ECE 289/Processor/Processor.v Line: 177
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:alu" File: M:/ECE 289/Processor/Processor.v Line: 188
+Warning (10764): Verilog HDL warning at ALU.v(53): converting signed shift amount to unsigned File: M:/ECE 289/Processor/ALU.v Line: 53
+Info (12128): Elaborating entity "Memory" for hierarchy "Memory:memory" File: M:/ECE 289/Processor/Processor.v Line: 201
+Warning (10230): Verilog HDL assignment warning at Memory.v(44): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 44
+Warning (10230): Verilog HDL assignment warning at Memory.v(79): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 79
+Warning (10230): Verilog HDL assignment warning at Memory.v(80): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 80
+Warning (10230): Verilog HDL assignment warning at Memory.v(116): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 116
+Warning (10230): Verilog HDL assignment warning at Memory.v(117): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 117
+Warning (10230): Verilog HDL assignment warning at Memory.v(118): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 118
+Warning (10230): Verilog HDL assignment warning at Memory.v(119): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 119
+Warning (10230): Verilog HDL assignment warning at Memory.v(152): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 152
+Warning (10230): Verilog HDL assignment warning at Memory.v(187): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 187
+Warning (10230): Verilog HDL assignment warning at Memory.v(188): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 188
+Warning (10230): Verilog HDL assignment warning at Memory.v(223): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 223
+Warning (10230): Verilog HDL assignment warning at Memory.v(224): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 224
+Warning (10230): Verilog HDL assignment warning at Memory.v(225): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 225
+Warning (10230): Verilog HDL assignment warning at Memory.v(226): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 226
+Warning (10230): Verilog HDL assignment warning at Memory.v(260): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 260
+Warning (10230): Verilog HDL assignment warning at Memory.v(295): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 295
+Warning (10230): Verilog HDL assignment warning at Memory.v(296): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 296
+Warning (10230): Verilog HDL assignment warning at Memory.v(330): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 330
+Warning (10230): Verilog HDL assignment warning at Memory.v(331): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 331
+Warning (10230): Verilog HDL assignment warning at Memory.v(332): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 332
+Warning (10230): Verilog HDL assignment warning at Memory.v(333): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 333
+Warning (10230): Verilog HDL assignment warning at Memory.v(368): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 368
+Warning (10230): Verilog HDL assignment warning at Memory.v(400): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 400
+Warning (10230): Verilog HDL assignment warning at Memory.v(403): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 403
+Warning (10230): Verilog HDL assignment warning at Memory.v(437): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 437
+Warning (10230): Verilog HDL assignment warning at Memory.v(438): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 438
+Warning (10230): Verilog HDL assignment warning at Memory.v(439): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 439
+Warning (10230): Verilog HDL assignment warning at Memory.v(440): truncated value with size 10 to match size of target (6) File: M:/ECE 289/Processor/Memory.v Line: 440
+Info (12128): Elaborating entity "MemoryModule3" for hierarchy "Memory:memory|MemoryModule3:mem3" File: M:/ECE 289/Processor/Memory.v Line: 458
+Info (12128): Elaborating entity "altsyncram" for hierarchy "Memory:memory|MemoryModule3:mem3|altsyncram:altsyncram_component" File: M:/ECE 289/Processor/MemoryModule3.v Line: 86
+Info (12130): Elaborated megafunction instantiation "Memory:memory|MemoryModule3:mem3|altsyncram:altsyncram_component" File: M:/ECE 289/Processor/MemoryModule3.v Line: 86
+Info (12133): Instantiated megafunction "Memory:memory|MemoryModule3:mem3|altsyncram:altsyncram_component" with the following parameter: File: M:/ECE 289/Processor/MemoryModule3.v Line: 86
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "init_file" = "MemoryModule3.mif"
@@ -1415,12 +1386,12 @@ Info (12133): Instantiated megafunction "Memory:memory|MemoryModule3:mem3|altsyn
     Info (12134): Parameter "width_a" = "8"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_d5i1.tdf
-    Info (12023): Found entity 1: altsyncram_d5i1 File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/altsyncram_d5i1.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_d5i1 File: M:/ECE 289/Processor/db/altsyncram_d5i1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_d5i1" for hierarchy "Memory:memory|MemoryModule3:mem3|altsyncram:altsyncram_component|altsyncram_d5i1:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "MemoryModule2" for hierarchy "Memory:memory|MemoryModule2:mem2" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 459
-Info (12128): Elaborating entity "altsyncram" for hierarchy "Memory:memory|MemoryModule2:mem2|altsyncram:altsyncram_component" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule2.v Line: 86
-Info (12130): Elaborated megafunction instantiation "Memory:memory|MemoryModule2:mem2|altsyncram:altsyncram_component" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule2.v Line: 86
-Info (12133): Instantiated megafunction "Memory:memory|MemoryModule2:mem2|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule2.v Line: 86
+Info (12128): Elaborating entity "MemoryModule2" for hierarchy "Memory:memory|MemoryModule2:mem2" File: M:/ECE 289/Processor/Memory.v Line: 459
+Info (12128): Elaborating entity "altsyncram" for hierarchy "Memory:memory|MemoryModule2:mem2|altsyncram:altsyncram_component" File: M:/ECE 289/Processor/MemoryModule2.v Line: 86
+Info (12130): Elaborated megafunction instantiation "Memory:memory|MemoryModule2:mem2|altsyncram:altsyncram_component" File: M:/ECE 289/Processor/MemoryModule2.v Line: 86
+Info (12133): Instantiated megafunction "Memory:memory|MemoryModule2:mem2|altsyncram:altsyncram_component" with the following parameter: File: M:/ECE 289/Processor/MemoryModule2.v Line: 86
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "init_file" = "MemoryModule2.mif"
@@ -1437,12 +1408,12 @@ Info (12133): Instantiated megafunction "Memory:memory|MemoryModule2:mem2|altsyn
     Info (12134): Parameter "width_a" = "8"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_c5i1.tdf
-    Info (12023): Found entity 1: altsyncram_c5i1 File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/altsyncram_c5i1.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_c5i1 File: M:/ECE 289/Processor/db/altsyncram_c5i1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_c5i1" for hierarchy "Memory:memory|MemoryModule2:mem2|altsyncram:altsyncram_component|altsyncram_c5i1:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "MemoryModule1" for hierarchy "Memory:memory|MemoryModule1:mem1" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 460
-Info (12128): Elaborating entity "altsyncram" for hierarchy "Memory:memory|MemoryModule1:mem1|altsyncram:altsyncram_component" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule1.v Line: 86
-Info (12130): Elaborated megafunction instantiation "Memory:memory|MemoryModule1:mem1|altsyncram:altsyncram_component" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule1.v Line: 86
-Info (12133): Instantiated megafunction "Memory:memory|MemoryModule1:mem1|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule1.v Line: 86
+Info (12128): Elaborating entity "MemoryModule1" for hierarchy "Memory:memory|MemoryModule1:mem1" File: M:/ECE 289/Processor/Memory.v Line: 460
+Info (12128): Elaborating entity "altsyncram" for hierarchy "Memory:memory|MemoryModule1:mem1|altsyncram:altsyncram_component" File: M:/ECE 289/Processor/MemoryModule1.v Line: 86
+Info (12130): Elaborated megafunction instantiation "Memory:memory|MemoryModule1:mem1|altsyncram:altsyncram_component" File: M:/ECE 289/Processor/MemoryModule1.v Line: 86
+Info (12133): Instantiated megafunction "Memory:memory|MemoryModule1:mem1|altsyncram:altsyncram_component" with the following parameter: File: M:/ECE 289/Processor/MemoryModule1.v Line: 86
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "init_file" = "MemoryModule1.mif"
@@ -1459,12 +1430,12 @@ Info (12133): Instantiated megafunction "Memory:memory|MemoryModule1:mem1|altsyn
     Info (12134): Parameter "width_a" = "8"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_b5i1.tdf
-    Info (12023): Found entity 1: altsyncram_b5i1 File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/altsyncram_b5i1.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_b5i1 File: M:/ECE 289/Processor/db/altsyncram_b5i1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_b5i1" for hierarchy "Memory:memory|MemoryModule1:mem1|altsyncram:altsyncram_component|altsyncram_b5i1:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "MemoryModule0" for hierarchy "Memory:memory|MemoryModule0:mem0" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Memory.v Line: 461
-Info (12128): Elaborating entity "altsyncram" for hierarchy "Memory:memory|MemoryModule0:mem0|altsyncram:altsyncram_component" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule0.v Line: 86
-Info (12130): Elaborated megafunction instantiation "Memory:memory|MemoryModule0:mem0|altsyncram:altsyncram_component" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule0.v Line: 86
-Info (12133): Instantiated megafunction "Memory:memory|MemoryModule0:mem0|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/MemoryModule0.v Line: 86
+Info (12128): Elaborating entity "MemoryModule0" for hierarchy "Memory:memory|MemoryModule0:mem0" File: M:/ECE 289/Processor/Memory.v Line: 461
+Info (12128): Elaborating entity "altsyncram" for hierarchy "Memory:memory|MemoryModule0:mem0|altsyncram:altsyncram_component" File: M:/ECE 289/Processor/MemoryModule0.v Line: 86
+Info (12130): Elaborated megafunction instantiation "Memory:memory|MemoryModule0:mem0|altsyncram:altsyncram_component" File: M:/ECE 289/Processor/MemoryModule0.v Line: 86
+Info (12133): Instantiated megafunction "Memory:memory|MemoryModule0:mem0|altsyncram:altsyncram_component" with the following parameter: File: M:/ECE 289/Processor/MemoryModule0.v Line: 86
     Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
     Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
     Info (12134): Parameter "init_file" = "MemoryModule0.mif"
@@ -1481,247 +1452,247 @@ Info (12133): Instantiated megafunction "Memory:memory|MemoryModule0:mem0|altsyn
     Info (12134): Parameter "width_a" = "8"
     Info (12134): Parameter "width_byteena_a" = "1"
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_a5i1.tdf
-    Info (12023): Found entity 1: altsyncram_a5i1 File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/altsyncram_a5i1.tdf Line: 28
+    Info (12023): Found entity 1: altsyncram_a5i1 File: M:/ECE 289/Processor/db/altsyncram_a5i1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_a5i1" for hierarchy "Memory:memory|MemoryModule0:mem0|altsyncram:altsyncram_component|altsyncram_a5i1:auto_generated" File: c:/intelfpga_lite/16.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (278001): Inferred 13 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 204
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 205
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 205
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 206
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 206
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod3" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 207
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div2" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 207
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod4" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 208
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div3" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 208
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod5" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 209
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div4" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 209
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod6" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 210
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div5" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 210
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 204
-Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 204
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: M:/ECE 289/Processor/Processor.v Line: 247
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: M:/ECE 289/Processor/Processor.v Line: 248
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: M:/ECE 289/Processor/Processor.v Line: 248
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2" File: M:/ECE 289/Processor/Processor.v Line: 249
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: M:/ECE 289/Processor/Processor.v Line: 249
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod3" File: M:/ECE 289/Processor/Processor.v Line: 250
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div2" File: M:/ECE 289/Processor/Processor.v Line: 250
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod4" File: M:/ECE 289/Processor/Processor.v Line: 251
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div3" File: M:/ECE 289/Processor/Processor.v Line: 251
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod5" File: M:/ECE 289/Processor/Processor.v Line: 252
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div4" File: M:/ECE 289/Processor/Processor.v Line: 252
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod6" File: M:/ECE 289/Processor/Processor.v Line: 253
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div5" File: M:/ECE 289/Processor/Processor.v Line: 253
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: M:/ECE 289/Processor/Processor.v Line: 247
+Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 247
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "5"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_soo.tdf
-    Info (12023): Found entity 1: lpm_divide_soo File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_soo.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_soo File: M:/ECE 289/Processor/db/lpm_divide_soo.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_kbg.tdf
-    Info (12023): Found entity 1: abs_divider_kbg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_kbg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_kbg File: M:/ECE 289/Processor/db/abs_divider_kbg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_67f.tdf
-    Info (12023): Found entity 1: alt_u_div_67f File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_67f.tdf Line: 27
+    Info (12023): Found entity 1: alt_u_div_67f File: M:/ECE 289/Processor/db/alt_u_div_67f.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
-    Info (12023): Found entity 1: add_sub_7pc File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/add_sub_7pc.tdf Line: 23
+    Info (12023): Found entity 1: add_sub_7pc File: M:/ECE 289/Processor/db/add_sub_7pc.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
-    Info (12023): Found entity 1: add_sub_8pc File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/add_sub_8pc.tdf Line: 23
+    Info (12023): Found entity 1: add_sub_8pc File: M:/ECE 289/Processor/db/add_sub_8pc.tdf Line: 23
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_2v9.tdf
-    Info (12023): Found entity 1: lpm_abs_2v9 File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_2v9.tdf Line: 25
+    Info (12023): Found entity 1: lpm_abs_2v9 File: M:/ECE 289/Processor/db/lpm_abs_2v9.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_i0a.tdf
-    Info (12023): Found entity 1: lpm_abs_i0a File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_i0a.tdf Line: 25
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 205
-Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 205
+    Info (12023): Found entity 1: lpm_abs_i0a File: M:/ECE 289/Processor/db/lpm_abs_i0a.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod1" File: M:/ECE 289/Processor/Processor.v Line: 248
+Info (12133): Instantiated megafunction "lpm_divide:Mod1" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 248
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "8"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_voo.tdf
-    Info (12023): Found entity 1: lpm_divide_voo File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_voo.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_voo File: M:/ECE 289/Processor/db/lpm_divide_voo.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_nbg.tdf
-    Info (12023): Found entity 1: abs_divider_nbg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_nbg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_nbg File: M:/ECE 289/Processor/db/abs_divider_nbg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_c7f.tdf
-    Info (12023): Found entity 1: alt_u_div_c7f File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_c7f.tdf Line: 27
+    Info (12023): Found entity 1: alt_u_div_c7f File: M:/ECE 289/Processor/db/alt_u_div_c7f.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_5v9.tdf
-    Info (12023): Found entity 1: lpm_abs_5v9 File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_5v9.tdf Line: 25
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 205
-Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 205
+    Info (12023): Found entity 1: lpm_abs_5v9 File: M:/ECE 289/Processor/db/lpm_abs_5v9.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: M:/ECE 289/Processor/Processor.v Line: 248
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 248
     Info (12134): Parameter "LPM_WIDTHN" = "8"
     Info (12134): Parameter "LPM_WIDTHD" = "5"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_cvo.tdf
-    Info (12023): Found entity 1: lpm_divide_cvo File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_cvo.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_cvo File: M:/ECE 289/Processor/db/lpm_divide_cvo.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_7ag.tdf
-    Info (12023): Found entity 1: abs_divider_7ag File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_7ag.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_7ag File: M:/ECE 289/Processor/db/abs_divider_7ag.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_c4f.tdf
-    Info (12023): Found entity 1: alt_u_div_c4f File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_c4f.tdf Line: 27
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod2" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 206
-Info (12133): Instantiated megafunction "lpm_divide:Mod2" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 206
+    Info (12023): Found entity 1: alt_u_div_c4f File: M:/ECE 289/Processor/db/alt_u_div_c4f.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod2" File: M:/ECE 289/Processor/Processor.v Line: 249
+Info (12133): Instantiated megafunction "lpm_divide:Mod2" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 249
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "11"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_9qo.tdf
-    Info (12023): Found entity 1: lpm_divide_9qo File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_9qo.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_9qo File: M:/ECE 289/Processor/db/lpm_divide_9qo.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_1dg.tdf
-    Info (12023): Found entity 1: abs_divider_1dg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_1dg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_1dg File: M:/ECE 289/Processor/db/abs_divider_1dg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_0af.tdf
-    Info (12023): Found entity 1: alt_u_div_0af File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_0af.tdf Line: 27
+    Info (12023): Found entity 1: alt_u_div_0af File: M:/ECE 289/Processor/db/alt_u_div_0af.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_f0a.tdf
-    Info (12023): Found entity 1: lpm_abs_f0a File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_f0a.tdf Line: 25
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 206
-Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 206
+    Info (12023): Found entity 1: lpm_abs_f0a File: M:/ECE 289/Processor/db/lpm_abs_f0a.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div1" File: M:/ECE 289/Processor/Processor.v Line: 249
+Info (12133): Instantiated megafunction "lpm_divide:Div1" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 249
     Info (12134): Parameter "LPM_WIDTHN" = "11"
     Info (12134): Parameter "LPM_WIDTHD" = "8"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_p0p.tdf
-    Info (12023): Found entity 1: lpm_divide_p0p File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_p0p.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_p0p File: M:/ECE 289/Processor/db/lpm_divide_p0p.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_lbg.tdf
-    Info (12023): Found entity 1: abs_divider_lbg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_lbg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_lbg File: M:/ECE 289/Processor/db/abs_divider_lbg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_77f.tdf
-    Info (12023): Found entity 1: alt_u_div_77f File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_77f.tdf Line: 27
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod3" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 207
-Info (12133): Instantiated megafunction "lpm_divide:Mod3" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 207
+    Info (12023): Found entity 1: alt_u_div_77f File: M:/ECE 289/Processor/db/alt_u_div_77f.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod3" File: M:/ECE 289/Processor/Processor.v Line: 250
+Info (12133): Instantiated megafunction "lpm_divide:Mod3" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 250
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "15"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_dqo.tdf
-    Info (12023): Found entity 1: lpm_divide_dqo File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_dqo.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_dqo File: M:/ECE 289/Processor/db/lpm_divide_dqo.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_5dg.tdf
-    Info (12023): Found entity 1: abs_divider_5dg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_5dg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_5dg File: M:/ECE 289/Processor/db/abs_divider_5dg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_8af.tdf
-    Info (12023): Found entity 1: alt_u_div_8af File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_8af.tdf Line: 27
+    Info (12023): Found entity 1: alt_u_div_8af File: M:/ECE 289/Processor/db/alt_u_div_8af.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_j0a.tdf
-    Info (12023): Found entity 1: lpm_abs_j0a File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_j0a.tdf Line: 25
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div2" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 207
-Info (12133): Instantiated megafunction "lpm_divide:Div2" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 207
+    Info (12023): Found entity 1: lpm_abs_j0a File: M:/ECE 289/Processor/db/lpm_abs_j0a.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div2" File: M:/ECE 289/Processor/Processor.v Line: 250
+Info (12133): Instantiated megafunction "lpm_divide:Div2" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 250
     Info (12134): Parameter "LPM_WIDTHN" = "15"
     Info (12134): Parameter "LPM_WIDTHD" = "11"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_72p.tdf
-    Info (12023): Found entity 1: lpm_divide_72p File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_72p.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_72p File: M:/ECE 289/Processor/db/lpm_divide_72p.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_2dg.tdf
-    Info (12023): Found entity 1: abs_divider_2dg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_2dg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_2dg File: M:/ECE 289/Processor/db/abs_divider_2dg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_2af.tdf
-    Info (12023): Found entity 1: alt_u_div_2af File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_2af.tdf Line: 27
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod4" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 208
-Info (12133): Instantiated megafunction "lpm_divide:Mod4" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 208
+    Info (12023): Found entity 1: alt_u_div_2af File: M:/ECE 289/Processor/db/alt_u_div_2af.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod4" File: M:/ECE 289/Processor/Processor.v Line: 251
+Info (12133): Instantiated megafunction "lpm_divide:Mod4" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 251
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "18"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_gqo.tdf
-    Info (12023): Found entity 1: lpm_divide_gqo File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_gqo.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_gqo File: M:/ECE 289/Processor/db/lpm_divide_gqo.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_8dg.tdf
-    Info (12023): Found entity 1: abs_divider_8dg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_8dg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_8dg File: M:/ECE 289/Processor/db/abs_divider_8dg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_eaf.tdf
-    Info (12023): Found entity 1: alt_u_div_eaf File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_eaf.tdf Line: 27
+    Info (12023): Found entity 1: alt_u_div_eaf File: M:/ECE 289/Processor/db/alt_u_div_eaf.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_m0a.tdf
-    Info (12023): Found entity 1: lpm_abs_m0a File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_m0a.tdf Line: 25
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div3" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 208
-Info (12133): Instantiated megafunction "lpm_divide:Div3" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 208
+    Info (12023): Found entity 1: lpm_abs_m0a File: M:/ECE 289/Processor/db/lpm_abs_m0a.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div3" File: M:/ECE 289/Processor/Processor.v Line: 251
+Info (12133): Instantiated megafunction "lpm_divide:Div3" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 251
     Info (12134): Parameter "LPM_WIDTHN" = "18"
     Info (12134): Parameter "LPM_WIDTHD" = "15"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_e2p.tdf
-    Info (12023): Found entity 1: lpm_divide_e2p File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_e2p.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_e2p File: M:/ECE 289/Processor/db/lpm_divide_e2p.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_9dg.tdf
-    Info (12023): Found entity 1: abs_divider_9dg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_9dg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_9dg File: M:/ECE 289/Processor/db/abs_divider_9dg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_gaf.tdf
-    Info (12023): Found entity 1: alt_u_div_gaf File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_gaf.tdf Line: 27
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod5" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 209
-Info (12133): Instantiated megafunction "lpm_divide:Mod5" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 209
+    Info (12023): Found entity 1: alt_u_div_gaf File: M:/ECE 289/Processor/db/alt_u_div_gaf.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod5" File: M:/ECE 289/Processor/Processor.v Line: 252
+Info (12133): Instantiated megafunction "lpm_divide:Mod5" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 252
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "21"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_aqo.tdf
-    Info (12023): Found entity 1: lpm_divide_aqo File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_aqo.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_aqo File: M:/ECE 289/Processor/db/lpm_divide_aqo.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_3dg.tdf
-    Info (12023): Found entity 1: abs_divider_3dg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_3dg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_3dg File: M:/ECE 289/Processor/db/abs_divider_3dg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_3af.tdf
-    Info (12023): Found entity 1: alt_u_div_3af File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_3af.tdf Line: 27
+    Info (12023): Found entity 1: alt_u_div_3af File: M:/ECE 289/Processor/db/alt_u_div_3af.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_g0a.tdf
-    Info (12023): Found entity 1: lpm_abs_g0a File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_g0a.tdf Line: 25
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div4" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 209
-Info (12133): Instantiated megafunction "lpm_divide:Div4" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 209
+    Info (12023): Found entity 1: lpm_abs_g0a File: M:/ECE 289/Processor/db/lpm_abs_g0a.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div4" File: M:/ECE 289/Processor/Processor.v Line: 252
+Info (12133): Instantiated megafunction "lpm_divide:Div4" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 252
     Info (12134): Parameter "LPM_WIDTHN" = "21"
     Info (12134): Parameter "LPM_WIDTHD" = "18"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_b2p.tdf
-    Info (12023): Found entity 1: lpm_divide_b2p File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_b2p.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_b2p File: M:/ECE 289/Processor/db/lpm_divide_b2p.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_6dg.tdf
-    Info (12023): Found entity 1: abs_divider_6dg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_6dg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_6dg File: M:/ECE 289/Processor/db/abs_divider_6dg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_aaf.tdf
-    Info (12023): Found entity 1: alt_u_div_aaf File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_aaf.tdf Line: 27
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod6" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 210
-Info (12133): Instantiated megafunction "lpm_divide:Mod6" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 210
+    Info (12023): Found entity 1: alt_u_div_aaf File: M:/ECE 289/Processor/db/alt_u_div_aaf.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod6" File: M:/ECE 289/Processor/Processor.v Line: 253
+Info (12133): Instantiated megafunction "lpm_divide:Mod6" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 253
     Info (12134): Parameter "LPM_WIDTHN" = "32"
     Info (12134): Parameter "LPM_WIDTHD" = "25"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_eqo.tdf
-    Info (12023): Found entity 1: lpm_divide_eqo File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_eqo.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_eqo File: M:/ECE 289/Processor/db/lpm_divide_eqo.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_7dg.tdf
-    Info (12023): Found entity 1: abs_divider_7dg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_7dg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_7dg File: M:/ECE 289/Processor/db/abs_divider_7dg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_baf.tdf
-    Info (12023): Found entity 1: alt_u_div_baf File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_baf.tdf Line: 27
+    Info (12023): Found entity 1: alt_u_div_baf File: M:/ECE 289/Processor/db/alt_u_div_baf.tdf Line: 27
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_k0a.tdf
-    Info (12023): Found entity 1: lpm_abs_k0a File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_abs_k0a.tdf Line: 25
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div5" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 210
-Info (12133): Instantiated megafunction "lpm_divide:Div5" with the following parameter: File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 210
+    Info (12023): Found entity 1: lpm_abs_k0a File: M:/ECE 289/Processor/db/lpm_abs_k0a.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div5" File: M:/ECE 289/Processor/Processor.v Line: 253
+Info (12133): Instantiated megafunction "lpm_divide:Div5" with the following parameter: File: M:/ECE 289/Processor/Processor.v Line: 253
     Info (12134): Parameter "LPM_WIDTHN" = "25"
     Info (12134): Parameter "LPM_WIDTHD" = "21"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
     Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_92p.tdf
-    Info (12023): Found entity 1: lpm_divide_92p File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/lpm_divide_92p.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_92p File: M:/ECE 289/Processor/db/lpm_divide_92p.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_4dg.tdf
-    Info (12023): Found entity 1: abs_divider_4dg File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/abs_divider_4dg.tdf Line: 29
+    Info (12023): Found entity 1: abs_divider_4dg File: M:/ECE 289/Processor/db/abs_divider_4dg.tdf Line: 29
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_6af.tdf
-    Info (12023): Found entity 1: alt_u_div_6af File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/db/alt_u_div_6af.tdf Line: 27
+    Info (12023): Found entity 1: alt_u_div_6af File: M:/ECE 289/Processor/db/alt_u_div_6af.tdf Line: 27
 Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (13014): Ignored 309 buffer(s)
     Info (13016): Ignored 309 CARRY_SUM buffer(s)
-Info (13000): Registers with preset signals will power-up high File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 227
+Info (13000): Registers with preset signals will power-up high File: M:/ECE 289/Processor/Processor.v Line: 270
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDG[1]" is stuck at GND File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 4
-    Warning (13410): Pin "LEDG[2]" is stuck at GND File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 4
-    Warning (13410): Pin "LEDG[3]" is stuck at GND File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 4
-    Warning (13410): Pin "LEDG[4]" is stuck at GND File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 4
-    Warning (13410): Pin "LEDG[5]" is stuck at GND File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 4
-    Warning (13410): Pin "LEDG[6]" is stuck at GND File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 4
-    Warning (13410): Pin "LEDG[7]" is stuck at GND File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 4
-    Warning (13410): Pin "LEDG[8]" is stuck at GND File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 4
-    Warning (13410): Pin "HEX7[5]" is stuck at VCC File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 227
-    Warning (13410): Pin "HEX7[4]" is stuck at VCC File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 227
-    Warning (13410): Pin "HEX7[3]" is stuck at VCC File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 227
-    Warning (13410): Pin "HEX7[2]" is stuck at VCC File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 227
-    Warning (13410): Pin "HEX7[1]" is stuck at VCC File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 227
-    Warning (13410): Pin "HEX7[0]" is stuck at VCC File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 227
+    Warning (13410): Pin "LEDG[1]" is stuck at GND File: M:/ECE 289/Processor/Processor.v Line: 30
+    Warning (13410): Pin "LEDG[2]" is stuck at GND File: M:/ECE 289/Processor/Processor.v Line: 30
+    Warning (13410): Pin "LEDG[3]" is stuck at GND File: M:/ECE 289/Processor/Processor.v Line: 30
+    Warning (13410): Pin "LEDG[4]" is stuck at GND File: M:/ECE 289/Processor/Processor.v Line: 30
+    Warning (13410): Pin "LEDG[5]" is stuck at GND File: M:/ECE 289/Processor/Processor.v Line: 30
+    Warning (13410): Pin "LEDG[6]" is stuck at GND File: M:/ECE 289/Processor/Processor.v Line: 30
+    Warning (13410): Pin "LEDG[7]" is stuck at GND File: M:/ECE 289/Processor/Processor.v Line: 30
+    Warning (13410): Pin "LEDG[8]" is stuck at GND File: M:/ECE 289/Processor/Processor.v Line: 30
+    Warning (13410): Pin "HEX7[5]" is stuck at VCC File: M:/ECE 289/Processor/Processor.v Line: 270
+    Warning (13410): Pin "HEX7[4]" is stuck at VCC File: M:/ECE 289/Processor/Processor.v Line: 270
+    Warning (13410): Pin "HEX7[3]" is stuck at VCC File: M:/ECE 289/Processor/Processor.v Line: 270
+    Warning (13410): Pin "HEX7[2]" is stuck at VCC File: M:/ECE 289/Processor/Processor.v Line: 270
+    Warning (13410): Pin "HEX7[1]" is stuck at VCC File: M:/ECE 289/Processor/Processor.v Line: 270
+    Warning (13410): Pin "HEX7[0]" is stuck at VCC File: M:/ECE 289/Processor/Processor.v Line: 270
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 3 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[1]" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 7
-    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 7
-    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/Tyler/Documents/ECE 289/RISC-V/Processor/Processor.v Line: 7
-Info (21057): Implemented 10814 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "KEY[1]" File: M:/ECE 289/Processor/Processor.v Line: 33
+    Warning (15610): No output dependent on input pin "KEY[2]" File: M:/ECE 289/Processor/Processor.v Line: 33
+    Warning (15610): No output dependent on input pin "KEY[3]" File: M:/ECE 289/Processor/Processor.v Line: 33
+Info (21057): Implemented 10895 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 23 input pins
-    Info (21059): Implemented 135 output pins
-    Info (21061): Implemented 10624 logic cells
+    Info (21059): Implemented 356 output pins
+    Info (21061): Implemented 10484 logic cells
     Info (21064): Implemented 32 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 59 warnings
-    Info: Peak virtual memory: 4959 megabytes
-    Info: Processing ended: Tue Apr 09 02:19:39 2019
-    Info: Elapsed time: 00:00:39
-    Info: Total CPU time (on all processors): 00:00:58
+    Info: Peak virtual memory: 4961 megabytes
+    Info: Processing ended: Mon Apr 15 02:33:14 2019
+    Info: Elapsed time: 00:00:38
+    Info: Total CPU time (on all processors): 00:00:38
 
 
