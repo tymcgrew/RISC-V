@@ -13,7 +13,7 @@ module ALU (
 //------------------------------------------------------------------
 input [31:0]in_a;
 input [31:0]in_b;
-input [2:0]op;
+input [3:0]op;
 
 output [2:0]status;
 output [31:0]out;
@@ -25,14 +25,15 @@ reg [31:0]out;
 //                 -- Begin Declarations & Coding --                  
 //------------------------------------------------------------------
 
-parameter   ADD = 3'd0,
-		    SUB = 3'd1,
-		    AND = 3'd2,
-			OR =  3'd3,
-			XOR = 3'd4,
-			SLL = 3'd5,
-			SRL = 3'd6,
-			SRA = 3'd7;
+parameter   ADD = 4'd0,
+				SUB = 4'd1,
+				AND = 4'd2,
+				OR =  4'd3,
+				XOR = 4'd4,
+				SLL = 4'd5,
+				SRL = 4'd6,
+				SRA = 4'd7,
+				MUL = 4'd8;
 
 			
 always @(*)
@@ -51,6 +52,8 @@ begin
 		SLL: out = in_b << in_a[4:0];
 		SRL: out = in_b >> in_a[4:0];
 		SRA: out = $signed(in_b) >>> $signed(in_a[4:0]);
+		MUL: out = in_a * in_b;
+		default: out = in_a + in_b;
 	endcase
 		
 		

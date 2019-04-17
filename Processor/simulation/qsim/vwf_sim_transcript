@@ -7,7 +7,7 @@ Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-A
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="M:/ECE 289/Processor/Waveform.vwf" --testbench_file="M:/ECE 289/Processor/simulation/qsim/Waveform.vwf.vt"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="M:/ECE 289/Processor/WaveformALU.vwf" --testbench_file="M:/ECE 289/Processor/simulation/qsim/WaveformALU.vwf.vt"
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
@@ -26,11 +26,11 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: devices manufactured by Intel and sold by Intel or its 
     Info: authorized distributors.  Please refer to the applicable 
     Info: agreement for further details.
-    Info: Processing started: Mon Apr 15 02:29:48 2019
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="M:/ECE 289/Processor/Waveform.vwf" --testbench_file="M:/ECE 289/Processor/simulation/qsim/Waveform.vwf.vt"
+    Info: Processing started: Tue Apr 16 23:18:40 2019
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="M:/ECE 289/Processor/WaveformALU.vwf" --testbench_file="M:/ECE 289/Processor/simulation/qsim/WaveformALU.vwf.vt"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 
-arning (201005): Ignoring output pin "register_out_a[13]" in vector source file when writing test bench files
+t pin "out[8]" in vector source file when writing test bench files
 
 Completed successfully. 
 
@@ -57,7 +57,7 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: devices manufactured by Intel and sold by Intel or its 
     Info: authorized distributors.  Please refer to the applicable 
     Info: agreement for further details.
-    Info: Processing started: Mon Apr 15 02:29:50 2019
+    Info: Processing started: Tue Apr 16 23:18:42 2019
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="M:/ECE 289/Processor/simulation/qsim/" Processor -c Processor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file Processor_7_1200mv_85c_slow.vo in folder "M:/ECE 289/Processor/simulation/qsim//" for EDA simulation tool
@@ -69,10 +69,10 @@ Info (204019): Generated file Processor_7_1200mv_0c_v_slow.sdo in folder "M:/ECE
 Info (204019): Generated file Processor_min_1200mv_0c_v_fast.sdo in folder "M:/ECE 289/Processor/simulation/qsim//" for EDA simulation tool
 Info (204019): Generated file Processor_v.sdo in folder "M:/ECE 289/Processor/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4753 megabytes
-    Info: Processing ended: Mon Apr 15 02:30:20 2019
-    Info: Elapsed time: 00:00:30
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Peak virtual memory: 4681 megabytes
+    Info: Processing ended: Tue Apr 16 23:18:45 2019
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:01
 
 Completed successfully. 
 
@@ -95,101 +95,63 @@ Reading C:/intelFPGA_lite/16.1/modelsim_ase/tcl/vsim/pref.tcl
 # ** Warning: (vlib-34) Library already exists at "work".
 
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:30:21 on Apr 15,2019
+# Start time: 23:18:46 on Apr 16,2019
 # vlog -work work Processor.vo 
-
-# -- Compiling module Processor
+# -- Compiling module ALU
 
 # -- Compiling module hard_block
 
 # 
 # Top level modules:
-# 	Processor
+# 	ALU
 
-# End time: 02:30:23 on Apr 15,2019, Elapsed time: 0:00:02
+# End time: 23:18:46 on Apr 16,2019, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:30:23 on Apr 15,2019
-# vlog -work work Waveform.vwf.vt 
+# Start time: 23:18:46 on Apr 16,2019
+# vlog -work work WaveformALU.vwf.vt 
 
-# -- Compiling module Processor_vlg_vec_tst
+# -- Compiling module ALU_vlg_vec_tst
+
 # 
 # Top level modules:
-# 	Processor_vlg_vec_tst
+# 	ALU_vlg_vec_tst
 
-# End time: 02:30:26 on Apr 15,2019, Elapsed time: 0:00:03
+# End time: 23:18:46 on Apr 16,2019, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 
-# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.Processor_vlg_vec_tst 
-# Start time: 02:30:26 on Apr 15,2019
-# Loading work.Processor_vlg_vec_tst
-# Loading work.Processor
+# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.ALU_vlg_vec_tst 
+# Start time: 23:18:47 on Apr 16,2019
+# Loading work.ALU_vlg_vec_tst
+# Loading work.ALU
 # Loading work.hard_block
 # Loading cycloneive_ver.cycloneive_io_obuf
 # Loading cycloneive_ver.cycloneive_io_ibuf
-# Loading cycloneive_ver.cycloneive_clkctrl
-# Loading cycloneive_ver.cycloneive_mux41
-# Loading cycloneive_ver.cycloneive_ena_reg
 # Loading cycloneive_ver.cycloneive_lcell_comb
-# Loading altera_ver.dffeas
-# Loading cycloneive_ver.cycloneive_ram_block
-# Loading cycloneive_ver.cycloneive_ram_register
-# Loading cycloneive_ver.cycloneive_ram_pulse_generator
 # SDF 10.5b Compiler 2016.10 Oct  5 2016
 # 
 # Loading instances from Processor_v.sdo
-# Loading altera_ver.PRIM_GDFF_LOW
-# ** Warning: Design size of 23791 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
-# Expect performance to be adversely affected.
 # Loading timing data from Processor_v.sdo
 # ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
-#    Time: 0 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst File: Waveform.vwf.vt
-
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst File: WaveformALU.vwf.vt
 # after#26
-
-# Simulation time: 0 ps
-
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:493514 ps, d:493580 ps, 186 ps );
-#    Time: 493580 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\thousands[0] 
-# Simulation time: 0 ps
-
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:733514 ps, d:733674 ps, 186 ps );
-#    Time: 733674 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\thousands[0] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:733530 ps, d:733708 ps, 186 ps );
-#    Time: 733708 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\tens[3] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:893530 ps, d:893605 ps, 186 ps );
-#    Time: 893605 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\tens[1] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:893473 ps, d:893644 ps, 186 ps );
-#    Time: 893644 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\thousands[3] 
-# Simulation time: 0 ps
-
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:1133530 ps, d:1133641 ps, 186 ps );
-#    Time: 1133641 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\tens[0] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:1133530 ps, d:1133715 ps, 186 ps );
-#    Time: 1133715 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\tens[1] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:1393530 ps, d:1393605 ps, 186 ps );
-#    Time: 1393605 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\tens[1] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:1393473 ps, d:1393644 ps, 186 ps );
-#    Time: 1393644 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\thousands[3] 
-# Simulation time: 0 ps
-
-# ** Note: $finish    : Waveform.vwf.vt(103)
-#    Time: 2 us  Iteration: 0  Instance: /Processor_vlg_vec_tst
-# End time: 02:30:39 on Apr 15,2019, Elapsed time: 0:00:13
-# Errors: 9, Warnings: 1
+# ** Note: $finish    : WaveformALU.vwf.vt(51)
+#    Time: 1 us  Iteration: 0  Instance: /ALU_vlg_vec_tst
+# End time: 23:18:47 on Apr 16,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading M:/ECE 289/Processor/Waveform.vwf...
+Reading M:/ECE 289/Processor/WaveformALU.vwf...
 
 Reading M:/ECE 289/Processor/simulation/qsim/Processor.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to M:/ECE 289/Processor/simulation/qsim/Processor_20190415023039.sim.vwf
+Writing the resulting VWF to M:/ECE 289/Processor/simulation/qsim/Processor_20190416231847.sim.vwf
 
 Finished VCD to VWF conversion.
 

@@ -85,8 +85,8 @@ output alu_b_mux;
 reg alu_b_mux;
 output [31:0]alu_immediate;
 reg [31:0]alu_immediate;	
-output [2:0]alu_op;
-reg [2:0]alu_op;
+output [3:0]alu_op;
+reg [3:0]alu_op;
 	
 output memory_wren;
 reg memory_wren;
@@ -133,31 +133,31 @@ parameter START = 6'd0,
           LOAD = 6'd14,
           STORE = 6'd15,
           REGI1 = 6'd16,
-			 REGI2 = 6'd41,
-          REGISHIFT = 6'd17,
-          SETONI = 6'd18,
-          SETON = 6'd19,
-          SETZERO = 6'd20,
-          SETONE = 6'd21,
-          REGREG1 = 6'd22,
-          REGREG2 = 6'd23,
-          FENCE = 6'd24,
-          FENCEI = 6'd25,
-          ECALL = 6'd26,
-          PRINT = 6'd27,
-          READ1 = 6'd28,
-          READ2 = 6'd29,
-          EXIT = 6'd30,
-          EBREAK = 6'd31,
-          CSSRW = 6'd32,
-          CSRRS = 6'd33,
-          CSRRC = 6'd34,
-          CSRRWI = 6'd35,
-          CSRRSI = 6'd36,
-          CSRRCI = 6'd37,
-          RESETA = 6'd38,
-          INCREMENTPC = 6'd39,
-          RESETB = 6'd40;
+			 REGI2 = 6'd17,
+          REGISHIFT = 6'd18,
+          SETONI = 6'd19,
+          SETON = 6'd20,
+          SETZERO = 6'd21,
+          SETONE = 6'd22,
+          REGREG1 = 6'd23,
+          REGREG2 = 6'd24,
+          FENCE = 6'd25,
+          FENCEI = 6'd26,
+          ECALL = 6'd27,
+          PRINT = 6'd28,
+          READ1 = 6'd29,
+          READ2 = 6'd30,
+          EXIT = 6'd31,
+          EBREAK = 6'd32,
+          CSSRW = 6'd33,
+          CSRRS = 6'd34,
+          CSRRC = 6'd35,
+          CSRRWI = 6'd36,
+          CSRRSI = 6'd37,
+          CSRRCI = 6'd38,
+          RESETA = 6'd39,
+          INCREMENTPC = 6'd40,
+          RESETB = 6'd41;
 
 reg [5:0]STATE, NEXT_STATE;
 
@@ -188,7 +188,7 @@ begin
 
 	WAIT1:
 	begin
-		NEXT_STATE = WAIT2;//(counter < 27'd10000000)? WAIT1 : WAIT2;
+		NEXT_STATE = (counter < 27'd10000000)? WAIT1 : WAIT2;
 	end
 
 	WAIT2:
@@ -313,7 +313,10 @@ begin
 
 	SETON:
 	begin
-		NEXT_STATE = (instruction[14:12] == 3'b010 && alu_status[1] == 1'b1 || instruction[14:12] == 3'b011 && alu_status[2] == 1'b1)? SETONE : SETZERO;
+		if (counter < 27'd2)
+			NEXT_STATE = SETON;
+		else
+			NEXT_STATE = (instruction[14:12] == 3'b010 && alu_status[1] == 1'b1 || instruction[14:12] == 3'b011 && alu_status[2] == 1'b1)? SETONE : SETZERO;
 	end
 
 	SETZERO:
@@ -328,7 +331,7 @@ begin
 
 	REGREG1:
 	begin
-		NEXT_STATE = REGREG2;
+		NEXT_STATE = (counter < 27'd2)? REGREG1 : REGREG2;
 	end
 
 	REGREG2:
@@ -362,7 +365,7 @@ begin
 
 	PRINT:
 	begin
-		NEXT_STATE = (counter < 27'd6)? PRINT : RESETA;
+		NEXT_STATE = (counter < 27'd32)? PRINT : RESETA;
 	end
 
 	READ1:
@@ -454,7 +457,7 @@ begin
 		alu_a_mux <= 1'd0;
 		alu_b_mux <= 1'd0;
 		alu_immediate <= 32'd0;
-		alu_op <= 3'd0;
+		alu_op <= 4'd0;
 						 	 
 		memory_wren <= 1'b0;
 		memory_width <= 2'd0;
@@ -488,7 +491,7 @@ begin
 			alu_a_mux <= 1'd0;
 			alu_b_mux <= 1'd0;
 			alu_immediate <= 32'd0;
-			alu_op <= 3'd0;
+			alu_op <= 4'd0;
 								 
 			memory_wren <= 1'b0;
 			memory_width <= 2'd0;
@@ -544,7 +547,7 @@ begin
 			alu_immediate <= {instruction[31:12], 12'd0};
 			alu_a_mux <= 1'b0;
 			alu_b_mux <= 1'b1;
-			alu_op <= 3'd0;                  // add
+			alu_op <= 4'd0;                  // add
 			register_wren <= 1'b1;
 		end
 
@@ -553,7 +556,7 @@ begin
 			alu_a_mux <= 1'b0;
 			alu_b_mux <= 1'b1;
 			alu_immediate <= 32'd4;
-			alu_op <= 3'd0;                   // add
+			alu_op <= 4'd0;                   // add
 			register_address_a <= instruction[11:7];
 			register_wren <= 1'b1;
 			register_mux <= 2'b01;
@@ -572,7 +575,7 @@ begin
 			alu_a_mux <= 1'b0;
 			alu_b_mux <= 1'b1;
 			alu_immediate <= 32'd4;
-			alu_op <= 3'd0;                   // add
+			alu_op <= 4'd0;                   // add
 			register_address_a <= instruction[11:7];
 			register_wren <= 1'b1;
 			register_mux <= 2'b01;
@@ -589,7 +592,7 @@ begin
 			alu_a_mux <= 1'b0;
 			alu_b_mux <= 1'b0;
 			alu_immediate <= {{20{instruction[31]}}, instruction[31:20]};
-			alu_op <= 3'd0;                   // add
+			alu_op <= 4'd0;                   // add
 			programcounter_mux <= 2'b00;
 			programcounter_wren <= 1'd1;
 		end
@@ -617,7 +620,7 @@ begin
 			alu_b_mux <= 1'd0;
 			register_address_b <= instruction[19:15];
 			alu_immediate <= {{20{instruction[31]}}, instruction[31:20]};
-			alu_op <= 3'd0;                   // add
+			alu_op <= 4'd0;                   // add
 
 			memory_mux <= 1'd1;
 			case (instruction[14:12])
@@ -643,7 +646,7 @@ begin
 			alu_b_mux <= 1'd0;
 			register_address_b <= instruction[19:15];
 			alu_immediate <= {{20{instruction[31]}}, instruction[31:25], instruction[11:7]};
-			alu_op <= 3'd0;                   // add
+			alu_op <= 4'd0;                   // add
 
 			register_address_a <= instruction[24:20];
 			memory_wren <= 1'd1;
@@ -667,13 +670,13 @@ begin
 			
 			//alu_op:
 			if (instruction[14:12] == 3'b111)
-				alu_op <= 3'd2;                   // and
+				alu_op <= 4'd2;                   // and
 			else if (instruction[14:12] == 3'b110)
-				alu_op <= 3'd3;                   // or
+				alu_op <= 4'd3;                   // or
 			else if (instruction[14:12] == 3'b100)
-				alu_op <= 3'd4;                   // xor
+				alu_op <= 4'd4;                   // xor
 			else
-				alu_op <= 3'd0;                   // add
+				alu_op <= 4'd0;                   // add
 				
 			register_address_a <= instruction[11:7];
 			result_wren <= 1'd1;
@@ -699,11 +702,11 @@ begin
 			
 			//alu_op:
 			if (instruction[14:12] == 3'b001)
-				alu_op <= 3'd5;                   // sll
+				alu_op <= 4'd5;                   // sll
 			else if (instruction[30] == 1'b1)
-				alu_op <= 3'd7;                   // sra
+				alu_op <= 4'd7;                   // sra
 			else
-				alu_op <= 3'd6;                   // srl
+				alu_op <= 4'd6;                   // srl
 
 			register_address_a <= instruction[11:7];
 			register_wren <= 1'd1;
@@ -733,6 +736,7 @@ begin
 			alu_b_mux <= 1'd0;
 			register_address_a <= instruction[19:15];
 			register_address_b <= instruction[24:20];
+			counter <= counter + 27'd1;
 		end
 
 		SETZERO:
@@ -755,19 +759,36 @@ begin
 		begin
 			alu_a_mux <= 1'd1;
 			alu_b_mux <= 1'd0;
+			if (instruction[14:12] == 3'b001 || instruction[14:12] == 3'b101)
+			begin
+				register_address_a <= instruction[24:20];
+				register_address_b <= instruction[19:15];
+			end
+			else
+			begin
 			register_address_a <= instruction[19:15];
 			register_address_b <= instruction[24:20];
+			end
 			
 			case(instruction[14:12])
-				3'b000: alu_op <= (instruction[30] == 1'b1)? 3'd1 : 3'd0;     // sub : add
-				3'b001: alu_op <= 3'd5;                                       // sll
-				3'b100: alu_op <= 3'd4;                                       // xor
-				3'b101: alu_op <= (instruction[30] == 1'b1)? 3'd7 : 3'd6;     // sra : srl
-				3'b110: alu_op <= 3'd3;                                       // or
-				3'b111: alu_op <= 3'd2;                                       // and
+				3'b000:
+				begin
+					if (instruction[31:25] == 7'b0000000)                      // add
+						alu_op <= 4'd0;                                         
+					else if (instruction[31:25] == 7'b0100000)                 // sub
+						alu_op <= 4'd1;
+					else
+						alu_op <= 4'd8;                                         // mul
+				end
+				3'b001: alu_op <= 4'd5;                                       // sll
+				3'b100: alu_op <= 4'd4;                                       // xor
+				3'b101: alu_op <= (instruction[30] == 1'b1)? 4'd7 : 4'd6;     // sra : srl
+				3'b110: alu_op <= 4'd3;                                       // or
+				3'b111: alu_op <= 4'd2;                                       // and
 			endcase
 			
 			result_wren <= 1'd1;
+			counter <= counter + 27'd1;
 		end
 
 		REGREG2:
@@ -802,7 +823,7 @@ begin
 		READ1:
 		begin
 			register_address_a <= 5'd10;
-			alu_immediate <= SW;
+			register_immediate <= SW;
 			register_mux <= 2'b11;
 			register_wren <= 1'd1;
 			counter <= 27'd0;

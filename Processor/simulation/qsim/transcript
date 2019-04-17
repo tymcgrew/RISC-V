@@ -1,72 +1,40 @@
 # do Processor.do
 # ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:30:21 on Apr 15,2019
+# Start time: 23:18:46 on Apr 16,2019
 # vlog -work work Processor.vo 
-# -- Compiling module Processor
+# -- Compiling module ALU
 # -- Compiling module hard_block
 # 
 # Top level modules:
-# 	Processor
-# End time: 02:30:23 on Apr 15,2019, Elapsed time: 0:00:02
+# 	ALU
+# End time: 23:18:46 on Apr 16,2019, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 02:30:23 on Apr 15,2019
-# vlog -work work Waveform.vwf.vt 
-# -- Compiling module Processor_vlg_vec_tst
+# Start time: 23:18:46 on Apr 16,2019
+# vlog -work work WaveformALU.vwf.vt 
+# -- Compiling module ALU_vlg_vec_tst
 # 
 # Top level modules:
-# 	Processor_vlg_vec_tst
-# End time: 02:30:26 on Apr 15,2019, Elapsed time: 0:00:03
+# 	ALU_vlg_vec_tst
+# End time: 23:18:46 on Apr 16,2019, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.Processor_vlg_vec_tst 
-# Start time: 02:30:26 on Apr 15,2019
-# Loading work.Processor_vlg_vec_tst
-# Loading work.Processor
+# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.ALU_vlg_vec_tst 
+# Start time: 23:18:47 on Apr 16,2019
+# Loading work.ALU_vlg_vec_tst
+# Loading work.ALU
 # Loading work.hard_block
 # Loading cycloneive_ver.cycloneive_io_obuf
 # Loading cycloneive_ver.cycloneive_io_ibuf
-# Loading cycloneive_ver.cycloneive_clkctrl
-# Loading cycloneive_ver.cycloneive_mux41
-# Loading cycloneive_ver.cycloneive_ena_reg
 # Loading cycloneive_ver.cycloneive_lcell_comb
-# Loading altera_ver.dffeas
-# Loading cycloneive_ver.cycloneive_ram_block
-# Loading cycloneive_ver.cycloneive_ram_register
-# Loading cycloneive_ver.cycloneive_ram_pulse_generator
 # SDF 10.5b Compiler 2016.10 Oct  5 2016
 # 
 # Loading instances from Processor_v.sdo
-# Loading altera_ver.PRIM_GDFF_LOW
-# ** Warning: Design size of 23791 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
-# Expect performance to be adversely affected.
 # Loading timing data from Processor_v.sdo
 # ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
-#    Time: 0 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst File: Waveform.vwf.vt
+#    Time: 0 ps  Iteration: 0  Instance: /ALU_vlg_vec_tst File: WaveformALU.vwf.vt
 # after#26
-# Simulation time: 0 ps
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:493514 ps, d:493580 ps, 186 ps );
-#    Time: 493580 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\thousands[0] 
-# Simulation time: 0 ps
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:733514 ps, d:733674 ps, 186 ps );
-#    Time: 733674 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\thousands[0] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:733530 ps, d:733708 ps, 186 ps );
-#    Time: 733708 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\tens[3] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:893530 ps, d:893605 ps, 186 ps );
-#    Time: 893605 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\tens[1] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:893473 ps, d:893644 ps, 186 ps );
-#    Time: 893644 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\thousands[3] 
-# Simulation time: 0 ps
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:1133530 ps, d:1133641 ps, 186 ps );
-#    Time: 1133641 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\tens[0] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:1133530 ps, d:1133715 ps, 186 ps );
-#    Time: 1133715 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\tens[1] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:1393530 ps, d:1393605 ps, 186 ps );
-#    Time: 1393605 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\tens[1] 
-# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:1393473 ps, d:1393644 ps, 186 ps );
-#    Time: 1393644 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\thousands[3] 
-# Simulation time: 0 ps
-# ** Note: $finish    : Waveform.vwf.vt(103)
-#    Time: 2 us  Iteration: 0  Instance: /Processor_vlg_vec_tst
-# End time: 02:30:39 on Apr 15,2019, Elapsed time: 0:00:13
-# Errors: 9, Warnings: 1
+# ** Note: $finish    : WaveformALU.vwf.vt(51)
+#    Time: 1 us  Iteration: 0  Instance: /ALU_vlg_vec_tst
+# End time: 23:18:47 on Apr 16,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

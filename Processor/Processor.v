@@ -76,7 +76,7 @@ module Processor(SW,
 	wire alu_a_mux;
 	wire alu_b_mux;
 	wire [31:0]alu_immediate;
-	wire [2:0]alu_op;
+	wire [3:0]alu_op;
 	
 	wire memory_wren;
 	wire [1:0]memory_width;
@@ -108,7 +108,7 @@ module Processor(SW,
 						 clk,
 						 rst,
 						 
-						 {{16{SW[15]}},SW},
+						 {{16{SW[15]}},SW[15:0]},
 						 LEDG0,
 						 KEY0,
 						 register_out_b,
