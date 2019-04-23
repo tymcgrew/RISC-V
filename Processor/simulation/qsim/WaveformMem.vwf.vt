@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "04/15/2019 01:30:53"
+// Generated on "04/22/2019 22:45:01"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          Memory
 // 
@@ -33,7 +33,6 @@ module Memory_vlg_vec_tst();
 reg [9:0] address;
 reg clk;
 reg [31:0] in;
-reg sign;
 reg [1:0] width;
 reg wren;
 // wires                                               
@@ -46,7 +45,6 @@ Memory i1 (
 	.clk(clk),
 	.in(in),
 	.out(out),
-	.sign(sign),
 	.width(width),
 	.wren(wren)
 );
@@ -91,10 +89,6 @@ end
 initial
 begin
 	address[4] = 1'b0;
-	address[4] = #30000 1'b1;
-	address[4] = #70000 1'b0;
-	address[4] = #40000 1'b1;
-	address[4] = #30000 1'b0;
 end 
 // address[ 3 ]
 initial
@@ -115,30 +109,26 @@ end
 initial
 begin
 	address[0] = 1'b0;
+	address[0] = #10000 1'b1;
+	address[0] = #240000 1'b0;
 end 
 
 // wren
 initial
 begin
 	wren = 1'b0;
-	wren = #30000 1'b1;
-	wren = #70000 1'b0;
-end 
-
-// sign
-initial
-begin
-	sign = 1'b0;
+	wren = #10000 1'b1;
+	wren = #240000 1'b0;
 end 
 // width[ 1 ]
 initial
 begin
-	width[1] = 1'b1;
+	width[1] = 1'b0;
 end 
 // width[ 0 ]
 initial
 begin
-	width[0] = 1'b1;
+	width[0] = 1'b0;
 end 
 // in[ 31 ]
 initial
@@ -264,47 +254,57 @@ end
 initial
 begin
 	in[7] = 1'b0;
+	in[7] = #10000 1'b1;
+	in[7] = #240000 1'b0;
 end 
 // in[ 6 ]
 initial
 begin
 	in[6] = 1'b0;
+	in[6] = #10000 1'b1;
+	in[6] = #240000 1'b0;
 end 
 // in[ 5 ]
 initial
 begin
 	in[5] = 1'b0;
+	in[5] = #10000 1'b1;
+	in[5] = #240000 1'b0;
 end 
 // in[ 4 ]
 initial
 begin
 	in[4] = 1'b0;
+	in[4] = #10000 1'b1;
+	in[4] = #240000 1'b0;
 end 
 // in[ 3 ]
 initial
 begin
 	in[3] = 1'b0;
+	in[3] = #10000 1'b1;
+	in[3] = #240000 1'b0;
 end 
 // in[ 2 ]
 initial
 begin
 	in[2] = 1'b0;
-	in[2] = #30000 1'b1;
-	in[2] = #70000 1'b0;
+	in[2] = #10000 1'b1;
+	in[2] = #240000 1'b0;
 end 
 // in[ 1 ]
 initial
 begin
 	in[1] = 1'b0;
-	in[1] = #30000 1'b1;
-	in[1] = #70000 1'b0;
+	in[1] = #10000 1'b1;
+	in[1] = #240000 1'b0;
 end 
 // in[ 0 ]
 initial
 begin
 	in[0] = 1'b0;
-	in[0] = #30000 1'b1;
-	in[0] = #70000 1'b0;
+	in[0] = #10000 1'b1;
+	in[0] = #240000 1'b0;
 end 
 endmodule
 

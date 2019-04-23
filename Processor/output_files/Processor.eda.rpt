@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Processor
-Tue Apr 16 23:18:44 2019
+Tue Apr 23 17:23:33 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -37,9 +37,9 @@ agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Apr 16 23:18:44 2019 ;
+; EDA Netlist Writer Status ; Successful - Tue Apr 23 17:23:33 2019 ;
 ; Revision Name             ; Processor                             ;
-; Top-level Entity Name     ; ALU                                   ;
+; Top-level Entity Name     ; Cache                                 ;
 ; Family                    ; Cyclone IV E                          ;
 ; Simulation Files Creation ; Successful                            ;
 +---------------------------+---------------------------------------+
@@ -103,7 +103,7 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: devices manufactured by Intel and sold by Intel or its 
     Info: authorized distributors.  Please refer to the applicable 
     Info: agreement for further details.
-    Info: Processing started: Tue Apr 16 23:18:42 2019
+    Info: Processing started: Tue Apr 23 17:23:27 2019
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="M:/ECE 289/Processor/simulation/qsim/" Processor -c Processor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file Processor_7_1200mv_85c_slow.vo in folder "M:/ECE 289/Processor/simulation/qsim//" for EDA simulation tool
@@ -115,9 +115,9 @@ Info (204019): Generated file Processor_7_1200mv_0c_v_slow.sdo in folder "M:/ECE
 Info (204019): Generated file Processor_min_1200mv_0c_v_fast.sdo in folder "M:/ECE 289/Processor/simulation/qsim//" for EDA simulation tool
 Info (204019): Generated file Processor_v.sdo in folder "M:/ECE 289/Processor/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4681 megabytes
-    Info: Processing ended: Tue Apr 16 23:18:45 2019
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 4685 megabytes
+    Info: Processing ended: Tue Apr 23 17:23:33 2019
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:02
 
 

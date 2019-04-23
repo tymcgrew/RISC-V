@@ -82,6 +82,7 @@ module Processor(SW,
 	wire [1:0]memory_width;
 	wire memory_sign;
 	wire memory_mux;
+	wire cacheHit;
 	
 	wire programcounter_wren;
 	wire [1:0]programcounter_mux;
@@ -137,6 +138,7 @@ module Processor(SW,
 						 memory_width,
 						 memory_sign,
 						 memory_mux,
+						 cacheHit,
 						 
 						 
 						 // programcounter
@@ -190,14 +192,16 @@ module Processor(SW,
 	
 	
 	assign memory_address = (memory_mux)? alu_out[9:0] : programcounter_out[9:0];
-	Memory memory(
+	Cache cache(
 					  clk,
+					  rst,
 					  memory_address,
 					  register_out_a,          // memory_in
 					  memory_wren,
 					  memory_width,
 					  memory_sign,
-					  memory_out
+					  memory_out,
+					  cacheHit
 					  );
 
 	

@@ -1,0 +1,51 @@
+module Cache(clk, rst, address, in, wren, width, sign, out, done);
+
+input clk, rst;
+input [31:0]address;
+input [31:0]in;
+input wren, sign;
+input [1:0]width;
+output [31:0]out;
+reg [31:0]out;
+output done;
+reg done;
+
+reg [63:0]cache0;
+reg [63:0]cache1;
+reg [63:0]cache2;
+reg [63:0]cache3;
+reg [63:0]cache4;
+reg [63:0]cache5;
+reg [63:0]cache6;
+reg [63:0]cache7;
+
+reg [31:0]prevAddress;
+
+
+
+always@(posedge clk or nedgedge rst)
+begin
+
+	if (rst == 1'b0)
+
+
+
+
+
+
+
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
+//Memory memory(clk, address, in, wren, width, sign, out);
