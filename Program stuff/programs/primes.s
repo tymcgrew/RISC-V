@@ -7,6 +7,7 @@
 		li t2, 1                     #t2 is i
 		outerloop:
 
+			ecall
 			li t3, 1                  #t3 is j
 			innerloop:
 				mul t4, t2, t3          #t4 = i*j
@@ -24,6 +25,12 @@
 		j loop
 
 	print:
+	addi sp, sp, 4
+	sw ra, 0, sp
+
 	mv a1, t0
 	ecall
+	
+	lw ra, 0, sp
+	addi sp, sp, -4
 	ret

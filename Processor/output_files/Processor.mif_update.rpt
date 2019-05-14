@@ -1,5 +1,5 @@
 MIF/HEX Update report for Processor
-Mon Apr 22 22:02:39 2019
+Tue May 14 01:00:36 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -36,7 +36,7 @@ agreement for further details.
 +---------------------------------------------------------------+
 ; MIF/HEX Update Summary                                        ;
 +-----------------------+---------------------------------------+
-; MIF/HEX Update Status ; Successful - Mon Apr 22 22:02:39 2019 ;
+; MIF/HEX Update Status ; Successful - Tue May 14 01:00:36 2019 ;
 ; Revision Name         ; Processor                             ;
 ; Top-level Entity Name ; Processor                             ;
 ; Family                ; Cyclone IV E                          ;
@@ -62,7 +62,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime MIF/HEX Update
     Info: Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
-    Info: Processing started: Mon Apr 22 22:02:36 2019
+    Info: Processing started: Tue May 14 01:00:33 2019
 Info: Command: quartus_cdb Processor -c Processor --update_mif
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (39024): Processed the following Memory Initialization File(s)
@@ -71,8 +71,8 @@ Info (39024): Processed the following Memory Initialization File(s)
     Info (39025): Processed Memory Initialization File M:/ECE 289/Processor/MemoryModule2.mif File: M:/ECE 289/Processor/MemoryModule2.mif Line: 0
     Info (39025): Processed Memory Initialization File M:/ECE 289/Processor/MemoryModule3.mif File: M:/ECE 289/Processor/MemoryModule3.mif Line: 0
 Info: Quartus Prime MIF/HEX Update was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4830 megabytes
-    Info: Processing ended: Mon Apr 22 22:02:39 2019
+    Info: Peak virtual memory: 4837 megabytes
+    Info: Processing ended: Tue May 14 01:00:36 2019
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:01
 

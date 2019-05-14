@@ -4,6 +4,7 @@ module Control(
 					
 					SW,
 					LEDG0,
+					LEDG1,
 					KEY0,
 					register_out_b,
 					alu_status,
@@ -31,6 +32,8 @@ module Control(
 					memory_sign,
 					memory_mux,
 					cacheHit,
+					
+					interrupt,
 						 
 						 
 					// programcounter
@@ -58,6 +61,8 @@ module Control(
 
 	output LEDG0;
 	reg LEDG0;
+	output LEDG1;
+	reg LEDG1;
 
 
 	output [5:0]STATE;
@@ -98,6 +103,8 @@ module Control(
 	output memory_mux;
 	reg memory_mux;
 	input cacheHit;
+	
+	input interrupt;
 		
 	output programcounter_wren;
 	reg programcounter_wren;
@@ -116,50 +123,56 @@ module Control(
 	//                  -- State & Reg Declarations  --                   
 	//------------------------------------------------------------------
 
-	reg [26:0]counter;
+	reg [31:0]counter;
 
-	parameter START = 6'd0,
-				 WAIT1 = 6'd1,
-				 WAIT2 = 6'd2,
-				 FETCH = 6'd3,
-				 DECODE = 6'd4,
-				 LUI = 6'd5,
-				 AUIPC = 6'd6,
-				 JAL1 = 6'd7,
-				 JAL2 = 6'd8,
-				 JALR1 = 6'd9,
-				 JALR2 = 6'd10,
-				 JALR3 = 6'd11,
-				 BRANCH1 = 6'd12,
-				 BRANCH2 = 6'd13,
-				 LOAD = 6'd14,
-				 STORE = 6'd15,
-				 REGI1 = 6'd16,
-				 REGI2 = 6'd17,
-				 REGISHIFT = 6'd18,
-				 SETONI = 6'd19,
-				 SETON = 6'd20,
-				 SETZERO = 6'd21,
-				 SETONE = 6'd22,
-				 REGREG1 = 6'd23,
-				 REGREG2 = 6'd24,
-				 FENCE = 6'd25,
-				 FENCEI = 6'd26,
-				 ECALL = 6'd27,
-				 PRINT = 6'd28,
-				 READ1 = 6'd29,
-				 READ2 = 6'd30,
-				 EXIT = 6'd31,
-				 EBREAK = 6'd32,
-				 CSSRW = 6'd33,
-				 CSRRS = 6'd34,
-				 CSRRC = 6'd35,
-				 CSRRWI = 6'd36,
-				 CSRRSI = 6'd37,
-				 CSRRCI = 6'd38,
-				 RESETA = 6'd39,
+	parameter START       = 6'd0,
+				 WAIT1       = 6'd1,
+				 WAIT2       = 6'd2,
+				 FETCH       = 6'd3,
+				 DECODE      = 6'd4,
+				 LUI         = 6'd5,
+				 AUIPC       = 6'd6,
+				 JAL1        = 6'd7,
+				 JAL2        = 6'd8,
+				 JALR1       = 6'd9,
+				 JALR2       = 6'd10,
+				 JALR3       = 6'd11,
+				 BRANCH1     = 6'd12,
+				 BRANCH2     = 6'd13,
+				 LOAD        = 6'd14,
+				 STORE1      = 6'd15,
+				 STORE2      = 6'd46,
+				 REGI1       = 6'd16,
+				 REGI2       = 6'd17,
+				 REGISHIFT   = 6'd18,
+				 SETONI      = 6'd19,
+				 SETON       = 6'd20,
+				 SETZERO     = 6'd21,
+				 SETONE      = 6'd22,
+				 REGREG1     = 6'd23,
+				 REGREG2     = 6'd24,
+				 FENCE       = 6'd25,
+				 FENCEI      = 6'd26,
+				 ECALL       = 6'd27,
+				 PRINT       = 6'd28,
+				 READ1       = 6'd29,
+				 READ2       = 6'd30,
+				 EXIT        = 6'd31,
+				 EBREAK      = 6'd32,
+				 CSSRW       = 6'd33,
+				 CSRRS       = 6'd34,
+				 CSRRC       = 6'd35,
+				 CSRRWI      = 6'd36,
+				 CSRRSI      = 6'd37,
+				 CSRRCI      = 6'd38,
+				 RESETA      = 6'd39,
 				 INCREMENTPC = 6'd40,
-				 RESETB = 6'd41;
+				 RESETB      = 6'd41,
+				 INTERRUPT1  = 6'd42,
+				 INTERRUPT2  = 6'd43,
+				 INTERRUPT3  = 6'd44,
+				 INTERRUPT4  = 6'd47,
+				 ERROR       = 6'd45;
 
 	reg [5:0]STATE, NEXT_STATE;
 
@@ -190,7 +203,7 @@ module Control(
 
 		WAIT1:
 		begin
-			NEXT_STATE = (counter < 27'd10000000)? WAIT1 : WAIT2;
+			NEXT_STATE = (counter < 32'd10000000)? WAIT1 : WAIT2;
 		end
 
 		WAIT2:
@@ -200,32 +213,45 @@ module Control(
 
 		FETCH:
 		begin
-			NEXT_STATE = (counter < 27'd3)? FETCH : DECODE;
+			NEXT_STATE = (counter < 32'd3)? FETCH : DECODE;
 		end
 
 		DECODE:
 		begin
-			case (instruction[6:0])
-				7'b0110111: NEXT_STATE = LUI;
-				7'b0010111: NEXT_STATE = AUIPC;
-				7'b1101111: NEXT_STATE = JAL1;
-				7'b1100111: NEXT_STATE = JALR1;
-				7'b1100011: NEXT_STATE = BRANCH1;
-				7'b0000011: NEXT_STATE = LOAD;
-				7'b0100011: NEXT_STATE = STORE;
-				7'b0010011:
-				begin
-					if (instruction[14:12] == 3'b111 || instruction[14:12] == 3'b110 || instruction[14:12] == 3'b100 || instruction[14:12] == 3'b000)
-						NEXT_STATE = REGI1;
-					else if (instruction[14:12] == 3'b001 || instruction[14:12] == 3'b101 || instruction[14:12] == 3'b111)
-						NEXT_STATE = REGISHIFT;
-					else
-						NEXT_STATE = SETONI;
-				end
-				7'b0110011: NEXT_STATE = (instruction[14:12] == 3'b010 || instruction[14:12] == 3'b011)? SETON : REGREG1;
-				7'b1110011: NEXT_STATE = (instruction[19:12] == 8'b00000000 && instruction[20] == 1'b0)? ECALL : EXIT;
-				default: NEXT_STATE = EXIT;
-			endcase
+			if ( 
+			   interrupt == 1'b1 && 
+				!(instruction[6:0] == 7'b0010011 && instruction[11:7]  == 5'd2) &&      // instruction is ADDI and rd is x2(stack pointer)
+				!(instruction[6:0] == 7'b0100011 && instruction[19:15] == 5'd2) &&      // instruction is SW and base address is x2(stack pointer)
+				!(instruction[6:0] == 7'b0000011 && instruction[11:7]  == 5'd1) &&      // instruction is LW and rd is x1(ra)
+				!(instruction[6:0] == 7'b1100111 && instruction[19:15] == 5'd1)         // instruction is JALR and dest is x1(ra)
+				)
+				NEXT_STATE = INTERRUPT1;
+			
+			else
+			begin
+				case (instruction[6:0])
+					7'b0110111: NEXT_STATE = LUI;
+					7'b0010111: NEXT_STATE = AUIPC;
+					7'b1101111: NEXT_STATE = JAL1;
+					7'b1100111: NEXT_STATE = JALR1;
+					7'b1100011: NEXT_STATE = BRANCH1;
+					7'b0000011: NEXT_STATE = LOAD;
+					7'b0100011: NEXT_STATE = STORE1;
+					7'b0010011:
+					begin
+						if (instruction[14:12] == 3'b111 || instruction[14:12] == 3'b110 || instruction[14:12] == 3'b100 || instruction[14:12] == 3'b000)
+							NEXT_STATE = REGI1;
+						else if (instruction[14:12] == 3'b001 || instruction[14:12] == 3'b101 || instruction[14:12] == 3'b111)
+							NEXT_STATE = REGISHIFT;
+						else
+							NEXT_STATE = SETONI;
+					end
+					7'b0110011: NEXT_STATE = (instruction[14:12] == 3'b010 || instruction[14:12] == 3'b011)? SETON : REGREG1;
+					7'b1110011: NEXT_STATE = (instruction[19:12] == 8'b00000000 && instruction[20] == 1'b0)? ECALL : EXIT;
+					default: NEXT_STATE = ERROR;
+				endcase
+			end
+
 		end
 
 		LUI:
@@ -265,7 +291,7 @@ module Control(
 
 		BRANCH1:
 		begin
-			if (counter < 27'd2)
+			if (counter < 32'd2)
 				NEXT_STATE = BRANCH1;
 			else
 				NEXT_STATE = (
@@ -286,19 +312,24 @@ module Control(
 		LOAD:
 		begin
 			if (cacheHit == 1'b1)
-				NEXT_STATE = (counter < 27'd4)? LOAD : RESETA;
+				NEXT_STATE = (counter < 32'd4)? LOAD : RESETA;
 			else
-				NEXT_STATE = (counter < 27'd5)? LOAD : RESETA;
+				NEXT_STATE = (counter < 32'd5)? LOAD : RESETA;
 		end
 
-		STORE:
+		STORE1:
 		begin
-			NEXT_STATE = (counter < 27'd4)? STORE : RESETA;
+			NEXT_STATE = (counter < 32'd4)? STORE1 : STORE2;
+		end
+		
+		STORE2:
+		begin
+			NEXT_STATE = (counter < 32'd8)? STORE2 : RESETA;
 		end
 
 		REGI1:
 		begin
-			NEXT_STATE = (counter < 27'd2)? REGI1 : REGI2;
+			NEXT_STATE = (counter < 32'd2)? REGI1 : REGI2;
 		end
 
 		REGI2:
@@ -308,17 +339,17 @@ module Control(
 		
 		REGISHIFT:
 		begin
-			NEXT_STATE = (counter < 27'd2)? REGISHIFT : RESETA;
+			NEXT_STATE = (counter < 32'd2)? REGISHIFT : RESETA;
 		end
 
 		SETONI:
 		begin
-			NEXT_STATE = (counter < 27'd2)? SETONI : RESETA;
+			NEXT_STATE = (counter < 32'd2)? SETONI : RESETA;
 		end
 
 		SETON:
 		begin
-			if (counter < 27'd2)
+			if (counter < 32'd2)
 				NEXT_STATE = SETON;
 			else
 				NEXT_STATE = (instruction[14:12] == 3'b010 && alu_status[1] == 1'b1 || instruction[14:12] == 3'b011 && alu_status[2] == 1'b1)? SETONE : SETZERO;
@@ -336,7 +367,7 @@ module Control(
 
 		REGREG1:
 		begin
-			NEXT_STATE = (counter < 27'd2)? REGREG1 : REGREG2;
+			NEXT_STATE = (counter < 32'd2)? REGREG1 : REGREG2;
 		end
 
 		REGREG2:
@@ -356,7 +387,7 @@ module Control(
 
 		ECALL:
 		begin
-			if (counter < 27'd2)
+			if (counter < 32'd2)
 				NEXT_STATE = ECALL;
 			else
 			begin
@@ -370,7 +401,7 @@ module Control(
 
 		PRINT:
 		begin
-			NEXT_STATE = (counter < 27'd32)? PRINT : RESETA;
+			NEXT_STATE = (counter < 32'd32)? PRINT : RESETA;
 		end
 
 		READ1:
@@ -380,7 +411,7 @@ module Control(
 
 		READ2:
 		begin
-			NEXT_STATE = (counter < 27'd10000000)? READ2 : RESETA;
+			NEXT_STATE = (counter < 32'd10000000)? READ2 : RESETA;
 		end
 
 		EXIT:
@@ -437,10 +468,35 @@ module Control(
 		begin
 			NEXT_STATE = FETCH;
 		end
+		
+		INTERRUPT1:
+		begin
+			NEXT_STATE = (counter < 32'd2)? INTERRUPT1 : INTERRUPT2;
+		end
+		
+		INTERRUPT2:
+		begin
+			NEXT_STATE = INTERRUPT3;
+		end
+		
+		INTERRUPT3:
+		begin
+			NEXT_STATE = (counter < 32'd4)? INTERRUPT3 : INTERRUPT4;
+		end
+		
+		INTERRUPT4:
+		begin
+			NEXT_STATE = (counter < 32'd8)? INTERRUPT4 : RESETB;
+		end
+		
+		ERROR:
+		begin
+			NEXT_STATE = ERROR;
+		end
 
 		default:
 		begin
-			NEXT_STATE = EXIT;
+			NEXT_STATE = ERROR;
 		end
 
 		endcase
@@ -478,6 +534,7 @@ module Control(
 			out_update <= 1'd0;
 			
 			LEDG0 <= 1'b0;
+			LEDG1 <= 1'b0;
 		end
 
 		else
@@ -512,16 +569,17 @@ module Control(
 				out_update <= 1'd0;
 						
 				LEDG0 <= 1'b0;
+				LEDG1 <= 1'b0;
 			end
 
 			WAIT1:
 			begin
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
 			end
 
 			WAIT2:
 			begin
-				counter <= 27'd0;
+				counter <= 32'd0;
 			end
 
 			FETCH:
@@ -529,13 +587,13 @@ module Control(
 				memory_width <= 2'b11;             // word
 				memory_mux <= 1'b0;
 				instructionregister_wren <= 1'b1;
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
 			end
 
 			DECODE:
 			begin
 				instructionregister_wren <= 1'b0;
-				counter <= 27'd0;
+				counter <= 32'd0;
 			end
 
 			LUI:
@@ -608,7 +666,7 @@ module Control(
 				register_address_b <= instruction[24:20];
 				alu_a_mux <= 1'd1;
 				alu_b_mux <= 1'd0;
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
 			end
 
 			BRANCH2:
@@ -621,8 +679,8 @@ module Control(
 
 			LOAD:
 			begin
-				alu_a_mux <= 1'd0;
-				alu_b_mux <= 1'd0;
+				alu_a_mux <= 1'b0;
+				alu_b_mux <= 1'b0;
 				register_address_b <= instruction[19:15];
 				alu_immediate <= {{20{instruction[31]}}, instruction[31:20]};
 				alu_op <= 4'd0;                   // add
@@ -642,10 +700,10 @@ module Control(
 				register_wren <= 1'd1;
 				register_mux <= 2'b00;
 
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
 			end
 
-			STORE:
+			STORE1:
 			begin
 				alu_a_mux <= 1'd0;
 				alu_b_mux <= 1'd0;
@@ -654,8 +712,7 @@ module Control(
 				alu_op <= 4'd0;                   // add
 
 				register_address_a <= instruction[24:20];
-				memory_wren <= 1'd1;
-				memory_mux <= 1'd1;
+				memory_mux <= 1'b1;
 				case (instruction[14:12])
 					3'b000: memory_width <= 2'b00;     // byte
 					3'b001: memory_width <= 2'b01;     // half
@@ -663,7 +720,14 @@ module Control(
 					default: memory_width <= 2'b11;
 				endcase
 
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
+			end
+			
+			STORE2:
+			begin
+				memory_wren <= 1'b1;
+				
+				counter <= counter + 32'd1;
 			end
 
 			REGI1:   // ANDI, ORI, XORI, ADDI
@@ -688,7 +752,7 @@ module Control(
 				register_mux <= 2'b11;
 				register_immediate <= 32'd0;
 				
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
 			end
 			
 			REGI2:
@@ -717,7 +781,7 @@ module Control(
 				register_wren <= 1'd1;
 				register_mux <= 2'b01;
 
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
 			end
 
 			SETONI:  // SLTI, SLTIU
@@ -732,7 +796,7 @@ module Control(
 				register_mux <= 2'b11;
 				register_wren <= 1'd1;
 
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
 			end
 
 			SETON:
@@ -741,7 +805,7 @@ module Control(
 				alu_b_mux <= 1'd0;
 				register_address_a <= instruction[19:15];
 				register_address_b <= instruction[24:20];
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
 			end
 
 			SETZERO:
@@ -793,12 +857,12 @@ module Control(
 				endcase
 				
 				result_wren <= 1'd1;
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
 			end
 
 			REGREG2:
 			begin
-				result_wren <= 1'd0;
+				result_wren <= 1'b0;
 				register_address_a <= instruction[11:7];
 				register_wren <= 1'd1;
 				register_mux <= 2'b01;
@@ -814,7 +878,7 @@ module Control(
 
 			ECALL:
 			begin
-				counter<= counter + 27'd1;
+				counter<= counter + 32'd1;
 				register_address_b <= 5'd10;              //a0
 			end
 
@@ -822,7 +886,7 @@ module Control(
 			begin
 				register_address_a <= 5'd11;
 				out_update <= 1'd1;
-				counter <= counter + 27'd1;
+				counter <= counter + 32'd1;
 			end
 
 			READ1:
@@ -831,18 +895,19 @@ module Control(
 				register_immediate <= SW;
 				register_mux <= 2'b11;
 				register_wren <= 1'd1;
-				counter <= 27'd0;
+				counter <= 32'd0;
 			end
 
 			READ2:
 			begin
-				register_wren <= 1'd0;
-				counter <= counter + 27'd1;
+				register_wren <= 1'b0;
+				counter <= counter + 32'd1;
 			end
 
 			EXIT:
 			begin
 				LEDG0 <= 1'b1;
+				LEDG1 <= 1'b0;
 			end
 
 			EBREAK:
@@ -875,13 +940,13 @@ module Control(
 
 			RESETA:
 			begin
-				counter <= 27'd0;
-				register_wren <= 1'd0;
-				result_wren <= 1'd0;
-				memory_wren <= 1'd0;
-				programcounter_wren <= 1'd0;
-				instructionregister_wren <= 1'd0;
-				out_update <= 1'd0;
+				counter <= 32'd0;
+				register_wren <= 1'b0;
+				result_wren <= 1'b0;
+				memory_wren <= 1'b0;
+				programcounter_wren <= 1'b0;
+				instructionregister_wren <= 1'b0;
+				out_update <= 1'b0;
 			end
 
 			INCREMENTPC:
@@ -894,13 +959,64 @@ module Control(
 
 			RESETB:
 			begin
-				counter <= 27'd0;
-				register_wren <= 1'd0;
-				result_wren <= 1'd0;
-				memory_wren <= 1'd0;
-				programcounter_wren <= 1'd0;
-				instructionregister_wren <= 1'd0;
-				out_update <= 1'd0;
+				counter <= 32'd0;
+				register_wren <= 1'b0;
+				result_wren <= 1'b0;
+				memory_wren <= 1'b0;
+				programcounter_wren <= 1'b0;
+				instructionregister_wren <= 1'b0;
+				out_update <= 1'b0;
+			end
+			
+			INTERRUPT1:
+			begin
+				alu_a_mux <= 1'b0;
+				alu_immediate <= 32'd0;
+				alu_b_mux <= 1'b1;
+				alu_op <= 4'd0;                  // add
+				register_address_a <= 5'd1;      // ra
+				register_wren <= 1'b1;
+				register_mux <= 2'b01;
+				
+				counter <= counter + 32'd1;
+			end
+			
+			INTERRUPT2:
+			begin
+				register_wren <= 1'b0;
+				
+				programcounter_wren <= 1'b1;
+				programcounter_mux <= 2'b01;
+				programcounter_immediate <= 32'd200;
+				
+				counter <= 32'd0;
+			end
+			
+			INTERRUPT3:
+			begin
+				programcounter_wren <= 1'b0;
+				
+				alu_a_mux <= 1'b1;
+				alu_b_mux <= 1'b0;
+				register_address_a <= 5'd0;      
+				register_address_b <= 5'd3;      // gp
+				alu_op <= 4'd0;                  // add
+				memory_mux <= 1'b1;
+				
+				counter <= counter + 32'd1;
+			end
+			
+			INTERRUPT4:
+			begin
+				memory_wren <= 1'b1;
+				
+				counter <= counter + 32'b1;
+			end
+			
+			ERROR:
+			begin
+				LEDG0 <= 1'b0;
+				LEDG1 <= 1'b1;
 			end
 
 			endcase

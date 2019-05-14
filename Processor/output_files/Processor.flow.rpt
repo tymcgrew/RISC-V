@@ -1,5 +1,5 @@
 Flow report for Processor
-Tue Apr 23 17:45:58 2019
+Tue May 14 01:04:33 2019
 Quartus Prime Version 16.1.0 Build 196 10/24/2016 SJ Lite Edition
 
 
@@ -41,20 +41,20 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Successful - Tue Apr 23 17:45:44 2019       ;
+; Flow Status                        ; Successful - Tue May 14 01:04:22 2019       ;
 ; Quartus Prime Version              ; 16.1.0 Build 196 10/24/2016 SJ Lite Edition ;
 ; Revision Name                      ; Processor                                   ;
 ; Top-level Entity Name              ; Processor                                   ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; 10,288 / 114,480 ( 9 % )                    ;
-;     Total combinational functions  ; 10,234 / 114,480 ( 9 % )                    ;
-;     Dedicated logic registers      ; 1,725 / 114,480 ( 2 % )                     ;
-; Total registers                    ; 1725                                        ;
-; Total pins                         ; 379 / 529 ( 72 % )                          ;
+; Total logic elements               ; 12,055 / 114,480 ( 11 % )                   ;
+;     Total combinational functions  ; 11,546 / 114,480 ( 10 % )                   ;
+;     Dedicated logic registers      ; 2,768 / 114,480 ( 2 % )                     ;
+; Total registers                    ; 2768                                        ;
+; Total pins                         ; 402 / 529 ( 76 % )                          ;
 ; Total virtual pins                 ; 0                                           ;
-; Total memory bits                  ; 2,048 / 3,981,312 ( < 1 % )                 ;
+; Total memory bits                  ; 37,760 / 3,981,312 ( < 1 % )                ;
 ; Embedded Multiplier 9-bit elements ; 6 / 532 ( 1 % )                             ;
 ; Total PLLs                         ; 0 / 4 ( 0 % )                               ;
 +------------------------------------+---------------------------------------------+
@@ -65,37 +65,67 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/23/2019 17:43:42 ;
+; Start date & time ; 05/14/2019 01:02:14 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Processor           ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                                        ;
-+-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id ;
-+-------------------------------------+----------------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 238177198224456.155605582100236        ; --            ; --          ; --         ;
-; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --          ; --         ;
-; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --          ; --         ;
-; MISC_FILE                           ; MemoryModule0_bb.v                     ; --            ; --          ; --         ;
-; MISC_FILE                           ; MemoryModule0_syn.v                    ; --            ; --          ; --         ;
-; MISC_FILE                           ; MemoryModule1_bb.v                     ; --            ; --          ; --         ;
-; MISC_FILE                           ; MemoryModule1_syn.v                    ; --            ; --          ; --         ;
-; MISC_FILE                           ; MemoryModule2_bb.v                     ; --            ; --          ; --         ;
-; MISC_FILE                           ; MemoryModule2_syn.v                    ; --            ; --          ; --         ;
-; MISC_FILE                           ; MemoryModule3_bb.v                     ; --            ; --          ; --         ;
-; MISC_FILE                           ; MemoryModule3_syn.v                    ; --            ; --          ; --         ;
-; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                   ; --            ; --          ; --         ;
-; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
-; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
-; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; --          ; Top        ;
-; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                    ; --            ; --          ; --         ;
-; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --            ; --          ; --         ;
-; PROJECT_OUTPUT_DIRECTORY            ; output_files                           ; --            ; --          ; --         ;
-; SMART_RECOMPILE                     ; On                                     ; Off           ; --          ; --         ;
-+-------------------------------------+----------------------------------------+---------------+-------------+------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                                                                                                                                     ;
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+------------------+
+; Assignment Name                     ; Value                                                                                                                                                         ; Default Value ; Entity Name ; Section Id       ;
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+------------------+
+; COMPILER_SIGNATURE_ID               ; 238177198226203.155781013413484                                                                                                                               ; --            ; --          ; --               ;
+; ENABLE_SIGNALTAP                    ; On                                                                                                                                                            ; --            ; --          ; --               ;
+; MAX_CORE_JUNCTION_TEMP              ; 85                                                                                                                                                            ; --            ; --          ; --               ;
+; MIN_CORE_JUNCTION_TEMP              ; 0                                                                                                                                                             ; --            ; --          ; --               ;
+; MISC_FILE                           ; MemoryModule0_bb.v                                                                                                                                            ; --            ; --          ; --               ;
+; MISC_FILE                           ; MemoryModule0_syn.v                                                                                                                                           ; --            ; --          ; --               ;
+; MISC_FILE                           ; MemoryModule1_bb.v                                                                                                                                            ; --            ; --          ; --               ;
+; MISC_FILE                           ; MemoryModule1_syn.v                                                                                                                                           ; --            ; --          ; --               ;
+; MISC_FILE                           ; MemoryModule2_bb.v                                                                                                                                            ; --            ; --          ; --               ;
+; MISC_FILE                           ; MemoryModule2_syn.v                                                                                                                                           ; --            ; --          ; --               ;
+; MISC_FILE                           ; MemoryModule3_bb.v                                                                                                                                            ; --            ; --          ; --               ;
+; MISC_FILE                           ; MemoryModule3_syn.v                                                                                                                                           ; --            ; --          ; --               ;
+; NOMINAL_CORE_SUPPLY_VOLTAGE         ; 1.2V                                                                                                                                                          ; --            ; --          ; --               ;
+; PARTITION_COLOR                     ; -- (Not supported for targeted family)                                                                                                                        ; --            ; --          ; Top              ;
+; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family)                                                                                                                        ; --            ; --          ; Top              ;
+; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family)                                                                                                                        ; --            ; --          ; Top              ;
+; POWER_BOARD_THERMAL_MODEL           ; None (CONSERVATIVE)                                                                                                                                           ; --            ; --          ; --               ;
+; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                                                                                                                         ; --            ; --          ; --               ;
+; PROJECT_OUTPUT_DIRECTORY            ; output_files                                                                                                                                                  ; --            ; --          ; --               ;
+; SLD_FILE                            ; db/stp1_auto_stripped.stp                                                                                                                                     ; --            ; --          ; --               ;
+; SLD_NODE_CREATOR_ID                 ; 110                                                                                                                                                           ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_ENTITY_NAME                ; sld_signaltap                                                                                                                                                 ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_RAM_BLOCK_TYPE=AUTO                                                                                                                                       ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_DATA_BITS=39                                                                                                                                              ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_BITS=39                                                                                                                                           ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STORAGE_QUALIFIER_BITS=39                                                                                                                                 ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_NODE_INFO=805334528                                                                                                                                       ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_POWER_UP_TRIGGER=0                                                                                                                                        ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INVERSION_MASK=000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INVERSION_MASK_LENGTH=138                                                                                                                                 ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=0                                                                                                                 ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_SEGMENT_SIZE=128                                                                                                                                          ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ATTRIBUTE_MEM_MODE=OFF                                                                                                                                    ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STATE_FLOW_USE_GENERATED=0                                                                                                                                ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_STATE_BITS=11                                                                                                                                             ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_BUFFER_FULL_STOP=1                                                                                                                                        ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_CURRENT_RESOURCE_WIDTH=1                                                                                                                                  ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_INCREMENTAL_ROUTING=1                                                                                                                                     ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_LEVEL=1                                                                                                                                           ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_SAMPLE_DEPTH=128                                                                                                                                          ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_IN_ENABLED=0                                                                                                                                      ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_PIPELINE=0                                                                                                                                        ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_RAM_PIPELINE=0                                                                                                                                            ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_COUNTER_PIPELINE=0                                                                                                                                        ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ADVANCED_TRIGGER_ENTITY=basic,1,                                                                                                                          ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_TRIGGER_LEVEL_PIPELINE=1                                                                                                                                  ; --            ; --          ; auto_signaltap_0 ;
+; SLD_NODE_PARAMETER_ASSIGNMENT       ; SLD_ENABLE_ADVANCED_TRIGGER=0                                                                                                                                 ; --            ; --          ; auto_signaltap_0 ;
+; SMART_RECOMPILE                     ; On                                                                                                                                                            ; Off           ; --          ; --               ;
+; USE_SIGNALTAP_FILE                  ; output_files/stp1.stp                                                                                                                                         ; --            ; --          ; --               ;
++-------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------+-------------+------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------+
@@ -103,11 +133,11 @@ agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:33     ; 1.0                     ; 4970 MB             ; 00:00:40                           ;
-; Fitter                    ; 00:01:10     ; 1.1                     ; 5899 MB             ; 00:01:59                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; 4739 MB             ; 00:00:03                           ;
-; TimeQuest Timing Analyzer ; 00:00:13     ; 2.1                     ; 5081 MB             ; 00:00:12                           ;
-; Total                     ; 00:02:00     ; --                      ; --                  ; 00:02:54                           ;
+; Analysis & Synthesis      ; 00:01:08     ; 1.0                     ; 4968 MB             ; 00:01:01                           ;
+; Fitter                    ; 00:00:36     ; 1.1                     ; 5861 MB             ; 00:00:51                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; 4737 MB             ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:10     ; 1.1                     ; 4952 MB             ; 00:00:06                           ;
+; Total                     ; 00:01:59     ; --                      ; --                  ; 00:02:02                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -116,10 +146,10 @@ agreement for further details.
 +---------------------------+------------------+------------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +---------------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis      ; CEC-EGB267-03    ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter                    ; CEC-EGB267-03    ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler                 ; CEC-EGB267-03    ; Windows 10 ; 10.0       ; x86_64         ;
-; TimeQuest Timing Analyzer ; CEC-EGB267-03    ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis      ; CEC-EGB267-08    ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter                    ; CEC-EGB267-08    ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler                 ; CEC-EGB267-08    ; Windows 10 ; 10.0       ; x86_64         ;
+; TimeQuest Timing Analyzer ; CEC-EGB267-08    ; Windows 10 ; 10.0       ; x86_64         ;
 +---------------------------+------------------+------------+------------+----------------+
 
 

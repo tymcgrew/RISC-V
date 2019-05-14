@@ -8,7 +8,7 @@
 */
 
 
-module Cache(clk, rst, address, in, wren, width, sign, out, cacheHit);
+module Cache(clk, rst, address, in, wren, width, sign, out, cacheHit, tmr_rst);
 
 	input clk, rst;
 	input [31:0]address;
@@ -38,256 +38,267 @@ module Cache(clk, rst, address, in, wren, width, sign, out, cacheHit);
 	parameter SIGNED = 1'b1,
 				 UNSIGNED = 1'b0;
 				 
+	output reg tmr_rst;		
 				 
-				 
-				 
+	wire memClk;
+	assign memClk = (address < 32'd4096)? clk : 1'b0;
 	wire [31:0]memOut;
-	Memory memory(clk, address, in, wren, width, memOut);
+	Memory memory(memClk, address, in, wren, width, memOut);
 	
 	
 	always@(*)       // Updating cacheHitComb to serve as continous check on cache hit conditions and setting output from cache or memory based on address, prevAddress, cacheHitComb, and cacheHit         
 	begin
-	
-		// Always updating cacheHitComb to check if an address and width is a valid cache hit
-		if (
-			 width == BYTE &&                     // if reading a byte and the line is in the cache, then there is a cache hit
-			 address[31:2] == cache0[61:32] ||
-			 address[31:2] == cache1[61:32] ||
-			 address[31:2] == cache2[61:32] ||
-			 address[31:2] == cache3[61:32] ||
-			 address[31:2] == cache4[61:32] ||
-			 address[31:2] == cache5[61:32] ||
-			 address[31:2] == cache6[61:32] ||
-			 address[31:2] == cache7[61:32])        cacheHitComb = 1'b1;
-			
-		else if (
-					width == HALF &&                // if reading a half and the half is contained on one line and the line is in the cache, then there is a cache hit
-					address[1:0] != 2'b11 &&
-					address[31:2] == cache0[61:32] ||
-					address[31:2] == cache1[61:32] ||
-					address[31:2] == cache2[61:32] ||
-					address[31:2] == cache3[61:32] ||
-					address[31:2] == cache4[61:32] ||
-					address[31:2] == cache5[61:32] ||
-					address[31:2] == cache6[61:32] ||
-					address[31:2] == cache7[61:32])   cacheHitComb = 1'b1;
-		
-		else if (
-					width == WORD &&                // if reading a word and the word is word-alligned and the line is in the cache, then there is a cache hit
-					address[1:0] == 2'b00 &&
-					address[31:2] == cache0[61:32] ||
-					address[31:2] == cache1[61:32] ||
-					address[31:2] == cache2[61:32] ||
-					address[31:2] == cache3[61:32] ||
-					address[31:2] == cache4[61:32] ||
-					address[31:2] == cache5[61:32] ||
-					address[31:2] == cache6[61:32] ||
-					address[31:2] == cache7[61:32])   cacheHitComb = 1'b1;
-		else
-			cacheHitComb = 1'b0;
-	
-		// Always determining output based on if the cache is a hit or not
-		// If address is unchanged, use sequential cacheHit. If address is different, use combinational cacheHitComb.
-		if ((address == prevAddress && cacheHit == 1'b1) || (address != prevAddress && cacheHitComb == 1'b1))  
-		
-		// cache hit, use cache for output
+		if (address < 32'd4096)
 		begin
-			case (address[4:2])
-				3'd0:
-				begin
-					case(width)
-						BYTE:
-							case(address[1:0])
-								2'b00: out = (sign == SIGNED)? {{24{cache0[31]}}, cache0[31:24]} : {24'd0, cache0[31:24]};
-								2'b01: out = (sign == SIGNED)? {{24{cache0[23]}}, cache0[23:16]} : {24'd0, cache0[23:16]};
-								2'b10: out = (sign == SIGNED)? {{24{cache0[15]}}, cache0[15:8]}  : {24'd0, cache0[15:8]};
-								2'b11: out = (sign == SIGNED)? {{24{cache0[7]}},  cache0[7:0]}   : {24'd0, cache0[7:0]};
-							endcase						
-							
-						HALF:
-							case(address[1:0])
-								2'b00:   out = (sign == SIGNED)? {{16{cache0[31]}}, cache0[31:16]} : {16'd0, cache0[31:16]};
-								2'b01:   out = (sign == SIGNED)? {{16{cache0[23]}}, cache0[23:8]}  : {16'd0, cache0[23:8]};
-								default: out = (sign == SIGNED)? {{16{cache0[15]}}, cache0[15:0]}  : {16'd0, cache0[15:0]};
-							endcase
-							
-						default:  // word
-							out = cache0[31:0];
-					endcase
-				end
-					
-				3'd1:
-				begin
-					case(width)
-						BYTE:
-							case(address[1:0])
-								2'b00: out = (sign == SIGNED)? {{24{cache1[31]}}, cache1[31:24]} : {24'd0, cache1[31:24]};
-								2'b01: out = (sign == SIGNED)? {{24{cache1[23]}}, cache1[23:16]} : {24'd0, cache1[23:16]};
-								2'b10: out = (sign == SIGNED)? {{24{cache1[15]}}, cache1[15:8]}  : {24'd0, cache1[15:8]};
-								2'b11: out = (sign == SIGNED)? {{24{cache1[7]}},  cache1[7:0]}   : {24'd0, cache1[7:0]};
-							endcase						
-							
-						HALF:
-							case(address[1:0])
-								2'b00:   out = (sign == SIGNED)? {{16{cache1[31]}}, cache1[31:16]} : {16'd0, cache1[31:16]};
-								2'b01:   out = (sign == SIGNED)? {{16{cache1[23]}}, cache1[23:8]}  : {16'd0, cache1[23:8]};
-								default: out = (sign == SIGNED)? {{16{cache1[15]}}, cache1[15:0]}  : {16'd0, cache1[15:0]};
-							endcase
-							
-						default:  // word
-							out = cache1[31:0];
-					endcase
-				end
-					
-				3'd2:
-				begin
-					case(width)
-						BYTE:
-							case(address[1:0])
-								2'b00: out = (sign == SIGNED)? {{24{cache2[31]}}, cache2[31:24]} : {24'd0, cache2[31:24]};
-								2'b01: out = (sign == SIGNED)? {{24{cache2[23]}}, cache2[23:16]} : {24'd0, cache2[23:16]};
-								2'b10: out = (sign == SIGNED)? {{24{cache2[15]}}, cache2[15:8]}  : {24'd0, cache2[15:8]};
-								2'b11: out = (sign == SIGNED)? {{24{cache2[7]}},  cache2[7:0]}   : {24'd0, cache2[7:0]};
-							endcase						
-							
-						HALF:
-							case(address[1:0])
-								2'b00:   out = (sign == SIGNED)? {{16{cache2[31]}}, cache2[31:16]} : {16'd0, cache2[31:16]};
-								2'b01:   out = (sign == SIGNED)? {{16{cache2[23]}}, cache2[23:8]}  : {16'd0, cache2[23:8]};
-								default: out = (sign == SIGNED)? {{16{cache2[15]}}, cache2[15:0]}  : {16'd0, cache2[15:0]};
-							endcase
-							
-						default:  // word
-							out = cache2[31:0];
-					endcase
-				end
+		
+			// Always updating cacheHitComb to check if an address and width is a valid cache hit
+			if (
+				 width == BYTE &&                     // if reading a byte and the line is in the cache, then there is a cache hit
+				 address[31:2] == cache0[61:32] ||
+				 address[31:2] == cache1[61:32] ||
+				 address[31:2] == cache2[61:32] ||
+				 address[31:2] == cache3[61:32] ||
+				 address[31:2] == cache4[61:32] ||
+				 address[31:2] == cache5[61:32] ||
+				 address[31:2] == cache6[61:32] ||
+				 address[31:2] == cache7[61:32])        cacheHitComb = 1'b1;
 				
-				3'd3:
-				begin
-					case(width)
-						BYTE:
-							case(address[1:0])
-								2'b00: out = (sign == SIGNED)? {{24{cache3[31]}}, cache3[31:24]} : {24'd0, cache3[31:24]};
-								2'b01: out = (sign == SIGNED)? {{24{cache3[23]}}, cache3[23:16]} : {24'd0, cache3[23:16]};
-								2'b10: out = (sign == SIGNED)? {{24{cache3[15]}}, cache3[15:8]}  : {24'd0, cache3[15:8]};
-								2'b11: out = (sign == SIGNED)? {{24{cache3[7]}},  cache3[7:0]}   : {24'd0, cache3[7:0]};
-							endcase						
-							
-						HALF:
-							case(address[1:0])
-								2'b00:   out = (sign == SIGNED)? {{16{cache3[31]}}, cache3[31:16]} : {16'd0, cache3[31:16]};
-								2'b01:   out = (sign == SIGNED)? {{16{cache3[23]}}, cache3[23:8]}  : {16'd0, cache3[23:8]};
-								default: out = (sign == SIGNED)? {{16{cache3[15]}}, cache3[15:0]}  : {16'd0, cache3[15:0]};
-							endcase
-							
-						default:  // word
-							out = cache3[31:0];
-					endcase
-				end
+			else if (
+						width == HALF &&                // if reading a half and the half is contained on one line and the line is in the cache, then there is a cache hit
+						address[1:0] != 2'b11 &&
+						address[31:2] == cache0[61:32] ||
+						address[31:2] == cache1[61:32] ||
+						address[31:2] == cache2[61:32] ||
+						address[31:2] == cache3[61:32] ||
+						address[31:2] == cache4[61:32] ||
+						address[31:2] == cache5[61:32] ||
+						address[31:2] == cache6[61:32] ||
+						address[31:2] == cache7[61:32])   cacheHitComb = 1'b1;
+			
+			else if (
+						width == WORD &&                // if reading a word and the word is word-alligned and the line is in the cache, then there is a cache hit
+						address[1:0] == 2'b00 &&
+						address[31:2] == cache0[61:32] ||
+						address[31:2] == cache1[61:32] ||
+						address[31:2] == cache2[61:32] ||
+						address[31:2] == cache3[61:32] ||
+						address[31:2] == cache4[61:32] ||
+						address[31:2] == cache5[61:32] ||
+						address[31:2] == cache6[61:32] ||
+						address[31:2] == cache7[61:32])   cacheHitComb = 1'b1;
+			else
+				cacheHitComb = 1'b0;
+		
+			// Always determining output based on if the cache is a hit or not
+			// If address is unchanged, use sequential cacheHit. If address is different, use combinational cacheHitComb.
+			if ((address == prevAddress && cacheHit == 1'b1) || (address != prevAddress && cacheHitComb == 1'b1))  
+			
+			// cache hit, use cache for output
+			begin
+				case (address[4:2])
+					3'd0:
+					begin
+						case(width)
+							BYTE:
+								case(address[1:0])
+									2'b00: out = (sign == SIGNED)? {{24{cache0[31]}}, cache0[31:24]} : {24'd0, cache0[31:24]};
+									2'b01: out = (sign == SIGNED)? {{24{cache0[23]}}, cache0[23:16]} : {24'd0, cache0[23:16]};
+									2'b10: out = (sign == SIGNED)? {{24{cache0[15]}}, cache0[15:8]}  : {24'd0, cache0[15:8]};
+									2'b11: out = (sign == SIGNED)? {{24{cache0[7]}},  cache0[7:0]}   : {24'd0, cache0[7:0]};
+								endcase						
+								
+							HALF:
+								case(address[1:0])
+									2'b00:   out = (sign == SIGNED)? {{16{cache0[31]}}, cache0[31:16]} : {16'd0, cache0[31:16]};
+									2'b01:   out = (sign == SIGNED)? {{16{cache0[23]}}, cache0[23:8]}  : {16'd0, cache0[23:8]};
+									default: out = (sign == SIGNED)? {{16{cache0[15]}}, cache0[15:0]}  : {16'd0, cache0[15:0]};
+								endcase
+								
+							default:  // word
+								out = cache0[31:0];
+						endcase
+					end
+						
+					3'd1:
+					begin
+						case(width)
+							BYTE:
+								case(address[1:0])
+									2'b00: out = (sign == SIGNED)? {{24{cache1[31]}}, cache1[31:24]} : {24'd0, cache1[31:24]};
+									2'b01: out = (sign == SIGNED)? {{24{cache1[23]}}, cache1[23:16]} : {24'd0, cache1[23:16]};
+									2'b10: out = (sign == SIGNED)? {{24{cache1[15]}}, cache1[15:8]}  : {24'd0, cache1[15:8]};
+									2'b11: out = (sign == SIGNED)? {{24{cache1[7]}},  cache1[7:0]}   : {24'd0, cache1[7:0]};
+								endcase						
+								
+							HALF:
+								case(address[1:0])
+									2'b00:   out = (sign == SIGNED)? {{16{cache1[31]}}, cache1[31:16]} : {16'd0, cache1[31:16]};
+									2'b01:   out = (sign == SIGNED)? {{16{cache1[23]}}, cache1[23:8]}  : {16'd0, cache1[23:8]};
+									default: out = (sign == SIGNED)? {{16{cache1[15]}}, cache1[15:0]}  : {16'd0, cache1[15:0]};
+								endcase
+								
+							default:  // word
+								out = cache1[31:0];
+						endcase
+					end
+						
+					3'd2:
+					begin
+						case(width)
+							BYTE:
+								case(address[1:0])
+									2'b00: out = (sign == SIGNED)? {{24{cache2[31]}}, cache2[31:24]} : {24'd0, cache2[31:24]};
+									2'b01: out = (sign == SIGNED)? {{24{cache2[23]}}, cache2[23:16]} : {24'd0, cache2[23:16]};
+									2'b10: out = (sign == SIGNED)? {{24{cache2[15]}}, cache2[15:8]}  : {24'd0, cache2[15:8]};
+									2'b11: out = (sign == SIGNED)? {{24{cache2[7]}},  cache2[7:0]}   : {24'd0, cache2[7:0]};
+								endcase						
+								
+							HALF:
+								case(address[1:0])
+									2'b00:   out = (sign == SIGNED)? {{16{cache2[31]}}, cache2[31:16]} : {16'd0, cache2[31:16]};
+									2'b01:   out = (sign == SIGNED)? {{16{cache2[23]}}, cache2[23:8]}  : {16'd0, cache2[23:8]};
+									default: out = (sign == SIGNED)? {{16{cache2[15]}}, cache2[15:0]}  : {16'd0, cache2[15:0]};
+								endcase
+								
+							default:  // word
+								out = cache2[31:0];
+						endcase
+					end
 					
-				3'd4:
-				begin
-					case(width)
-						BYTE:
-							case(address[1:0])
-								2'b00: out = (sign == SIGNED)? {{24{cache4[31]}}, cache4[31:24]} : {24'd0, cache4[31:24]};
-								2'b01: out = (sign == SIGNED)? {{24{cache4[23]}}, cache4[23:16]} : {24'd0, cache4[23:16]};
-								2'b10: out = (sign == SIGNED)? {{24{cache4[15]}}, cache4[15:8]}  : {24'd0, cache4[15:8]};
-								2'b11: out = (sign == SIGNED)? {{24{cache4[7]}},  cache4[7:0]}   : {24'd0, cache4[7:0]};
-							endcase						
-							
-						HALF:
-							case(address[1:0])
-								2'b00:   out = (sign == SIGNED)? {{16{cache4[31]}}, cache4[31:16]} : {16'd0, cache4[31:16]};
-								2'b01:   out = (sign == SIGNED)? {{16{cache4[23]}}, cache4[23:8]}  : {16'd0, cache4[23:8]};
-								default: out = (sign == SIGNED)? {{16{cache4[15]}}, cache4[15:0]}  : {16'd0, cache4[15:0]};
-							endcase
-							
-						default:  // word
-							out = cache4[31:0];
-					endcase
-				end
-					
-				3'd5:
-				begin
-					case(width)
-						BYTE:
-							case(address[1:0])
-								2'b00: out = (sign == SIGNED)? {{24{cache5[31]}}, cache5[31:24]} : {24'd0, cache5[31:24]};
-								2'b01: out = (sign == SIGNED)? {{24{cache5[23]}}, cache5[23:16]} : {24'd0, cache5[23:16]};
-								2'b10: out = (sign == SIGNED)? {{24{cache5[15]}}, cache5[15:8]}  : {24'd0, cache5[15:8]};
-								2'b11: out = (sign == SIGNED)? {{24{cache5[7]}},  cache5[7:0]}   : {24'd0, cache5[7:0]};
-							endcase						
-							
-						HALF:
-							case(address[1:0])
-								2'b00:   out = (sign == SIGNED)? {{16{cache5[31]}}, cache5[31:16]} : {16'd0, cache5[31:16]};
-								2'b01:   out = (sign == SIGNED)? {{16{cache5[23]}}, cache5[23:8]}  : {16'd0, cache5[23:8]};
-								default: out = (sign == SIGNED)? {{16{cache5[15]}}, cache5[15:0]}  : {16'd0, cache5[15:0]};
-							endcase
-							
-						default:  // word
-							out = cache5[31:0];
-					endcase
-				end
-					
-				3'd6:
-				begin
-					case(width)
-						BYTE:
-							case(address[1:0])
-								2'b00: out = (sign == SIGNED)? {{24{cache6[31]}}, cache6[31:24]} : {24'd0, cache6[31:24]};
-								2'b01: out = (sign == SIGNED)? {{24{cache6[23]}}, cache6[23:16]} : {24'd0, cache6[23:16]};
-								2'b10: out = (sign == SIGNED)? {{24{cache6[15]}}, cache6[15:8]}  : {24'd0, cache6[15:8]};
-								2'b11: out = (sign == SIGNED)? {{24{cache6[7]}},  cache6[7:0]}   : {24'd0, cache6[7:0]};
-							endcase						
-							
-						HALF:
-							case(address[1:0])
-								2'b00:   out = (sign == SIGNED)? {{16{cache6[31]}}, cache6[31:16]} : {16'd0, cache6[31:16]};
-								2'b01:   out = (sign == SIGNED)? {{16{cache6[23]}}, cache6[23:8]}  : {16'd0, cache6[23:8]};
-								default: out = (sign == SIGNED)? {{16{cache6[15]}}, cache6[15:0]}  : {16'd0, cache6[15:0]};
-							endcase
-							
-						default:  // word
-							out = cache6[31:0];
-					endcase
-				end
-					
-				3'd7:
-				begin
-					case(width)
-						BYTE:
-							case(address[1:0])
-								2'b00: out = (sign == SIGNED)? {{24{cache7[31]}}, cache7[31:24]} : {24'd0, cache7[31:24]};
-								2'b01: out = (sign == SIGNED)? {{24{cache7[23]}}, cache7[23:16]} : {24'd0, cache7[23:16]};
-								2'b10: out = (sign == SIGNED)? {{24{cache7[15]}}, cache7[15:8]}  : {24'd0, cache7[15:8]};
-								2'b11: out = (sign == SIGNED)? {{24{cache7[7]}},  cache7[7:0]}   : {24'd0, cache7[7:0]};
-							endcase						
-							
-						HALF:
-							case(address[1:0])
-								2'b00:   out = (sign == SIGNED)? {{16{cache7[31]}}, cache7[31:16]} : {16'd0, cache7[31:16]};
-								2'b01:   out = (sign == SIGNED)? {{16{cache7[23]}}, cache7[23:8]}  : {16'd0, cache7[23:8]};
-								default: out = (sign == SIGNED)? {{16{cache7[15]}}, cache7[15:0]}  : {16'd0, cache7[15:0]};
-							endcase
-							
-						default:  // word
-							out = cache7[31:0];
-					endcase
-				end
-			endcase
+					3'd3:
+					begin
+						case(width)
+							BYTE:
+								case(address[1:0])
+									2'b00: out = (sign == SIGNED)? {{24{cache3[31]}}, cache3[31:24]} : {24'd0, cache3[31:24]};
+									2'b01: out = (sign == SIGNED)? {{24{cache3[23]}}, cache3[23:16]} : {24'd0, cache3[23:16]};
+									2'b10: out = (sign == SIGNED)? {{24{cache3[15]}}, cache3[15:8]}  : {24'd0, cache3[15:8]};
+									2'b11: out = (sign == SIGNED)? {{24{cache3[7]}},  cache3[7:0]}   : {24'd0, cache3[7:0]};
+								endcase						
+								
+							HALF:
+								case(address[1:0])
+									2'b00:   out = (sign == SIGNED)? {{16{cache3[31]}}, cache3[31:16]} : {16'd0, cache3[31:16]};
+									2'b01:   out = (sign == SIGNED)? {{16{cache3[23]}}, cache3[23:8]}  : {16'd0, cache3[23:8]};
+									default: out = (sign == SIGNED)? {{16{cache3[15]}}, cache3[15:0]}  : {16'd0, cache3[15:0]};
+								endcase
+								
+							default:  // word
+								out = cache3[31:0];
+						endcase
+					end
+						
+					3'd4:
+					begin
+						case(width)
+							BYTE:
+								case(address[1:0])
+									2'b00: out = (sign == SIGNED)? {{24{cache4[31]}}, cache4[31:24]} : {24'd0, cache4[31:24]};
+									2'b01: out = (sign == SIGNED)? {{24{cache4[23]}}, cache4[23:16]} : {24'd0, cache4[23:16]};
+									2'b10: out = (sign == SIGNED)? {{24{cache4[15]}}, cache4[15:8]}  : {24'd0, cache4[15:8]};
+									2'b11: out = (sign == SIGNED)? {{24{cache4[7]}},  cache4[7:0]}   : {24'd0, cache4[7:0]};
+								endcase						
+								
+							HALF:
+								case(address[1:0])
+									2'b00:   out = (sign == SIGNED)? {{16{cache4[31]}}, cache4[31:16]} : {16'd0, cache4[31:16]};
+									2'b01:   out = (sign == SIGNED)? {{16{cache4[23]}}, cache4[23:8]}  : {16'd0, cache4[23:8]};
+									default: out = (sign == SIGNED)? {{16{cache4[15]}}, cache4[15:0]}  : {16'd0, cache4[15:0]};
+								endcase
+								
+							default:  // word
+								out = cache4[31:0];
+						endcase
+					end
+						
+					3'd5:
+					begin
+						case(width)
+							BYTE:
+								case(address[1:0])
+									2'b00: out = (sign == SIGNED)? {{24{cache5[31]}}, cache5[31:24]} : {24'd0, cache5[31:24]};
+									2'b01: out = (sign == SIGNED)? {{24{cache5[23]}}, cache5[23:16]} : {24'd0, cache5[23:16]};
+									2'b10: out = (sign == SIGNED)? {{24{cache5[15]}}, cache5[15:8]}  : {24'd0, cache5[15:8]};
+									2'b11: out = (sign == SIGNED)? {{24{cache5[7]}},  cache5[7:0]}   : {24'd0, cache5[7:0]};
+								endcase						
+								
+							HALF:
+								case(address[1:0])
+									2'b00:   out = (sign == SIGNED)? {{16{cache5[31]}}, cache5[31:16]} : {16'd0, cache5[31:16]};
+									2'b01:   out = (sign == SIGNED)? {{16{cache5[23]}}, cache5[23:8]}  : {16'd0, cache5[23:8]};
+									default: out = (sign == SIGNED)? {{16{cache5[15]}}, cache5[15:0]}  : {16'd0, cache5[15:0]};
+								endcase
+								
+							default:  // word
+								out = cache5[31:0];
+						endcase
+					end
+						
+					3'd6:
+					begin
+						case(width)
+							BYTE:
+								case(address[1:0])
+									2'b00: out = (sign == SIGNED)? {{24{cache6[31]}}, cache6[31:24]} : {24'd0, cache6[31:24]};
+									2'b01: out = (sign == SIGNED)? {{24{cache6[23]}}, cache6[23:16]} : {24'd0, cache6[23:16]};
+									2'b10: out = (sign == SIGNED)? {{24{cache6[15]}}, cache6[15:8]}  : {24'd0, cache6[15:8]};
+									2'b11: out = (sign == SIGNED)? {{24{cache6[7]}},  cache6[7:0]}   : {24'd0, cache6[7:0]};
+								endcase						
+								
+							HALF:
+								case(address[1:0])
+									2'b00:   out = (sign == SIGNED)? {{16{cache6[31]}}, cache6[31:16]} : {16'd0, cache6[31:16]};
+									2'b01:   out = (sign == SIGNED)? {{16{cache6[23]}}, cache6[23:8]}  : {16'd0, cache6[23:8]};
+									default: out = (sign == SIGNED)? {{16{cache6[15]}}, cache6[15:0]}  : {16'd0, cache6[15:0]};
+								endcase
+								
+							default:  // word
+								out = cache6[31:0];
+						endcase
+					end
+						
+					3'd7:
+					begin
+						case(width)
+							BYTE:
+								case(address[1:0])
+									2'b00: out = (sign == SIGNED)? {{24{cache7[31]}}, cache7[31:24]} : {24'd0, cache7[31:24]};
+									2'b01: out = (sign == SIGNED)? {{24{cache7[23]}}, cache7[23:16]} : {24'd0, cache7[23:16]};
+									2'b10: out = (sign == SIGNED)? {{24{cache7[15]}}, cache7[15:8]}  : {24'd0, cache7[15:8]};
+									2'b11: out = (sign == SIGNED)? {{24{cache7[7]}},  cache7[7:0]}   : {24'd0, cache7[7:0]};
+								endcase						
+								
+							HALF:
+								case(address[1:0])
+									2'b00:   out = (sign == SIGNED)? {{16{cache7[31]}}, cache7[31:16]} : {16'd0, cache7[31:16]};
+									2'b01:   out = (sign == SIGNED)? {{16{cache7[23]}}, cache7[23:8]}  : {16'd0, cache7[23:8]};
+									default: out = (sign == SIGNED)? {{16{cache7[15]}}, cache7[15:0]}  : {16'd0, cache7[15:0]};
+								endcase
+								
+							default:  // word
+								out = cache7[31:0];
+						endcase
+					end
+				endcase
+			end
+		
+			// cache miss, use memory for output
+			else
+			begin
+				case(width)
+					BYTE: out = (sign == SIGNED)? {{24{memOut[31]}}, memOut[31:24]} : {24'd0, memOut[31:24]};
+					HALF: out = (sign == SIGNED)? {{16{memOut[31]}}, memOut[31:16]} : {16'd0, memOut[31:16]};
+					default: out = memOut;
+				endcase
+			end
 		end
-	
-	   // cache miss, use memory for output
+		
 		else
-			case(width)
-				BYTE: out = (sign == SIGNED)? {{24{memOut[31]}}, memOut[31:24]} : {24'd0, memOut[31:24]};
-				HALF: out = (sign == SIGNED)? {{16{memOut[31]}}, memOut[31:16]} : {16'd0, memOut[31:16]};
-				default: out = memOut;
-			endcase
+		begin
+			cacheHitComb = 1'b0;
+			out = 32'd0;
 		end
-
+	end
 
 	always@(posedge clk or negedge rst)       // Sequential block determines when the address changes, decides whether there is a cache hit, and updates correct cache when there is a miss or when writing
 	begin
@@ -305,6 +316,8 @@ module Cache(clk, rst, address, in, wren, width, sign, out, cacheHit);
 			cache5 <= {30'hffffffff, 32'd0};
 			cache6 <= {30'hffffffff, 32'd0};
 			cache7 <= {30'hffffffff, 32'd0};
+			
+			tmr_rst <= 1'b0;
 		end
 		else if (rstFlag == 1'b0)             // if process starts with reset switch already flipped up, this ensures that cache addresses default to 0xffffffff and not 0x00000000
 		begin                                 // otherwise address 0 would be a cache hit on the first load instruction with an incorrect value of 0
@@ -319,10 +332,12 @@ module Cache(clk, rst, address, in, wren, width, sign, out, cacheHit);
 			cache5 <= {30'hffffffff, 32'd0};
 			cache6 <= {30'hffffffff, 32'd0};
 			cache7 <= {30'hffffffff, 32'd0};
+			
+			tmr_rst <= 1'b0;
 		end		
 		
 		
-		else
+		else if (address < 32'd4096)
 		begin
 		
 			prevAddress <= address;            // update prevAddress on the clock
@@ -567,7 +582,15 @@ module Cache(clk, rst, address, in, wren, width, sign, out, cacheHit);
 			endcase		
 		end
 		
-end
+		else if (address == 32'd4096)
+		begin
+			cacheHit <= 1'b0;
+			
+			if (wren == 1'b1)
+				tmr_rst <= (in == 32'd0)? 1'b0 : 1'b1;
+				
+		end
+	end
 	
 endmodule
 

@@ -8,6 +8,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "LEDG[1]",
+					"strict" : false
+				},
+				{
 					"name" : "HEX0[6]",
 					"strict" : false
 				},
@@ -1232,6 +1236,94 @@
 					"strict" : false
 				},
 				{
+					"name" : "memory_address[10]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[11]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[12]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[13]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[14]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[15]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[16]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[17]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[18]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[19]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[20]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[21]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[22]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[23]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[24]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[25]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[26]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[27]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[28]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[29]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[30]",
+					"strict" : false
+				},
+				{
+					"name" : "memory_address[31]",
+					"strict" : false
+				},
+				{
 					"name" : "register_out_a[0]",
 					"strict" : false
 				},
@@ -1372,6 +1464,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "interrupt",
+					"strict" : false
+				},
+				{
 					"name" : "clk",
 					"strict" : false
 				},
@@ -1445,6 +1541,22 @@
 				},
 				{
 					"name" : "SW[15]",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tms",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tck",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdi",
+					"strict" : false
+				},
+				{
+					"name" : "altera_reserved_tdo",
 					"strict" : false
 				}
 			]

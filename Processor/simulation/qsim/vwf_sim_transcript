@@ -7,7 +7,7 @@ Note: if both ModelSim-Altera and ModelSim executables are available, ModelSim-A
 
 **** Generating the ModelSim Testbench ****
 
-quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="M:/ECE 289/Processor/WaveformCache.vwf" --testbench_file="M:/ECE 289/Processor/simulation/qsim/WaveformCache.vwf.vt"
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="M:/ECE 289/Processor/Waveform.vwf" --testbench_file="M:/ECE 289/Processor/simulation/qsim/Waveform.vwf.vt"
 
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
@@ -26,11 +26,11 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: devices manufactured by Intel and sold by Intel or its 
     Info: authorized distributors.  Please refer to the applicable 
     Info: agreement for further details.
-    Info: Processing started: Tue Apr 23 17:23:25 2019
-Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="M:/ECE 289/Processor/WaveformCache.vwf" --testbench_file="M:/ECE 289/Processor/simulation/qsim/WaveformCache.vwf.vt"
+    Info: Processing started: Tue May 14 00:09:13 2019
+Info: Command: quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog --write_settings_files=off Processor -c Processor --vector_source="M:/ECE 289/Processor/Waveform.vwf" --testbench_file="M:/ECE 289/Processor/simulation/qsim/Waveform.vwf.vt"
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 
- output pin "out[9]" in vector source file when writing test bench files
+nch files
 
 Completed successfully. 
 
@@ -57,7 +57,7 @@ Info: Running Quartus Prime EDA Netlist Writer
     Info: devices manufactured by Intel and sold by Intel or its 
     Info: authorized distributors.  Please refer to the applicable 
     Info: agreement for further details.
-    Info: Processing started: Tue Apr 23 17:23:27 2019
+    Info: Processing started: Tue May 14 00:09:16 2019
 Info: Command: quartus_eda --write_settings_files=off --simulation=on --functional=off --flatten_buses=off --timescale=1ps --tool=modelsim_oem --format=verilog --output_directory="M:/ECE 289/Processor/simulation/qsim/" Processor -c Processor
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (204019): Generated file Processor_7_1200mv_85c_slow.vo in folder "M:/ECE 289/Processor/simulation/qsim//" for EDA simulation tool
@@ -69,10 +69,10 @@ Info (204019): Generated file Processor_7_1200mv_0c_v_slow.sdo in folder "M:/ECE
 Info (204019): Generated file Processor_min_1200mv_0c_v_fast.sdo in folder "M:/ECE 289/Processor/simulation/qsim//" for EDA simulation tool
 Info (204019): Generated file Processor_v.sdo in folder "M:/ECE 289/Processor/simulation/qsim//" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4685 megabytes
-    Info: Processing ended: Tue Apr 23 17:23:33 2019
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 4783 megabytes
+    Info: Processing ended: Tue May 14 00:09:53 2019
+    Info: Elapsed time: 00:00:37
+    Info: Total CPU time (on all processors): 00:00:09
 
 Completed successfully. 
 
@@ -95,72 +95,272 @@ Reading C:/intelFPGA_lite/16.1/modelsim_ase/tcl/vsim/pref.tcl
 # ** Warning: (vlib-34) Library already exists at "work".
 
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 17:23:34 on Apr 23,2019
+# Start time: 00:09:54 on May 14,2019
 # vlog -work work Processor.vo 
 
-# -- Compiling module Cache
+# -- Compiling module Processor
 
-# -- Compiling module hard_block
 # 
 # Top level modules:
-# 	Cache
+# 	Processor
 
-# End time: 17:23:35 on Apr 23,2019, Elapsed time: 0:00:01
+# End time: 00:09:57 on May 14,2019, Elapsed time: 0:00:03
 # Errors: 0, Warnings: 0
 
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 17:23:35 on Apr 23,2019
-# vlog -work work WaveformCache.vwf.vt 
+# Start time: 00:09:57 on May 14,2019
+# vlog -work work Waveform.vwf.vt 
 
-# -- Compiling module Cache_vlg_vec_tst
+# -- Compiling module Processor_vlg_vec_tst
 
 # 
 # Top level modules:
-# 	Cache_vlg_vec_tst
+# 	Processor_vlg_vec_tst
 
-# End time: 17:23:35 on Apr 23,2019, Elapsed time: 0:00:00
+# End time: 00:10:00 on May 14,2019, Elapsed time: 0:00:03
 # Errors: 0, Warnings: 0
 
-# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.Cache_vlg_vec_tst 
-# Start time: 17:23:35 on Apr 23,2019
-# Loading work.Cache_vlg_vec_tst
-# Loading work.Cache
-# Loading work.hard_block
+# vsim -novopt -c -t 1ps -L cycloneive_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.Processor_vlg_vec_tst 
+# Start time: 00:10:00 on May 14,2019
+# Loading work.Processor_vlg_vec_tst
+# Loading work.Processor
+# Loading altera_ver.dffeas
+# Loading cycloneive_ver.cycloneive_lcell_comb
 # Loading cycloneive_ver.cycloneive_io_obuf
 # Loading cycloneive_ver.cycloneive_io_ibuf
-# Loading cycloneive_ver.cycloneive_lcell_comb
 # Loading cycloneive_ver.cycloneive_clkctrl
 # Loading cycloneive_ver.cycloneive_mux41
 # Loading cycloneive_ver.cycloneive_ena_reg
-# Loading altera_ver.dffeas
+# Loading cycloneive_ver.cycloneive_mac_mult
+# Loading cycloneive_ver.cycloneive_mac_data_reg
+# Loading cycloneive_ver.cycloneive_mac_sign_reg
+# Loading cycloneive_ver.cycloneive_mac_mult_internal
+# Loading cycloneive_ver.cycloneive_mac_out
 # Loading cycloneive_ver.cycloneive_ram_block
 # Loading cycloneive_ver.cycloneive_ram_register
 # Loading cycloneive_ver.cycloneive_ram_pulse_generator
+# Loading cycloneive_ver.cycloneive_jtag
 # SDF 10.5b Compiler 2016.10 Oct  5 2016
 # 
 # Loading instances from Processor_v.sdo
+# ** Warning: (vsim-3017) Waveform.vwf.vt(68): [TFMPC] - Too few port connections. Expected 36, found 32.
+#    Time: 0 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1 File: Processor.vo
+# ** Warning: (vsim-3722) Waveform.vwf.vt(68): [TFMPC] - Missing connection for port 'altera_reserved_tms'.
+# ** Warning: (vsim-3722) Waveform.vwf.vt(68): [TFMPC] - Missing connection for port 'altera_reserved_tck'.
+# ** Warning: (vsim-3722) Waveform.vwf.vt(68): [TFMPC] - Missing connection for port 'altera_reserved_tdi'.
+# ** Warning: (vsim-3722) Waveform.vwf.vt(68): [TFMPC] - Missing connection for port 'altera_reserved_tdo'.
 # Loading altera_ver.PRIM_GDFF_LOW
+# ** Warning: Design size of 32255 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
 # Loading timing data from Processor_v.sdo
 # ** Note: (vsim-3587) SDF Backannotation Successfully Completed.
-#    Time: 0 ps  Iteration: 0  Instance: /Cache_vlg_vec_tst File: WaveformCache.vwf.vt
-# after#26
-# ** Note: $finish    : WaveformCache.vwf.vt(59)
-#    Time: 1 us  Iteration: 0  Instance: /Cache_vlg_vec_tst
+#    Time: 0 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst File: Waveform.vwf.vt
 
-# End time: 17:23:36 on Apr 23,2019, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
+# after#25
+
+# Simulation time: 0 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:278282 ps, d:278402 ps, 222 ps );
+#    Time: 278402 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:278274 ps, d:278423 ps, 222 ps );
+#    Time: 278423 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# Simulation time: 0 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:418278 ps, d:418340 ps, 222 ps );
+#    Time: 418340 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:618267 ps, d:618418 ps, 222 ps );
+#    Time: 618418 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:638267 ps, d:638305 ps, 222 ps );
+#    Time: 638305 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:798282 ps, d:798413 ps, 222 ps );
+#    Time: 798413 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:798274 ps, d:798451 ps, 222 ps );
+#    Time: 798451 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:833069 ps, d:833114 ps, 186 ps );
+#    Time: 833114 ps  Iteration: 1  Instance: /Processor_vlg_vec_tst/i1/\ones[3] 
+# Simulation time: 0 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1038282 ps, d:1038402 ps, 222 ps );
+#    Time: 1038402 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1038274 ps, d:1038423 ps, 222 ps );
+#    Time: 1038423 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1038282 ps, d:1038445 ps, 222 ps );
+#    Time: 1038445 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1058278 ps, d:1058361 ps, 222 ps );
+#    Time: 1058361 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1058267 ps, d:1058372 ps, 222 ps );
+#    Time: 1058372 ps  Iteration: 1  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1178278 ps, d:1178340 ps, 222 ps );
+#    Time: 1178340 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1178267 ps, d:1178411 ps, 222 ps );
+#    Time: 1178411 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1378278 ps, d:1378387 ps, 222 ps );
+#    Time: 1378387 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1618282 ps, d:1618413 ps, 222 ps );
+#    Time: 1618413 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1618274 ps, d:1618451 ps, 222 ps );
+#    Time: 1618451 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1638267 ps, d:1638305 ps, 222 ps );
+#    Time: 1638305 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# Simulation time: 0 ps
+
+# Simulation time: 0 ps
+
+# Simulation time: 0 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:1833069 ps, d:1833083 ps, 186 ps );
+#    Time: 1833083 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\ones[2] 
+# Simulation time: 0 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:1938282 ps, d:1938287 ps, 222 ps );
+#    Time: 1938287 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:2158267 ps, d:2158372 ps, 222 ps );
+#    Time: 2158372 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:2158278 ps, d:2158437 ps, 222 ps );
+#    Time: 2158437 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:2638267 ps, d:2638305 ps, 222 ps );
+#    Time: 2638305 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# Simulation time: 0 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:2858282 ps, d:2858402 ps, 222 ps );
+#    Time: 2858402 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:2858274 ps, d:2858423 ps, 222 ps );
+#    Time: 2858423 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:3018282 ps, d:3018413 ps, 222 ps );
+#    Time: 3018413 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:3018274 ps, d:3018451 ps, 222 ps );
+#    Time: 3018451 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:3053087 ps, d:3053137 ps, 186 ps );
+#    Time: 3053137 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\hundreds[1] 
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:3058276 ps, d:3058297 ps, 222 ps );
+#    Time: 3058297 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem3|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:3058267 ps, d:3058372 ps, 222 ps );
+#    Time: 3058372 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:3058276 ps, d:3058459 ps, 222 ps );
+#    Time: 3058459 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem3|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# Simulation time: 2915787 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:3518274 ps, d:3518330 ps, 222 ps );
+#    Time: 3518330 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:3538267 ps, d:3538305 ps, 222 ps );
+#    Time: 3538305 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:4498274 ps, d:4498327 ps, 222 ps );
+#    Time: 4498327 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:4498282 ps, d:4498402 ps, 222 ps );
+#    Time: 4498402 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:4498274 ps, d:4498423 ps, 222 ps );
+#    Time: 4498423 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:4518274 ps, d:4518330 ps, 222 ps );
+#    Time: 4518330 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# Simulation time: 2915787 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:4558267 ps, d:4558375 ps, 222 ps );
+#    Time: 4558375 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:4578274 ps, d:4578409 ps, 222 ps );
+#    Time: 4578409 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:4613087 ps, d:4613137 ps, 186 ps );
+#    Time: 4613137 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\hundreds[1] 
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5078278 ps, d:5078345 ps, 222 ps );
+#    Time: 5078345 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5078267 ps, d:5078375 ps, 222 ps );
+#    Time: 5078375 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5098274 ps, d:5098330 ps, 222 ps );
+#    Time: 5098330 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5098282 ps, d:5098402 ps, 222 ps );
+#    Time: 5098402 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5098274 ps, d:5098423 ps, 222 ps );
+#    Time: 5098423 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# Simulation time: 2915787 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5278278 ps, d:5278382 ps, 222 ps );
+#    Time: 5278382 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5298278 ps, d:5298361 ps, 222 ps );
+#    Time: 5298361 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5298267 ps, d:5298372 ps, 222 ps );
+#    Time: 5298372 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5418278 ps, d:5418345 ps, 222 ps );
+#    Time: 5418345 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5438274 ps, d:5438327 ps, 222 ps );
+#    Time: 5438327 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5438282 ps, d:5438413 ps, 222 ps );
+#    Time: 5438413 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5438274 ps, d:5438451 ps, 222 ps );
+#    Time: 5438451 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(291): $hold( posedge clk &&& nosloadsclr:5473087 ps, d:5473137 ps, 186 ps );
+#    Time: 5473137 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\hundreds[1] 
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5618278 ps, d:5618382 ps, 222 ps );
+#    Time: 5618382 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5758278 ps, d:5758345 ps, 222 ps );
+#    Time: 5758345 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# Simulation time: 2915787 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:5978267 ps, d:5978305 ps, 222 ps );
+#    Time: 5978305 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:6658267 ps, d:6658372 ps, 222 ps );
+#    Time: 6658372 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:6658278 ps, d:6658437 ps, 222 ps );
+#    Time: 6658437 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+
+# Simulation time: 2915787 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:7338267 ps, d:7338305 ps, 222 ps );
+#    Time: 7338305 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# Simulation time: 2915787 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(294): $hold( posedge clk &&& sloaddata:7813059 ps, asdata:7813109 ps, 186 ps );
+#    Time: 7813109 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|cache7[30] 
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/altera_primitives.v(294): $hold( posedge clk &&& sloaddata:7813059 ps, asdata:7813157 ps, 186 ps );
+#    Time: 7813157 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|cache7[27] 
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:7818274 ps, d:7818330 ps, 222 ps );
+#    Time: 7818330 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:8018278 ps, d:8018361 ps, 222 ps );
+#    Time: 8018361 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:8018267 ps, d:8018372 ps, 222 ps );
+#    Time: 8018372 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:8158274 ps, d:8158327 ps, 222 ps );
+#    Time: 8158327 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem0|altsyncram_component|auto_generated|ram_block1a0 /datain_a_register
+# Simulation time: 2915787 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:8698267 ps, d:8698305 ps, 222 ps );
+#    Time: 8698305 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:9378276 ps, d:9378340 ps, 222 ps );
+#    Time: 9378340 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem3|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:9378267 ps, d:9378372 ps, 222 ps );
+#    Time: 9378372 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:9378278 ps, d:9378437 ps, 222 ps );
+#    Time: 9378437 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# Simulation time: 2915787 ps
+
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:9498278 ps, d:9498340 ps, 222 ps );
+#    Time: 9498340 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:9498267 ps, d:9498411 ps, 222 ps );
+#    Time: 9498411 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:9698278 ps, d:9698387 ps, 222 ps );
+#    Time: 9698387 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:9698267 ps, d:9698418 ps, 222 ps );
+#    Time: 9698418 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:9838278 ps, d:9838340 ps, 222 ps );
+#    Time: 9838340 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem1|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Error: /build/swbuild/SJ/nightly/16.1/196/l64/work/modelsim/eda/sim_lib/cycloneive_atoms.v(4543): $hold( posedge clk &&& reset:9838267 ps, d:9838411 ps, 222 ps );
+#    Time: 9838411 ps  Iteration: 0  Instance: /Processor_vlg_vec_tst/i1/\cache|memory|mem2|altsyncram_component|auto_generated|ram_block1a0 /addr_a_register
+# ** Note: $finish    : Waveform.vwf.vt(105)
+#    Time: 10 us  Iteration: 0  Instance: /Processor_vlg_vec_tst
+
+# End time: 00:10:44 on May 14,2019, Elapsed time: 0:00:44
+# Errors: 76, Warnings: 6
 
 Completed successfully. 
 
 **** Converting ModelSim VCD to vector waveform ****
 
-Reading M:/ECE 289/Processor/WaveformCache.vwf...
+Reading M:/ECE 289/Processor/Waveform.vwf...
 
 Reading M:/ECE 289/Processor/simulation/qsim/Processor.msim.vcd...
 
 Processing channel transitions... 
 
-Writing the resulting VWF to M:/ECE 289/Processor/simulation/qsim/Processor_20190423172336.sim.vwf
+Writing the resulting VWF to M:/ECE 289/Processor/simulation/qsim/Processor_20190514001044.sim.vwf
 
 Finished VCD to VWF conversion.
 

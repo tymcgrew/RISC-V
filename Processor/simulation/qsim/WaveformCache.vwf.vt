@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "04/23/2019 17:23:26"
+// Generated on "05/13/2019 23:03:00"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          Cache
 // 
@@ -40,6 +40,7 @@ reg wren;
 // wires                                               
 wire cacheHit;
 wire [31:0] out;
+wire tmr_rst;
 
 // assign statements (if any)                          
 Cache i1 (
@@ -51,6 +52,7 @@ Cache i1 (
 	.out(out),
 	.rst(rst),
 	.sign(sign),
+	.tmr_rst(tmr_rst),
 	.width(width),
 	.wren(wren)
 );
@@ -171,6 +173,10 @@ end
 initial
 begin
 	address[12] = 1'b0;
+	address[12] = #150000 1'b1;
+	address[12] = #140000 1'b0;
+	address[12] = #160000 1'b1;
+	address[12] = #130000 1'b0;
 end 
 // address[ 11 ]
 initial
@@ -216,8 +222,6 @@ end
 initial
 begin
 	address[3] = 1'b0;
-	address[3] = #80000 1'b1;
-	address[3] = #510000 1'b0;
 end 
 // address[ 2 ]
 initial
@@ -228,24 +232,16 @@ end
 initial
 begin
 	address[1] = 1'b0;
-	address[1] = #360000 1'b1;
-	address[1] = #230000 1'b0;
 end 
 // address[ 0 ]
 initial
 begin
 	address[0] = 1'b0;
-	address[0] = #260000 1'b1;
-	address[0] = #100000 1'b0;
-	address[0] = #120000 1'b1;
-	address[0] = #110000 1'b0;
 end 
 // in[ 31 ]
 initial
 begin
 	in[31] = 1'b0;
-	in[31] = #80000 1'b1;
-	in[31] = #90000 1'b0;
 end 
 // in[ 30 ]
 initial
@@ -256,8 +252,6 @@ end
 initial
 begin
 	in[29] = 1'b0;
-	in[29] = #80000 1'b1;
-	in[29] = #90000 1'b0;
 end 
 // in[ 28 ]
 initial
@@ -268,8 +262,6 @@ end
 initial
 begin
 	in[27] = 1'b0;
-	in[27] = #80000 1'b1;
-	in[27] = #90000 1'b0;
 end 
 // in[ 26 ]
 initial
@@ -280,8 +272,6 @@ end
 initial
 begin
 	in[25] = 1'b0;
-	in[25] = #80000 1'b1;
-	in[25] = #90000 1'b0;
 end 
 // in[ 24 ]
 initial
@@ -292,8 +282,6 @@ end
 initial
 begin
 	in[23] = 1'b0;
-	in[23] = #80000 1'b1;
-	in[23] = #90000 1'b0;
 end 
 // in[ 22 ]
 initial
@@ -304,22 +292,16 @@ end
 initial
 begin
 	in[21] = 1'b0;
-	in[21] = #80000 1'b1;
-	in[21] = #90000 1'b0;
 end 
 // in[ 20 ]
 initial
 begin
 	in[20] = 1'b0;
-	in[20] = #80000 1'b1;
-	in[20] = #90000 1'b0;
 end 
 // in[ 19 ]
 initial
 begin
 	in[19] = 1'b0;
-	in[19] = #80000 1'b1;
-	in[19] = #90000 1'b0;
 end 
 // in[ 18 ]
 initial
@@ -330,29 +312,21 @@ end
 initial
 begin
 	in[17] = 1'b0;
-	in[17] = #80000 1'b1;
-	in[17] = #90000 1'b0;
 end 
 // in[ 16 ]
 initial
 begin
 	in[16] = 1'b0;
-	in[16] = #80000 1'b1;
-	in[16] = #90000 1'b0;
 end 
 // in[ 15 ]
 initial
 begin
 	in[15] = 1'b0;
-	in[15] = #80000 1'b1;
-	in[15] = #90000 1'b0;
 end 
 // in[ 14 ]
 initial
 begin
 	in[14] = 1'b0;
-	in[14] = #80000 1'b1;
-	in[14] = #90000 1'b0;
 end 
 // in[ 13 ]
 initial
@@ -368,15 +342,11 @@ end
 initial
 begin
 	in[11] = 1'b0;
-	in[11] = #80000 1'b1;
-	in[11] = #90000 1'b0;
 end 
 // in[ 10 ]
 initial
 begin
 	in[10] = 1'b0;
-	in[10] = #80000 1'b1;
-	in[10] = #90000 1'b0;
 end 
 // in[ 9 ]
 initial
@@ -392,65 +362,53 @@ end
 initial
 begin
 	in[7] = 1'b0;
-	in[7] = #80000 1'b1;
-	in[7] = #90000 1'b0;
 end 
 // in[ 6 ]
 initial
 begin
 	in[6] = 1'b0;
-	in[6] = #80000 1'b1;
-	in[6] = #90000 1'b0;
 end 
 // in[ 5 ]
 initial
 begin
 	in[5] = 1'b0;
-	in[5] = #80000 1'b1;
-	in[5] = #90000 1'b0;
 end 
 // in[ 4 ]
 initial
 begin
 	in[4] = 1'b0;
-	in[4] = #80000 1'b1;
-	in[4] = #90000 1'b0;
 end 
 // in[ 3 ]
 initial
 begin
 	in[3] = 1'b0;
-	in[3] = #80000 1'b1;
-	in[3] = #90000 1'b0;
 end 
 // in[ 2 ]
 initial
 begin
 	in[2] = 1'b0;
-	in[2] = #80000 1'b1;
-	in[2] = #90000 1'b0;
 end 
 // in[ 1 ]
 initial
 begin
 	in[1] = 1'b0;
-	in[1] = #80000 1'b1;
-	in[1] = #90000 1'b0;
 end 
 // in[ 0 ]
 initial
 begin
 	in[0] = 1'b0;
-	in[0] = #80000 1'b1;
-	in[0] = #90000 1'b0;
+	in[0] = #150000 1'b1;
+	in[0] = #140000 1'b0;
 end 
 
 // wren
 initial
 begin
 	wren = 1'b0;
-	wren = #80000 1'b1;
-	wren = #90000 1'b0;
+	wren = #150000 1'b1;
+	wren = #140000 1'b0;
+	wren = #230000 1'b1;
+	wren = #60000 1'b0;
 end 
 
 // sign
@@ -462,15 +420,11 @@ end
 initial
 begin
 	width[1] = 1'b1;
-	width[1] = #170000 1'b0;
-	width[1] = #420000 1'b1;
 end 
 // width[ 0 ]
 initial
 begin
 	width[0] = 1'b1;
-	width[0] = #170000 1'b0;
-	width[0] = #420000 1'b1;
 end 
 endmodule
 

@@ -19,7 +19,7 @@
 // the top level entity of the current Quartus project .The user can use this   
 // testbench to simulate his design using a third-party simulation tool .       
 // *****************************************************************************
-// Generated on "04/16/2019 23:11:34"
+// Generated on "05/14/2019 00:09:15"
                                                                                 
 // Verilog Test Bench (with test vectors) for design :                          Processor
 // 
@@ -50,7 +50,8 @@ wire [31:0] alu_out;
 wire [2:0] alu_status;
 wire [31:0] instruction;
 wire instructionregister_wren;
-wire [9:0] memory_address;
+wire interrupt;
+wire [31:0] memory_address;
 wire memory_wren;
 wire out_update;
 wire [31:0] programcounter_in;
@@ -85,6 +86,7 @@ Processor i1 (
 	.clk(clk),
 	.instruction(instruction),
 	.instructionregister_wren(instructionregister_wren),
+	.interrupt(interrupt),
 	.memory_address(memory_address),
 	.memory_wren(memory_wren),
 	.out_update(out_update),
@@ -100,7 +102,7 @@ Processor i1 (
 );
 initial 
 begin 
-#2000000 $finish;
+#10000000 $finish;
 end 
 
 // SW[17]

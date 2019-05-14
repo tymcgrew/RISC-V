@@ -10,14 +10,14 @@
 module Memory(clk, address, in, wren, width, out);
 
 	input clk;
-	input [9:0]address;
+	input [31:0]address;
 	input [31:0]in;
 	input wren;
 	input [1:0]width;
 	output [31:0]out;
 	reg [31:0]out;
 
-	reg [5:0]mem3address, mem2address, mem1address, mem0address;
+	reg [9:0]mem3address, mem2address, mem1address, mem0address;
 
 	wire [7:0]mem3out, mem2out, mem1out, mem0out;
 

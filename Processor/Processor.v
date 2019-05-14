@@ -23,13 +23,16 @@ module Processor(SW,
 					  register_out_a,
 					  memory_wren,
 					  instructionregister_wren,
-					  out_update
+					  out_update,
+					  interrupt
 					  );
 	
 	input [17:0]SW;
 	output [8:0]LEDG;
 	wire LEDG0;
 	assign LEDG[0] = LEDG0;
+	wire LEDG1;
+	assign LEDG[1] = LEDG1;
 	input [3:0]KEY;
 	wire KEY0;
 	assign KEY0 = KEY[0];
@@ -55,11 +58,12 @@ module Processor(SW,
 	output [31:0]programcounter_in;
 	output result_wren;
 	output [31:0]result_reg_out;
-	output [9:0]memory_address;
+	output [31:0]memory_address;
 	output [31:0]register_out_a;
 	output memory_wren;
 	output instructionregister_wren;
 	output out_update;
+	output interrupt;
 	
 	
 	// Control wires
@@ -84,6 +88,8 @@ module Processor(SW,
 	wire memory_mux;
 	wire cacheHit;
 	
+	wire interrupt;
+	
 	wire programcounter_wren;
 	wire [1:0]programcounter_mux;
 	wire [31:0]programcounter_immediate;
@@ -93,15 +99,16 @@ module Processor(SW,
 	wire out_update;
 	
 	// Non-control wires
-	reg [31:0]register_in_a;
+	reg  [31:0]register_in_a;
 	wire [31:0]register_out_a;
 	wire [31:0]register_out_b;
 	wire [31:0]alu_in_a;
 	wire [31:0]alu_in_b;
 	wire [31:0]alu_out;
-	wire [9:0]memory_address;
+	wire [31:0]memory_address;
 	wire [31:0]memory_out;
-	reg [31:0]programcounter_in;
+	wire tmr_rst;
+	reg  [31:0]programcounter_in;
 	wire [31:0]programcounter_out;
 	wire [31:0]result_reg_out;
 
@@ -111,6 +118,7 @@ module Processor(SW,
 						 
 						 {{16{SW[15]}},SW[15:0]},
 						 LEDG0,
+						 LEDG1,
 						 KEY0,
 						 register_out_b,
 						 alu_status,
@@ -139,6 +147,8 @@ module Processor(SW,
 						 memory_sign,
 						 memory_mux,
 						 cacheHit,
+						 
+						 interrupt,
 						 
 						 
 						 // programcounter
@@ -191,7 +201,7 @@ module Processor(SW,
 
 	
 	
-	assign memory_address = (memory_mux)? alu_out[9:0] : programcounter_out[9:0];
+	assign memory_address = (memory_mux)? alu_out : programcounter_out;
 	Cache cache(
 					  clk,
 					  rst,
@@ -201,8 +211,18 @@ module Processor(SW,
 					  memory_width,
 					  memory_sign,
 					  memory_out,
-					  cacheHit
+					  cacheHit,
+					  tmr_rst
 					  );
+					  
+					  
+					  
+	WatchdogTimer timer(
+							  clk,
+							  rst,
+							  tmr_rst,
+							  interrupt
+							  );
 
 	
 	always@(*)

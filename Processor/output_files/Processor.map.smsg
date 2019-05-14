@@ -1,1 +1,1 @@
-Warning (10268): Verilog HDL information at Cache.v(386): always construct contains both blocking and non-blocking assignments File: M:/ECE 289/Processor/Cache.v Line: 386
+Warning (10268): Verilog HDL information at Control.v(508): always construct contains both blocking and non-blocking assignments File: M:/ECE 289/Processor/Control.v Line: 508
