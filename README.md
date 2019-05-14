@@ -1,6 +1,9 @@
 # RISC-V
 
-
+* An implementation of a RISC-V 32I ISA, minus FENCE and CSR instructions, plus MUL
+* Implemented on an Altera Cyclone IV FPGA development board in Verilog
+* Implements a watchdog timer, an interrupt handler, and a basic process switching OS
+* Includes an 8 line direct-mapping cache
 
 ![Diagram](https://github.com/tymcgrew/RISC-V/blob/master/misc/RISC-V.png)
 
