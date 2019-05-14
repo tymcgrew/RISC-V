@@ -450,7 +450,7 @@ Interrupt:
 	nop
 		
 
-Program1:
+Program1:          # Finds the sum of the factors for each natural number starting from 1 and working upwards
 	li a0, 1
 	li t0, 1            # t0 is current value
 	
@@ -772,7 +772,7 @@ Program1:
 
 
 
-Program2:
+Program2:                                   # Finds every prime number starting from 2 and working up
 	li a0, 1
 	li t0, 2        #t0 is value
 
